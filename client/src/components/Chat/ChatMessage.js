@@ -5,8 +5,6 @@ export default function ChatMessage(props) {
         <p 
             className={"p-3 px-6 w-fit m-2 rounded-[25px] " + props.align}  
             style={{backgroundColor: props.color, color: props.text}}>{props.message}</p>
-        
-
     </div>
   )
 }
