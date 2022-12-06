@@ -17,7 +17,8 @@ export default function ChatFeed() {
             
             lg:max-h-[820px]
             lg:mx-8
-            lg:my-auto"
+            lg:my-auto
+            lg:p-6"
 
         style={{backgroundColor:"#212D42"}}>
         

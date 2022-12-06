@@ -18,7 +18,7 @@ export default function ChatComponent() {
                 lg:flex-row-reverse"
                 style={{backgroundColor:"#152238"}}>            
                 
-                <div className="flex flex-col lg:ml-4 lg:mt-20">
+                <div className="flex flex-col lg:mx-4 lg:mt-20 lg:mb-8">
                     <ChatCreateGroup/>
                     <ChatSearch/>
                     <ChatParticipants/>
