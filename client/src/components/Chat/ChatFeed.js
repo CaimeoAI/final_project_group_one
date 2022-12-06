@@ -1,15 +1,18 @@
 import ChatGroupSelector from "./ChatGroupSelector";
 import ChatMessage from "./ChatMessage";
+import ChatTextInput from "./ChatTextInput";
 
 export default function ChatFeed() {
   return (
     <div 
         className="
+            flex
+            flex-col
             mt-4
             rounded-[25px]
             h-full
             grow
-            p-6"
+            p-2"
 
         style={{backgroundColor:"#212D42"}}>
         
@@ -34,6 +37,8 @@ export default function ChatFeed() {
             message="Fine, thanks." 
             color="#6F76F8"
             text="white"/>
+
+        <ChatTextInput/>
     </div>
   )
 }
