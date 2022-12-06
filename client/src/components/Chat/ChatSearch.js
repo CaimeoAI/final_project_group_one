@@ -7,7 +7,9 @@ export default function ChatSearch() {
                 rounded-full
                 h-11
                 w-full
-                pl-4"
+                pl-4
+                
+                lg:w-[224px]"
 
             style={{backgroundColor: "#212D42"}}
             type="text"

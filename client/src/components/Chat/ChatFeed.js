@@ -13,7 +13,11 @@ export default function ChatFeed() {
             h-screen
             max-h-[536px]
             grow
-            p-2"
+            p-2
+            
+            lg:max-h-[820px]
+            lg:mx-8
+            lg:my-auto"
 
         style={{backgroundColor:"#212D42"}}>
         
