@@ -8,6 +8,7 @@ export default function ChatFeed() {
             mt-4
             rounded-[25px]
             h-full
+            grow
             p-6"
 
         style={{backgroundColor:"#212D42"}}>
