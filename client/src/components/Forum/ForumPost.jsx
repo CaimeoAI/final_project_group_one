@@ -1,20 +1,38 @@
 import React from "react";
-import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
+// import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 import { BiUpvote, BiDownvote } from "react-icons/bi";
 import { MdOutlineModeComment, MdOutlineBookmarkBorder } from "react-icons/md";
 import { styles } from "./styles";
 import postImg from "../../assets/post-default.jpg";
 
 const ForumPost = ({ post }) => {
+  
+
   return (
-    <div className="w-[90%] m-auto h-[40%] border-solid border-2  rounded-xl mt-4 flex flex-row items-center justify-around">
-      <div className="hidden w-[80%] h-[80%] flex-col justify-center items-center ">
+    <div
+      className={`
+      w-[100%] m-auto  
+      md:h-[15%]  
+      lg:h-[10%]  
+      border-solid border-2  
+      rounded-xl mt-4 flex 
+      flex-row items-center justify-around `}
+    >
+      <div className="
+      hidden w-[80%]  
+      grow flex-col justify-center items-center 
+      md:flex md:w-[10%] md:space-y-3
+      lg:w-[8%]
+      ">
         <BiUpvote className={styles.votingIcons} />
         <p>0</p>
         <BiDownvote className={styles.votingIcons} />
       </div>
 
-      <div className="hidden md:flex  md:w-[200px] h-[120px] rounded-xl">
+      <div className="
+      hidden h-[120px] rounded-xl
+      md:flex  md:w-[220px]
+      ">
         <img
           src={postImg}
           alt="post-default"
@@ -22,18 +40,18 @@ const ForumPost = ({ post }) => {
         />
       </div>
 
-      <div className="w-[90%]  h-[100%]">
+      <div className="w-[90%]  h-[100%]  md:px-4 ">
         <div className="h-[82%]">
-          <h3 className="pt-4">{post.title}</h3>
+          <h3 className="pt-4 truncate">{post.title}</h3>
           <div
-            className={`${styles.textPost} h-[200px] text-ellipsis overflow-hidden pb-4`}
+            className={`${styles.textPost} h-[140px] md:h-[80px]  text-ellipsis overflow-hidden pb-1`}
           >
             {post.content}
           </div>
         </div>
 
         {/* --------------MOBILE VERSION---------------------- */}
-        <div className={`${styles.flexRow} border-t-2 h-[18%]`}>
+        <div className={`${styles.flexRow} md:hidden border-t-2 h-[18%]`}>
           <div
             className={`${styles.flexRow} w-[30%] h-[100%] justify-around pr-4`}
           >
@@ -55,17 +73,17 @@ const ForumPost = ({ post }) => {
             </div>
           </div>
         </div>
-
-        <div className="hidden md:flex flex-row w-52 mt-5">
+        {/* --------------TABLET|DESKTOP VERSION---------------------- */}
+        <div className="hidden md:flex flex-row w-44 py-2  justify-between">
           <div className={`${styles.flexRow} mr-4`}>
             <MdOutlineModeComment
-              className={`${styles.iconsComSave} w-[16px] h-[18px]`}
+              className={`${styles.iconsComSave} w-[16px] h-[18px] mt-[2px]`}
             />
-            <p className={styles.textPost}> 5 Comments</p>
+            <p className={`${styles.textPost}`}> 5  <span className=" hover:text-cyan-300 cursor-pointer">Comments</span> </p>
           </div>
           <div className={`${styles.flexRow} `}>
             <MdOutlineBookmarkBorder
-              className={`${styles.iconsComSave} w-[16px] h-[25px] mt-1`}
+              className={`${styles.iconsComSave} w-[16px] h-[25px] pt-1`}
             />
             <p className={styles.textPost}>Save</p>
           </div>

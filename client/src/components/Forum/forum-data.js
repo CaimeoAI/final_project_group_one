@@ -1,4 +1,4 @@
-export default [
+export const posts =  [
 	{
 		id: 44518258127,
 	title: "amet, dapibus id, blandit",

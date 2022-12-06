@@ -1,12 +1,11 @@
-import ForumComponent from './components/Forum/ForumComponent'
-import NavBar from './components/NavBar';
-
+import NavBar from "./components/NavBar";
+import Forum from "./pages/Forum";
 
 function App() {
   return (
-    <div className='flex flex-row w-[100vw] h-[100vh]  '>
-      <NavBar/>
-      <ForumComponent />
+    <div>
+      <NavBar />
+      <Forum />
     </div>
   );
 }
