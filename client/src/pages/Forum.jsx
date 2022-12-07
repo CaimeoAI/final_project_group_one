@@ -1,7 +1,8 @@
 import ForumSearch from "../components/Forum/ForumSearch";
-import ForumPost from "../components/Forum/ForumPost";
+import ForumListOfPosts from "../components/Forum/ForumListOfPosts";
 import { posts } from "../components/Forum/forum-data.js";
 import BarCreatePost from "../components/Forum/BarCreatePost";
+import UserPicTablet from "../components/UserPicTablet";
 
 const Forum = () => {
   return (
@@ -15,18 +16,19 @@ const Forum = () => {
             flex-1 
             justify-center 
             align-center  
-            md:ml-[60px] md:mb-4
-            lg:px-[3%] 
-            lg:pl-[17%]"
+            md:ml-[60px] 
+            md:mb-4
+            lg:pl-[220px]"
     >
       <div className="flex flex-row">
         <ForumSearch />
         <BarCreatePost />
+        <UserPicTablet/>
       </div>
 
       <div>
         {posts.map((post) => (
-          <ForumPost key={post.id} post={post} />
+          <ForumListOfPosts key={post.id} post={post} />
         ))}
       </div>
     </div>

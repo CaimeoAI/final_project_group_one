@@ -1,10 +1,11 @@
 import { BsPlusLg } from "react-icons/bs";
-import { MdAddCircleOutline } from "react-icons/md";
+import { IoIosAddCircleOutline } from "react-icons/io";
 import { styles } from "./styles";
 
 const BarCreatePost = () => {
   return (
     <>
+     {/* --------------MOBILE VERSION---------------------- */}
       <div
         className={`${styles.flexCenter} 
          fixed 
@@ -18,7 +19,8 @@ const BarCreatePost = () => {
          cursor-pointer`}
       >
         <BsPlusLg
-          className={`md:hidden 
+          className={`
+           md:hidden 
            w-[24px] 
            h-[24px]
          fill-gray-300
@@ -26,27 +28,32 @@ const BarCreatePost = () => {
            cursor-pointer`}
         />
       </div>
+       {/* --------------TABLET|DESKTOP VERSION---------------------- */}
       <div
         className={`
          ${styles.flexCenter} 
          hidden 
          md:flex 
-         items-end 
+         items-end
+         h-10
+         mt-[17px]
          justify-between 
-         px-4 
-         pt-3 
+         
          ml-2
          md:w-[26%]  
          md:rounded-xl
          lg:w-[36%]   
-         border-b-2 cursor-pointer`}
+         border-b-2 
+         `}
       >
-        <p className="text-md lg:text-lg">Create a post</p>
-        <MdAddCircleOutline
+        <p className="text-md lg:text-lg pl-5 ">Create a post</p>
+        <IoIosAddCircleOutline
           className={`
-               w-[28px] h-[28px]
-             fill-gray-600
-             hover:fill-sky-600 
+               mr-2
+             fill-gray-400  
+             hover:fill-cyan-700
+               w-[30px] 
+               h-[30px]
                cursor-pointer`}
         />
       </div>
