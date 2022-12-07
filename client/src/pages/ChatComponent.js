@@ -7,16 +7,16 @@ export default function ChatComponent() {
     return (
         <div 
             className="
+                bg-[#152238]
                 flex
                 flex-col
-                p-4 
+                p-4
                 text-center 
                 text-white
                 h-screen
                 w-screen
                 
-                lg:flex-row-reverse"
-                style={{backgroundColor:"#152238"}}>            
+                lg:flex-row-reverse">            
                 
                 <div className="flex flex-col lg:mx-4 lg:mt-20 lg:mb-8">
                     <ChatCreateGroup/>
