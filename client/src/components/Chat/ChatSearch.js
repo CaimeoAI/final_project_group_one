@@ -12,7 +12,7 @@ export default function ChatSearch() {
         pl-4
     
         lg:w-[224px]">
-        <input className="bg-transparent w-40" type="text" placeholder="Search..."/>
+        <input className="bg-transparent w-40 outline-none" type="text" placeholder="Search..."/>
 
         <i className="fa-solid fa-magnifying-glass text-xl mr-4"></i>
     </div>
