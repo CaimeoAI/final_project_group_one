@@ -18,7 +18,7 @@ export default function ChatComponent() {
                 
                 lg:flex-row-reverse">            
                 
-                <div className="flex flex-col lg:mx-4 lg:mt-20 lg:mb-8">
+                <div className="flex flex-col lg:mx-4 lg:mt-20 lg:mb-8 2xl:mt-4">
                     <ChatCreateGroup/>
                     <ChatSearch/>
                     <ChatParticipants/>
