@@ -17,10 +17,12 @@ export default function ChatFeed() {
             grow
             p-2
             
-            lg:max-h-[820px]
+            lg:max-h-[670px]
             lg:mx-8
             lg:my-auto
-            lg:p-6">
+            lg:p-6
+            
+            xl:max-h-[820px]">
         
         <ChatGroupSelector groupName="Group One"/>
         
