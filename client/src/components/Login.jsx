@@ -10,8 +10,11 @@ export const Login = (props) => {
   };
 
   return (
-    <div className="flex flex-col justify-center text-center text-white h-screen bg-[#152238]">
-      <form onSubmit={handleSubmit}>
+    <div className="flex flex-col justify-center text-center text-white h-screen bg-[#152238] lg:items-end">
+      <form
+        className="flex flex-col flex-nowrap md:flex  justify-center items-center"
+        onSubmit={handleSubmit}
+      >
         <input
           className="
           mt-4
