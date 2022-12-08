@@ -1,5 +1,5 @@
 import React from "react";
-import Calendar from "./components/calendar/Calendar.js";
+import Calendar from "../src/pages/Calendar.js";
 
 function App() {
   return (

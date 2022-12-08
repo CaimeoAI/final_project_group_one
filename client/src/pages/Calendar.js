@@ -1,6 +1,6 @@
 import React from "react";
-import FullCalend from "./FullCalend.js";
-import List from "./List.js";
+import FullCalend from "../components/calendar/FullCalend.js";
+import List from "../components/calendar/List.js";
 
 const Calendar = () => {
   return (
