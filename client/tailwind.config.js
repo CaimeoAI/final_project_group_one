@@ -4,8 +4,6 @@ module.exports = {
     "./src/**/*.{js,jsx,}"
   ],  // <---- Add folders that use tailwind in here
 
-
-
   theme: {
     extend: {},
     // screens: {

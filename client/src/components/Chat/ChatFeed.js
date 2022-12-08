@@ -116,8 +116,8 @@ export default function ChatFeed() {
               text="black"/>
           <ChatMessage
               alignment="text-left flex flex-col"
-              name="George"
-              message="Fine, thanks."
+              name="Jude"
+              message="Hello World"
               color="#6F76F8"
               text="white"/>
 
