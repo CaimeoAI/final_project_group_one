@@ -1,14 +1,26 @@
+
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import SidebarNav from "./pages/SidebarNav";
 import LearningSupport from "./pages/LearningSupport";
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <h1>App
+    <>
+      <SidebarNav />
+      <div className="width-100 ">
 
-        <LearningSupport />
-      </h1>
-    </div>
+      <Routes>
+        <Route path="/" element={<LearningSupport />} />
+        <Route path="/learningsupport" element={<LearningSupport />} />
+        <Route path="/" element={<LearningSupport />} />
+        <Route path="/" element={<LearningSupport />} />
+        <Route path="/" element={<LearningSupport />} />
+      </Routes>
+      </div>
+    </>
   );
-}
+};
+
 
 export default App;

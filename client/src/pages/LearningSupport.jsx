@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Tabs from '../components/learningComponents/Tabs'
 function LearningSupport() {
   return (
-    <div>Learning Support Page</div>
+    <div>
+        <Tabs/>
+    </div>
   )
 }
 
