@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+ .fc-theme-standard td {
+  border: 1px solid #b7d91e !important;
+  border-radius: 20px;
+
+}
+
+.fc-daygrid-day-frame {
+  background-color: rgb(211, 178, 178);
+}
+
+.fc-scroller-harness {
+  border: black solid 2px;  border-radius: 20px;
+  
+}
+.fc-scrollgrid-sync-inner{
+    background-color: rgb(211, 178, 178);
+}
+
+
+
