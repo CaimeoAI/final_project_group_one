@@ -1,7 +1,10 @@
+import React from "react";
+import Calendar from "./components/calendar/Calendar.js";
+
 function App() {
   return (
-    <div>
-      
+   <div>
+      <Calendar />
     </div>
   );
 }
