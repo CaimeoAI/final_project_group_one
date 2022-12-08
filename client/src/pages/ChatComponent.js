@@ -23,7 +23,7 @@ export default function ChatComponent() {
                     <ChatSearch/>
                     <ChatParticipants/>
                 </div>
-
+                
                 <ChatFeed/>
         </div>
     )
