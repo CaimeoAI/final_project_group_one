@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 
 import { HiMenuAlt3 } from "react-icons/hi";
-import { MdOutlineDashboard } from "react-icons/md";
+
 import { RiSettings4Line } from "react-icons/ri";
-import { BsBook } from "react-icons/bs";
+import { BsBook, BsCalendar3 } from "react-icons/bs";
 import { FiMessageSquare } from "react-icons/fi";
 import { SlGraduation } from "react-icons/sl";
 
 import { Link } from "react-router-dom";
-import Tabs from "../components/learningComponents/Tabs";
+/* import Tabs from "../components/learningComponents/Tabs"; */
 
 const SidebarNav = () => {
   const menus = [
-    { name: "Overview", link: "/", icon: MdOutlineDashboard },
+    { name: "Calendar", link: "/Calendar", icon: BsCalendar3},
     { name: "Learning Support", link: "/learningsupport", icon: BsBook },
     { name: "Academia", link: "/", icon: SlGraduation },
     { name: "Chat", link: "/", icon: FiMessageSquare },
@@ -66,12 +66,13 @@ const SidebarNav = () => {
         </div>
       </div>
       <div className="bg-purple-200 text-xl text-blue-900 font-semibold w-full">
-       <div>
-       <strong>Header with logo search and Page title here</strong>
-        <br />
-        Lorem ipsum dolor sit amet consectet possimus omnis optio dolom culpa pariatur velit.
-       </div>
-        <Tabs/>
+        <div>
+          <strong>Header with logo search and Page title here</strong>
+          <br />
+          Lorem ipsum dolor sit amet consectet possimus omnis optio dolom culpa
+          pariatur velit.
+        </div>
+        {/* <Tabs/> */}
       </div>
     </section>
   );
