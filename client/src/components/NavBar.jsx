@@ -2,7 +2,8 @@ import React from "react";
 
 const NavBar = () => {
   return (
-    <div className="
+    <div
+      className="
       fixed 
       bottom-0
     bg-zinc-500 
@@ -12,7 +13,7 @@ const NavBar = () => {
       md:top-0 
       md:w-16 
       md:h-[100vh] 
-     lg:w-52">
+      lg:w-52">
       NavBar
     </div>
   );
