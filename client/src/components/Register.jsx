@@ -12,8 +12,8 @@ export const Register = (props) => {
   };
 
   return (
-    <div className="lg:flex flex-row">
-      <div className="flex flex-col text-center text-white w-screen h-screen bg-[#152238] lg:items-start justify-center">
+    <div className="w-full lg:flex flex-row">
+      <div className="flex flex-col text-center text-white w-screen h-screen bg-[#152238] lg:w-1/2 items-start justify-center">
         <h1 className="pt-10">REGISTRATION</h1>
         <div className="flex justify-center">
           <img className="my-10 w-20" src={Avatar} alt="avatar" />
@@ -45,15 +45,15 @@ export const Register = (props) => {
           <select
             required
             className="
-             mt-4 
-             w-72 
-             h-12 
-             text-base 
-             rounded-full 
-             text-white border-2 
-             border-[#203354]
-             bg-[#152238]
-             text-center"
+            mt-4 
+            w-72 
+            h-12 
+            text-base 
+            rounded-full 
+            text-white border-2 
+            border-[#203354]
+            bg-[#152238]
+            text-center"
           >
             <option value="" disabled selected>
               select field...
@@ -121,8 +121,12 @@ export const Register = (props) => {
           Already have an account? Login here.
         </button>
       </div>
-      <div className="flex justify-center">
-        <img className="my-10 w-20" src={Registration} alt="registration" />
+      <div>
+        <img
+          className="lg: w-full h-full"
+          src={Registration}
+          alt="registration"
+        />
       </div>
     </div>
   );
