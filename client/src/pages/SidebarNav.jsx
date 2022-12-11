@@ -8,10 +8,12 @@ import { FiMessageSquare } from "react-icons/fi";
 import { SlGraduation } from "react-icons/sl";
 
 import { Link } from "react-router-dom";
+import { Avatar } from "@mui/material";
 
 
 
 const SidebarNav = () => {
+  
   const menus = [
     { name: "Calendar", link: "/calendar", icon: BsCalendar3},
     { name: "Learning Support", link: "/learningsupport", icon: BsBook },
@@ -25,7 +27,7 @@ const SidebarNav = () => {
 
 
     <div
-    className={`bg-[#171467bb] min-h-screen ${
+    className={`bg-[#12113abb] min-h-screen ${
       open ? "w-72" : "w-16"
     } duration-500 text-gray-100 px-4`}
   >
@@ -36,6 +38,7 @@ const SidebarNav = () => {
         onClick={() => setOpen(!open)}
       />
     </div>
+    <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className="content-evenly"/>
     <div className="mt-4 flex flex-col gap-4 relative">
       {menus?.map((menu, i) => (
         <Link

@@ -14,10 +14,13 @@ const App = () => {
     
      
     <div className="width-100 flex ">
+      <>
       <SidebarNav />
+      </>
       
-      <Routes>
-        <Route path="/register" element={<RegistrationComponent />} />
+      
+      <Routes className="w-full">
+        <Route path="/" element={<RegistrationComponent />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/learningsupport" element={<LearningSupport />} />
         <Route path="/academia" element={<Forum />} />
