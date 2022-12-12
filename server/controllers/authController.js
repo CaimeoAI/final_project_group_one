@@ -42,7 +42,7 @@ export const registerUser = async( req, res, next ) => {
             email: user.email
         }
 
-        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "3600s" }, ( error, token ) => {
+        jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "5d" }, ( error, token ) => {
             if ( error ) throw error
 
             res
@@ -79,7 +79,7 @@ export const loginUser = async( req, res, next ) => {
             email
         }
 
-        const token = jwt.sign( payLoad, process.env.JWT_SECRET, { expiresIn:"3600s" } )
+        const token = jwt.sign( payLoad, process.env.JWT_SECRET, { expiresIn:"5d" } )
 
         return res
             .status(200)

@@ -6,10 +6,13 @@ import mongoose from 'mongoose' // DATABASE CONNECTION
 import cors from 'cors' // TRANSMITTING HTTP HEADERS
 import morgan from 'morgan' // ADDITIONAL TERMINAL DATA
 import dotenv from 'dotenv' // ENVIRONMENTAL FILE
+
+mongoose.set('strictQuery', false);
 import { tokenVerification } from './middleware/tokenVerification.js'
 
 //* ROUTE IMPORTS
 import authRoute from './routes/authRoute.js'
+import forumRoute from './routes/forumRoute.js'
 
 //! MAIN CONFIGURATION
 
@@ -28,6 +31,8 @@ app.use(morgan('dev')) // Developer Information in Terminal showing each request
 
 // http://localhost:5000/auth
 app.use('/auth', authRoute)
+// http://localhost:5000/forum
+app.use('/forum', tokenVerification, forumRoute)
 
 //? GLOBAL ERROR HANDLER
 
