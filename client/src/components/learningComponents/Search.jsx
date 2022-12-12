@@ -8,6 +8,7 @@ const Search = () => {
           h-[5%] 
           w-[100%]
           md:w-[65%]
+          mb-10
           "
     >
       <input
