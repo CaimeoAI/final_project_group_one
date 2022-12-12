@@ -3,7 +3,7 @@ import Tabs from '../components/learningComponents/Tabs'
 function LearningSupport() {
   return (
     <div>
-        <Tabs/>
+        <Tabs />
     </div>
   )
 }
