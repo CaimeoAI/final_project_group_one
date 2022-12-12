@@ -3,7 +3,7 @@ import ListItems from "./ListItems";
 
 export default function List() {
   return (
-    <div class="rounded border-2 border-blue-600 flex flex-col md:mr-2 gap-2">
+    <div class="flex flex-col md:w-[20%] m-1">
       <ListItems />
       <ListItems />
       <ListItems/>
