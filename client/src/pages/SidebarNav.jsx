@@ -27,7 +27,10 @@ const SidebarNav = () => {
 
 
     <div
-    className={`bg-[#12113abb] min-h-screen ${
+    
+    /* Sidebar Background Color */
+
+    className={`bg-[#0e2835d8] min-h-screen ${
       open ? "w-72" : "w-16"
     } duration-500 text-gray-100 px-4`}
   >
@@ -39,7 +42,7 @@ const SidebarNav = () => {
       />
     </div>
     <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" className="content-evenly"/>
-    <div className="mt-4 flex flex-col gap-4 relative">
+    <div className="mt-4 flex flex-col gap-4 relative ">
       {menus?.map((menu, i) => (
         <Link
           to={menu?.link}

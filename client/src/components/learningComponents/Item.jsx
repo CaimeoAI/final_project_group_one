@@ -20,9 +20,9 @@ export default function ResponsiveGrid() {
           <Grid xs={2} sm={4} md={3} key={index}  >
           
               <div className=' text-zinc-100'>
-              <h1 className=' text-2xl text-emerald-500'>Javascript </h1>
+              <h1 className=' text-2xl text-orange-300 '>Javascript </h1>
               <p >Lorem ipsum dolor sit amet orem doloremque incidunt eveniet ducimus sint. Quibusdam, tempora! Eaque quos earum iusto?</p>
-              <button className='my-6 bg-slate-400 text-slate-600 px-6 py-2'>See more</button>
+              <button className='my-6 bg-white  text-slate-600 px-6 py-2  hover:bg-gray-300'>See more</button>
               </div>
             
           </Grid>
