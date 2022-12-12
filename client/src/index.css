@@ -2,22 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
- .fc-theme-standard td {
+.fc-theme-standard td {
   border: 1px solid #b7d91e !important;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.fc-daygrid-day-frame {
+  background-color: white;
+}
+
+.fc-scroller-harness {
+  border-radius: 20px;
+}
+
+.fc-scrollgrid-sync-inner {
+  background-color: white;
+}
+.fc-toolbar-title {
+  color: white;
+ }
+
+.fc-scrollgrid {
+  background-color: white;
   border-radius: 20px;
 }
 
 .fc-daygrid-day-frame {
-  background-color: rgb(211, 178, 178);
+  border-radius: 20px;
 }
+.fc-scroller {
+  overflow-y: hidden !important;
+ }
 
-.fc-scroller-harness {
-  border: black solid 2px;  border-radius: 20px;
-  
+@media (max-width:768px){
+.fc-toolbar-chunk:not(:first-child){
+  display: none;
 }
-.fc-scrollgrid-sync-inner{
-    background-color: rgb(211, 178, 178);
 }
-
-
 

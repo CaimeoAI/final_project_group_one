@@ -7,14 +7,14 @@ import listPlugin from "@fullcalendar/list";
 
 export default function FullCalend() {
   return (
-    <div className=" md:w-[100%] md:mr-3">
+    <div className=" h-[50%] p-2 md:h-[70%] md:w-[80%] md:p-1">
       <FullCalendar
-        height="70vh"
+        height="100%"
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
         headerToolbar={{
-          left: "title",
-          center: "",
-          right: "",
+                    left: "title",
+          center: "prev,next",
+          right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
         }}
       />
     </div>
