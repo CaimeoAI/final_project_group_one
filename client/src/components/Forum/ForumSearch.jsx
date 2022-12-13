@@ -5,19 +5,19 @@ const ForumSearch = () => {
     <div
       className="
           flex  
-          h-[7%] 
-          w-[100%]
-          md:w-[65%]"
-    >
+          md:w-[70%]
+          lg:w-[75%]">
       <input
         className="
                 w-[100%]
                 m-auto
                 mt-4
                 rounded-full
-                h-11
+                h-10
                 pl-4
-                border-2"
+                bg-slate-400 
+                border-hidden
+                placeholder:text-white"
         type="text"
         placeholder="Search..."
       />
