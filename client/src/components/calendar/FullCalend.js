@@ -12,7 +12,7 @@ export default function FullCalend() {
         height="100%"
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
         headerToolbar={{
-                    left: "title",
+          left: "title",
           center: "prev,next",
           right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
         }}
