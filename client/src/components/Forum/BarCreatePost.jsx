@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import { BsPlusLg } from "react-icons/bs";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { MainContext } from "../../context/MainContext";
 import { styles } from "./styles";
 
 const BarCreatePost = () => {
+  const { setShowPostFormModal } = useContext(MainContext);
+
   return (
     <>
       {/* --------------MOBILE VERSION---------------------- */}
@@ -19,6 +23,7 @@ const BarCreatePost = () => {
           cursor-pointer`}
       >
         <BsPlusLg
+          onClick={() => setShowPostFormModal(true)}
           className={`
                 md:hidden 
                 w-[24px] 
@@ -30,18 +35,23 @@ const BarCreatePost = () => {
       </div>
       {/* --------------TABLET|DESKTOP VERSION---------------------- */}
       <div
+        onClick={() => setShowPostFormModal(true)}
         className={`
           ${styles.flexCenter} 
+          cursor-pointer
           hidden 
           md:flex 
           items-end
+          border
+          rounded-full
+          border-zinc-500
+          shadow-md
           h-10
-          mt-[17px]
+          mt-[15px]
           justify-between 
           ml-2
           md:w-[30%] 
-          lg:w-[25%]
-         `}
+          lg:w-[25%]`}
       >
         <p
           className="
@@ -54,10 +64,11 @@ const BarCreatePost = () => {
           CREATE A POST
         </p>
         <IoIosAddCircleOutline
+          
           className={`
                 mr-2
-              fill-gray-400  
-              hover:fill-cyan-700
+              fill-gray-500  
+              hover:fill-green-700
                 w-[30px] 
                 h-[30px]
                 cursor-pointer`}
