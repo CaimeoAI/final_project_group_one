@@ -2,7 +2,7 @@
 import express from "express";
 
 //? CONTROLLER IMPORTS
-import { createPost, getListOfPosts, createComment} from "../controllers/forumControllers.js";
+import { createPost, getListOfPosts, createComment, getPost} from "../controllers/forumControllers.js";
 
 //* ROUTER
 const router = express.Router();
@@ -15,5 +15,7 @@ router
 router
 .route("/posts/:id")
 .post(createComment)
+.get(getPost)
+
 
 export default router;
