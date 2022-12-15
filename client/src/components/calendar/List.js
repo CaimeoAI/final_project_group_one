@@ -6,7 +6,7 @@ export default function List() {
     <div class="flex flex-col md:w-[20%] m-1">
       <ListItems />
       <ListItems />
-      <ListItems/>
+      <ListItems />
     </div>
   );
 }

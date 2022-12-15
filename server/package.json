@@ -104,6 +104,7 @@
     "unpipe": "^1.0.0",
     "utils-merge": "^1.0.1",
     "uuid": "^8.3.2",
+    "validator": "^13.7.0",
     "vary": "^1.1.2",
     "webidl-conversions": "^7.0.0",
     "whatwg-url": "^11.0.0"

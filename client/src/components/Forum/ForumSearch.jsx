@@ -5,6 +5,7 @@ const ForumSearch = () => {
     <div
       className="
           flex  
+          w-full
           md:w-[70%]
           lg:w-[75%]">
       <input
@@ -15,7 +16,7 @@ const ForumSearch = () => {
                 rounded-full
                 h-10
                 pl-4
-                bg-slate-400 
+                bg-slate-500 
                 border-hidden
                 placeholder:text-white"
         type="text"

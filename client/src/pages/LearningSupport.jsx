@@ -2,7 +2,7 @@ import React from 'react'
 import Tabs from '../components/learningComponents/Tabs'
 function LearningSupport() {
   return (
-    <div>
+    <div className={`h-screen overflow-auto bg-slate-700`}>
         <Tabs />
     </div>
   )
