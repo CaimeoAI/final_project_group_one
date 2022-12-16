@@ -1,18 +1,21 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
 export const MainContext = createContext();
 
 export default function MainContextProvider(props) {
   //! 01 - STATES
-  const [showPostFormModal, setShowPostFormModal] = useState(false);
 
+  const [currentEvents, setCurrentEvents] = useState([]);
+  const [showPostFormModal, setShowPostFormModal] = useState(false);
   //* 02 - FUNCTIONS
 
-  return (
+    return (
     <MainContext.Provider
       value={{
         showPostFormModal,
         setShowPostFormModal,
+        currentEvents, 
+        setCurrentEvents,
       }}
     >
       {props.children}

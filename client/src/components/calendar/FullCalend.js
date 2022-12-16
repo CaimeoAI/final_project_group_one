@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
+import { MainContext } from "../../context/MainContext";
 
 export default function FullCalend() {
-  const [currentEvents, setCurrentEvents] = React.useState([]);
-
+  const { currentEvents, setCurrentEvents } = useContext(MainContext);
+  // console.log(currentEvents);
   const handleDateClick = (selected) => {
     const title = prompt("Please enter a new title for your event");
     const calendarApi = selected.view.calendar;
@@ -44,25 +45,25 @@ export default function FullCalend() {
           right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
         }}
         initialView="dayGridMonth"
-          editable={true}
-          selectable={true}
-          selectMirror={true}
-          dayMaxEvents={true}
-          select={handleDateClick}
-          eventClick={handleEventClick}
-          eventsSet={(events) => setCurrentEvents(events)}
-          initialEvents={[
-            {
-              id: "12315",
-              title: "All-day event",
-              date: "2022-09-14",
-            },
-            {
-              id: "5123",
-              title: "Timed event",
-              date: "2022-09-28",
-            },
-          ]}
+        editable={true}
+        selectable={true}
+        selectMirror={true}
+        dayMaxEvents={true}
+        select={handleDateClick}
+        eventClick={handleEventClick}
+        eventsSet={(events) => setCurrentEvents(events)}
+        /*   initialEvents={[
+          {
+            id: "12315",
+            title: "All-day event",
+            date: "2022-09-14",
+          },
+          {
+            id: "5123",
+            title: "Timed event",
+            date: "2022-09-28",
+          },
+        ]} */
       />
     </div>
   );
