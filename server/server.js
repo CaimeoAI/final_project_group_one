@@ -32,7 +32,7 @@ app.use(morgan("dev")); // Developer Information in Terminal showing each reques
 // http://localhost:5000/auth
 app.use('/auth', authRoute)
 // http://localhost:5000/forum
-app.use('/forum', tokenVerification, forumRoute)
+app.use('/academia', tokenVerification, forumRoute)
 
 //? GLOBAL ERROR HANDLER
 

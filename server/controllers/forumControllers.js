@@ -5,8 +5,9 @@ import Comment from "../models/commentModel.js";
 //-------------------- CREATE A POST --------------------
 export const createPost = async (req, res) => {
   const { title, body } = req.body;
+
   const user = await UserModel.findOne({ email: req.userEmail });
-  console.log(user);
+
   try {
     const newPost = new Post({
       title,
@@ -25,8 +26,31 @@ export const createPost = async (req, res) => {
 //-------------------- GET ALL POSTS WITH COMMENTS--------------------
 export const getListOfPosts = async (req, res) => {
   try {
-    const allPosts = await Post.find().populate("comments");
+    const allPosts = await Post.find()
+      .populate({
+        path: "comments",
+        populate: { path: "author", select: "email" },
+      })
+      .populate("author", "email _id");
     res.status(201).json(allPosts);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+};
+
+//-------------------- GET SINGLE POST WITH COMMENTS--------------------
+export const getPost = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const post = await Post.findById(id)
+      .populate({
+        path: "comments",
+        populate: { path: "author", select: "email" },
+      })
+      .populate("author", "email _id");
+    res.status(201).json(post);
   } catch (error) {
     res.status(500).json({
       error: error.message,
@@ -36,12 +60,14 @@ export const getListOfPosts = async (req, res) => {
 
 //-------------------- ADD COMMENT --------------------
 export const createComment = async (req, res) => {
+  const { content } = req.body;
   try {
     const user = await UserModel.findOne({ email: req.userEmail });
-
+    //console.log(user);
+    //console.log(req.params.id);
     const newComment = new Comment({
       postID: req.params.id,
-      body: req.body,
+      content,
       author: user._id,
     });
     await newComment.save();

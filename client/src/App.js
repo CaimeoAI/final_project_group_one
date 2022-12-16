@@ -6,13 +6,14 @@ import Calendar from "../src/pages/Calendar.js";
 import RegistrationComponent from "./pages/RegistrationComponent";
 import ChatComponent from './pages/ChatComponent'
 import Forum from "./pages/Forum";
+import SeePost from "./components/Forum/SeePost";
 
 const App = () => {
   return (
     <>
 
 
-      <div className="width-100 h-screen flex ">
+      <div className="width-full h-screen flex relative">
         <>
           <SidebarNav
             className="fixed" />
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/learningsupport" element={<LearningSupport />} />
           <Route path="/academia" element={<Forum />} />
+          <Route path="/academia/:id" element={<SeePost />} />
           <Route path="/chat" element={<ChatComponent />} />
           <Route path="/settings" element={<LearningSupport />} />
         </Routes>

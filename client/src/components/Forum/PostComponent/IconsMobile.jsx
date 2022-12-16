@@ -2,7 +2,7 @@ import { BiUpvote, BiDownvote } from "react-icons/bi";
 import { MdOutlineModeComment, MdOutlineBookmarkBorder } from "react-icons/md";
 import { styles } from "../styles.js";
 
-const IconsMobile = () => {
+const IconsMobile = ({comments}) => {
     return (
     <div
         className={`
@@ -28,7 +28,7 @@ const IconsMobile = () => {
             <MdOutlineModeComment
             className={`${styles.icons} ${styles.hoverIcons} w-[16px] h-[20px] ml-2`}
             />
-            <p> 5 </p>
+            <p>{comments}</p>
         </div>
         <div className={`w-[80%] flex justify-end`}>
             <MdOutlineBookmarkBorder
