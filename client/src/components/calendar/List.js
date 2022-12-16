@@ -11,7 +11,6 @@ export default function List() {
       {currentEvents.map((event) => (
         <ListItems event={event.title} />
       ))}
-      ;
     </div>
   );
 }

@@ -8,7 +8,7 @@ import { MainContext } from "../../context/MainContext";
 
 export default function FullCalend() {
   const { currentEvents, setCurrentEvents } = useContext(MainContext);
-// console.log(currentEvents);
+  // console.log(currentEvents);
   const handleDateClick = (selected) => {
     const title = prompt("Please enter a new title for your event");
     const calendarApi = selected.view.calendar;
