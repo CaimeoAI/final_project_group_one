@@ -72,6 +72,7 @@
     "mquery": "^4.0.3",
     "ms": "^2.0.0",
     "negotiator": "^0.6.3",
+    "nodemailer": "^6.8.0",
     "object-assign": "^4.1.1",
     "object-inspect": "^1.12.2",
     "on-finished": "^2.4.1",
