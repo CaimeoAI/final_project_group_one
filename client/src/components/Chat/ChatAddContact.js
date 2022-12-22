@@ -1,4 +1,4 @@
-export default function ChatCreateGroup() {
+export default function ChatAddContact() {
   return (
     <div>
         <button 
@@ -12,7 +12,8 @@ export default function ChatCreateGroup() {
                 
             style={{
                 backgroundColor:"#D9D9D9"}}
-            type="button">Create a Group</button>
+            type="button" data-modal-toggle="add-contact-modal">Add Contact</button>
+
     </div>
   )
 }
