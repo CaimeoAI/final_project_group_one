@@ -5,7 +5,6 @@ import App from "./App";
 import "./index.css";
 import MainContextProvider from "./context/MainContext";
 import { ContactsProvider } from "./context/ContactProvider";
-import { ConversationsProvider } from "./context/ConversationsProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,9 +12,7 @@ root.render(
     <BrowserRouter>
       <MainContextProvider>
         <ContactsProvider>
-          <ConversationsProvider>
             <App />
-          </ConversationsProvider>
         </ContactsProvider>
       </MainContextProvider>
     </BrowserRouter>
