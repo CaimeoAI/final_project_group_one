@@ -1,4 +1,10 @@
+import { useContext } from 'react'
+import { MainContext } from '../../context/MainContext'
+
 export default function ChatAddContact() {
+
+  const { setShowChatAddContactModal } = useContext(MainContext)
+
   return (
     <div>
         <button 
@@ -12,8 +18,7 @@ export default function ChatAddContact() {
                 
             style={{
                 backgroundColor:"#D9D9D9"}}
-            type="button" data-modal-toggle="add-contact-modal">Add Contact</button>
-
+            type="button" onClick={() => setShowChatAddContactModal(true)}>Add Contact</button>
     </div>
   )
 }

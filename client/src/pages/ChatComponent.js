@@ -2,6 +2,7 @@ import ChatAddContact from "../components/Chat/ChatAddContact.js";
 import ChatSearch from "../components/Chat/ChatSearch.js";
 import ChatContacts from "../components/Chat/ChatContacts.js";
 import ChatFeed from "../components/Chat/ChatFeed.js";
+import AddContactModal from "../components/Chat/AddContactModal.js";
 
 export default function ChatComponent() {
     return (
@@ -25,6 +26,7 @@ export default function ChatComponent() {
                 </div>
                 
                 <ChatFeed/>
+                <AddContactModal/>
         </div>
     )
 }
