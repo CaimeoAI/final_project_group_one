@@ -10,8 +10,7 @@ export default function AddContactModal() {
     const nameRef = useRef()
     const { createContact } = useContacts()
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
+    const handleSubmit = () => {
 
         createContact( emailRef.current.value, nameRef.current.value)
         setShowChatAddContactModal(false)
