@@ -26,10 +26,10 @@ export default function ChatFeed() {
             
             2xl:max-h-[890px]">
         
-        <ChatGroupSelector groupName="Group One"/>
+        <ChatGroupSelector groupName="Conversation Name"/>
         
         <div className="overflow-y-scroll">
-          <ChatMessage
+          {/* <ChatMessage
               alignment="text-left flex flex-col"
               name="George"
               message="Hi"
@@ -119,7 +119,7 @@ export default function ChatFeed() {
               name="Jude"
               message="Hello World"
               color="#6F76F8"
-              text="white"/>
+              text="white"/> */}
 
         </div>
 
