@@ -6,8 +6,20 @@ import Textarea from "./Texterea";
 import Button from "./Button";
 import Comment from "./Comment";
 import { useParams } from "react-router-dom";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const SeePost = () => {
+  const modules = {
+    toolbar: [
+      ["bold", "underline", "italic"],
+      ["code-block", "blockquote"],
+      [{ header: [1, 2, 3, 4, 5] }],
+      [{ list: "ordered" }],
+      [{ list: "bullet" }],
+    ],
+  };
+
   const [singelPost, setSingelPost] = useState({});
   const [comments, setComments] = useState([]);
   const [content, setContent] = useState("");
@@ -51,13 +63,15 @@ const SeePost = () => {
   };
 
   return (
-    <div className={`bg-slate-600 p-12 text-slate-300 w-full h-screen overflow-auto`}>
+    <div
+      className={`bg-slate-600 p-12 text-slate-300 w-full h-screen overflow-auto`}
+    >
       {/* //---------- Question Section ----------- */}
       <div className={`mb-8`}>
         <h1 className="text-xl mb-5 text-orange-300 border-b border-slate-300 pb-5">
           {singelPost.title}
         </h1>
-        <div className={``}>{singelPost.body}</div>
+   <div className="fromEditor inline-block" dangerouslySetInnerHTML={{__html: singelPost.body}}></div>
       </div>
 
       {/* //---------- Comments Section ----------- */}
@@ -74,16 +88,19 @@ const SeePost = () => {
       {/* //---------- Form Section ----------- */}
       <h1 className="text-xl mb-5 text-orange-300">Your Answer</h1>
 
-      <div className={`w-[50%] `}>
-        <Textarea
+      <div className={`md:w-[70%] `}>
+        {/* <Textarea
           className={"w-full h-48 mb-3"}
           placeholder={"Post text (you can use markdown)"}
           value={content}
           onChange={(e) => {
             setContent(e.target.value);
           }}
-        />
-        <div className="text-center">
+        /> */}
+         
+          <ReactQuill modules={modules} theme="snow" value={content} onChange={setContent}  className="h-[250px] md:h-[300px] lg:h-[400px] bg-gray-100 overflow-auto text-gray-800 mb-6"/>
+        
+        <div className="text-start">
           <Button
             onClick={() => {
               addComment();
