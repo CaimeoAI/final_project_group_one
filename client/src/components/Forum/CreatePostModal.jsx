@@ -6,8 +6,20 @@ import { MainContext } from "../../context/MainContext";
 import { useState } from "react";
 import axios from "axios";
 import { staticToken } from "./token";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const CreatePostModal = ({ getAllPost }) => {
+  const modules = {
+    toolbar: [
+      ["bold", "underline", "italic"],
+      ["code-block", "blockquote"],
+      [{ header: [1, 2, 3, 4, 5] }],
+      [{ list: "ordered" }],
+      [{ list: "bullet" }],
+    ],
+  };
+
   const { setShowPostFormModal } = useContext(MainContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -28,7 +40,6 @@ const CreatePostModal = ({ getAllPost }) => {
     }
   };
 
-
   return (
     <div
       className={"w-screen h-screen fixed top-0 left-0 z-20 flex"}
@@ -37,29 +48,34 @@ const CreatePostModal = ({ getAllPost }) => {
       <div
         className="
                 shadow-2xl
-              
+                bg-[#1B262C]
                 w-3/4 
-                md:w-2/4
-              bg-zinc-800 
-                p-5 
+                md:w-[62%]
+                p-6
+                md:py-6
+                md:px-8
                 text-sm 
                 self-center 
                 mx-auto 
-                rounded-md"
+                rounded-md
+                "
       >
-        <h1 className="text-2xl mb-5 text-slate-50">Create a post</h1>
+        <h1 className="text-2xl mb-5 text-slate-100">Create a post</h1>
         <Input
-          className={"w-full mb-2"}
+          className={"w-full mb-2 placeholder-black::placeholder"}
           placeholder={"Title"}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <Textarea
-          className={"w-full mb-3"}
-          placeholder={"Post text (you can use markdown)"}
+
+        <ReactQuill
+          modules={modules}
+          theme="snow"
           value={body}
-          onChange={(e) => setBody(e.target.value)}
+          onChange={setBody}
+          className="h-[250px] md:h-[300px] lg:h-[300px] bg-slate-200 overflow-auto text-black mb-6"
         />
+
         <div className="text-right">
           <Button
             outline="true"

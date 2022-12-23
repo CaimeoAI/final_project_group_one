@@ -65,7 +65,7 @@ const ListingPosts = ({ post }) => {
             overflow-hidden 
             mb-5`}
             >
-              {post.body}
+              <div className="inAllPosts inline-block" dangerouslySetInnerHTML={{__html: post.body}}></div>
             </div>
           </div>
 
