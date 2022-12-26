@@ -8,8 +8,9 @@ const IconsMobile = ({comments}) => {
         className={`
         ${styles.flexRow} 
         md:hidden 
-        border-t-2 
-        h-[18%]`}
+        border-t
+        border-slate-500
+        `}
     >
         <div
         className={`
@@ -17,7 +18,8 @@ const IconsMobile = ({comments}) => {
             w-[30%] 
             h-[100%] 
             justify-around 
-            pr-4`}
+            pr-4
+            py-3`}
         >
         <BiUpvote className={styles.votingIcons} />
         <p>0</p>

@@ -1,6 +1,6 @@
 export const styles = {
   votingIcons:
-    "w-[22px] h-[22px] fill-gray-400 hover:fill-green-700 cursor-pointer my-2",
+    "w-[24px] h-[24px] fill-gray-400 hover:fill-green-700 cursor-pointer",
   icons: "fill-gray-400 cursor-pointer mr-1",
   flexCenter: "flex justify-center items-center",
   flexRow: "flex flex-row justify-center items-center",
