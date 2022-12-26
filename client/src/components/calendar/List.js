@@ -5,11 +5,11 @@ import { MainContext } from "../../context/MainContext";
 export default function List() {
   const { currentEvents } = useContext(MainContext);
   console.log(currentEvents);
-
+  
   return (
-    <div class="flex flex-col md:w-[20%] m-1">
+    <div className="flex flex-col md:w-[20%] md:pt-4 ">
       {currentEvents.map((event) => (
-        <ListItems event={event.title} />
+        <ListItems event={event.title + event.startStr}/>
       ))}
     </div>
   );

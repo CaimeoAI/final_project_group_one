@@ -2,14 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-.fc-theme-standard td {
-  border: 1px solid #b7d91e !important;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+.fc th {
+  border-top-right-radius: 20px;
 }
 
-.fc-daygrid-day-frame {
-  background-color: white;
+.fc-theme-standard td {
+  border: 1px solid #9eef6f !important;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .fc-scroller-harness {
@@ -18,27 +18,30 @@
 
 .fc-scrollgrid-sync-inner {
   background-color: white;
-  }
+}
+
 .fc-toolbar-title {
   color: white;
- }
+}
 
 .fc-scrollgrid {
   background-color: white;
   border-radius: 20px;
 }
 
-.fc-daygrid-day-frame {
-  border-radius: 20px;
-}
 .fc-scroller {
   overflow-y: hidden !important;
- }
-
-@media (max-width:768px){
-.fc-toolbar-chunk:not(:first-child){
-  display: none;
-}
 }
 
+@media (max-width: 768px) {
+  .fc-toolbar-chunk:not(:first-child) {
+    display: none;
+  }
+}
+.fc .fc-daygrid-day-top {
+  flex-direction: row;
+}
 
+/* .fc tbody {
+  border-top: #520f7b solid 2px;
+} */
