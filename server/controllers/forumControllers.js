@@ -4,19 +4,21 @@ import Comment from "../models/commentModel.js";
 
 //-------------------- CREATE A POST --------------------
 export const createPost = async (req, res) => {
-  const { title, body } = req.body;
+  const { title, body, topic } = req.body;
 
-  const user = await UserModel.findOne({ email: req.userEmail });
+  const user = await UserModel.findOne({ _id: req.id });
 
   try {
     const newPost = new Post({
       title,
       body,
+      topic,
       author: user._id,
     });
     await newPost.save();
     res.status(201).json(newPost);
   } catch (error) {
+    console.log(error.message)
     res.status(500).json({
       error: error.message,
     });
@@ -62,7 +64,7 @@ export const getPost = async (req, res) => {
 export const createComment = async (req, res) => {
   const { content } = req.body;
   try {
-    const user = await UserModel.findOne({ email: req.userEmail });
+    const user = await UserModel.findOne({ _id: req.id });
     //console.log(user);
     //console.log(req.params.id);
     const newComment = new Comment({

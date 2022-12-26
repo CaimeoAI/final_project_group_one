@@ -13,8 +13,8 @@ export const tokenVerification = ( req, res, next ) => {
         const payLoad = jwt.verify(token, process.env.JWT_SECRET)
 
         if ( payLoad ) {
-
-            req.userEmail = payLoad.email
+//sending user ID in payload
+            req.id= payLoad.id
             next()
         } else {
             res
