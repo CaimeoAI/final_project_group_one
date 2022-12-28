@@ -1,15 +1,23 @@
-import { styles } from "./styles";
+//! 01 - HOOKS
+import { NavLink } from "react-router-dom";
+import { useForum } from "../../context/ForumProvider";
+
+//* 02 - COMPONENTS
 import VoteBtnDesktop from "./PostComponent/VoteBtnDesktop";
 import IconsMobile from "./PostComponent/IconsMobile";
 import SaveCommBtnDesktop from "./PostComponent/SaveCommBtnDesktop";
 import PostedBySection from "./PostComponent/PostedBySection";
-import { NavLink } from "react-router-dom";
+
+//? 04 - STYLING
 import onlinemarketing from "../../assets/marketing.png";
 import aws from "../../assets/aws.png";
 import webdev from "../../assets/webdev.png";
 import python from "../../assets/python.png";
+import { styles } from "../Forum/styles";
 
 const ListingPosts = ({ post }) => {
+  const { voteNum, voting } = useForum();
+
   const getImg = (topic) => {
     switch (topic) {
       case "webdev":
@@ -24,12 +32,9 @@ const ListingPosts = ({ post }) => {
   };
 
   return (
-    <>
-      <NavLink to={`/academia/${post._id}`}>
-        <div
-          className={`
-      w-full 
-      m-auto  
+    <div
+      className={`
+      w-full
       bg-slate-700
       border
       shadow-md
@@ -40,20 +45,24 @@ const ListingPosts = ({ post }) => {
       transition duration-120 ease-in hover:ease-out
       mb-2
       flex 
-      flex-row 
-      items-center 
-      justify-around `}
-        >
-          <VoteBtnDesktop />
-
+      flex-col
+      md:flex-row 
+      flex-grow
+      items-center`}
+    >
+      <VoteBtnDesktop post={post} voteNum={voteNum} voting={voting} />
+      <NavLink to={`/academia/${post._id}`}>
+        <div className={`w-full flex flex-row px-4 md:p-4 items-center`}>
           <div
             className="
+              
                 hidden 
                 h-[120px] 
                 rounded-xl
                 md:flex 
                 md:w-[220px]
-                lg:w-[190px]"
+                lg:w-[190px]
+               "
           >
             <img
               src={getImg(post.topic)}
@@ -62,10 +71,10 @@ const ListingPosts = ({ post }) => {
             />
           </div>
 
-          <div className="w-[90%]  md:px-4">
+          <div className="w-[95%] md:px-4 ">
             <div className="h-[80%]">
               <h1
-                className={`pt-4 truncate text-slate-300 pb-2 font-bold cursor-pointer  ${styles.hoverText}`}
+                className={`pt-2 md:pt-4 truncate text-slate-300 pb-2 font-bold cursor-pointer  ${styles.hoverText}`}
               >
                 {post.title}
               </h1>
@@ -73,9 +82,11 @@ const ListingPosts = ({ post }) => {
               <div
                 className={`
             ${styles.textPost} 
+            
             h-[120px] 
             md:h-[80px] 
             md:mb-1 
+            
             lg:pr-2  
             text-ellipsis 
             overflow-hidden 
@@ -88,16 +99,15 @@ const ListingPosts = ({ post }) => {
               </div>
             </div>
 
-            <IconsMobile comments={post.comments.length} />
-
-            <div className="hidden md:flex flex-row w-[100%] py-2 ">
+            <div className="hidden md:flex flex-row md:w-[100%] py-2  ">
               <SaveCommBtnDesktop comments={post.comments.length} />
               <PostedBySection user={post.author.email} time={post.createdAt} />
             </div>
           </div>
         </div>
       </NavLink>
-    </>
+      <IconsMobile comments={post.comments.length} post={post} />
+    </div>
   );
 };
 

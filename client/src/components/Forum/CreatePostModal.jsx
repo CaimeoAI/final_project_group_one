@@ -1,26 +1,24 @@
+//! 01 - HOOKS
+import { useForum } from "../../context/ForumProvider";
+import { useContext, useState } from "react";
+import { MainContext } from "../../context/MainContext";
+
+//* 02 - COMPONENTS
 import Input from "./Input";
 import Button from "./Button";
-import { useContext } from "react";
-import { MainContext } from "../../context/MainContext";
-import { useState } from "react";
-import axios from "axios";
-import { staticToken } from "./token";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 import Dropdowns from "./Dropdowns";
+
+//! 03 - INSTALL
+import axios from "axios";
+import ReactQuill from "react-quill";
+
+//? 04 - STYLING
+import "react-quill/dist/quill.snow.css";
 import "./FromEditor.css";
+import { staticToken } from "./token";
 
 const CreatePostModal = ({ getAllPost }) => {
-  const modules = {
-    toolbar: [
-      ["bold", "underline", "italic"],
-      ["code-block", "blockquote"],
-      [{ header: [1, 2, 3, 4, 5] }],
-      [{ list: "ordered" }],
-      [{ list: "bullet" }],
-    ],
-  };
-
+  const { modulesReactQuill } = useForum();
   const { setShowPostFormModal } = useContext(MainContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -28,7 +26,6 @@ const CreatePostModal = ({ getAllPost }) => {
 
   const createPost = async () => {
     const data = { title, body, topic };
-    console.log(data);
     const URL = `${process.env.REACT_APP_BE_URL}/academia/posts`;
     const configuration = {
       headers: {
@@ -81,7 +78,7 @@ const CreatePostModal = ({ getAllPost }) => {
           />
 
           <ReactQuill
-            modules={modules}
+            modules={modulesReactQuill}
             theme="snow"
             value={body}
             onChange={setBody}
@@ -92,7 +89,10 @@ const CreatePostModal = ({ getAllPost }) => {
         <div className="text-right mt-6 md:border-t border-slate-700 pt-4">
           <Button
             outline="true"
-            onClick={() => setShowPostFormModal(false)}
+            onClick={() => {
+              setShowPostFormModal(false);
+              setTopic("Choose a field");
+            }}
             className={"px-5 py-2 mr-3"}
           >
             Cancel

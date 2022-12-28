@@ -16,14 +16,18 @@ export default function Example({ topic, setTopic }) {
 
   return (
     <Menu as="div" className="relative inline-block ">
-      <div className="mb-2 w-62 md:w-64">
-        <Menu.Button className="inline-flex w-full justify-start  rounded border border-slate-800 bg-slate-600 px-4 py-3 text-md font-medium text-zinc-100 shadow-sm hover:bg-slate-200 hover:text-zinc-800 focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-300">
-          <CiGrid42 className="-ml-2 h-5 w-5 mr-3" aria-hidden="true" />
+      <div className="mb-2 w-62 md:w-64 ">
+        <Menu.Button className="w-full rounded border flex flex-row items-center justify-between border-slate-800 bg-slate-600 px-2 py-3 text-md font-medium text-zinc-100 shadow-sm hover:bg-slate-200 hover:text-zinc-800 focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-300">
+          <div className="w-[80%] flex items-center">
+          <CiGrid42 className="h-6 w-6 mr-3" aria-hidden="true" />
           {topic}
+          </div>
+          <div className=" w-[20%] flex justify-end ">
           <ChevronDownIcon
-            className=" -mr-2 ml-5 md:-mr-12 md:ml-24 h-5 w-5"
+            className=" h-5 w-5"
             aria-hidden="true"
           />
+          </div>
         </Menu.Button>
       </div>
 

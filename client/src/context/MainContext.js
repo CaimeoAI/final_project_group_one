@@ -8,6 +8,7 @@ export default function MainContextProvider(props) {
   const [currentEvents, setCurrentEvents] = useState([]);
   const [showPostFormModal, setShowPostFormModal] = useState(false);
   const [showChatAddContactModal, setShowChatAddContactModal] = useState(false)
+  
   //* 02 - FUNCTIONS
 
     return (
