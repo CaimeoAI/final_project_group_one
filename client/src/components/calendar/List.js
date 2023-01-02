@@ -9,7 +9,7 @@ export default function List() {
   return (
     <div className="flex flex-col md:w-[20%] md:pt-4 ">
       {currentEvents.map((event) => (
-        <ListItems event={event.title + event.startStr}/>
+        <ListItems event={event.title}/>
       ))}
     </div>
   );

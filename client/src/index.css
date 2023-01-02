@@ -6,18 +6,12 @@
   border-top-right-radius: 20px;
 }
 
-.fc-theme-standard td {
-  border: 1px solid #9eef6f !important;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-
-.fc-scroller-harness {
+.fc-theme-standard .fc-scrollgrid {
   border-radius: 20px;
 }
-
-.fc-scrollgrid-sync-inner {
-  background-color: white;
+.fc-theme-standard td {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .fc-toolbar-title {
@@ -26,11 +20,10 @@
 
 .fc-scrollgrid {
   background-color: white;
-  border-radius: 20px;
 }
 
 .fc-scroller {
-  overflow-y: hidden !important;
+  /* overflow-y: hidden !important; */
 }
 
 @media (max-width: 768px) {
@@ -42,6 +35,18 @@
   flex-direction: row;
 }
 
-/* .fc tbody {
-  border-top: #520f7b solid 2px;
-} */
+.fc-col-header-cell-cushion {
+  color: #152238;
+}
+
+.fc-daygrid-day-number {
+  color: #334954;
+}
+.fc .fc-button {
+  text-transform: capitalize;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: rgb(228, 232, 232);
+  border-radius: 0;
+}
