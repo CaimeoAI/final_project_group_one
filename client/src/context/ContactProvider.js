@@ -32,7 +32,8 @@ export function ContactsProvider({ children }) {
             contacts,
             createContact,
             selectedContact,
-            setSelectedContact
+            setSelectedContact,
+            sendMessage
         }}>
             { children }
         </ContactsContext.Provider>
