@@ -22,6 +22,8 @@ export default function MainContextProvider(props) {
     end: undefined,
   }); // model object to create calendar event FullCalend.js
 
+  const [showChatAddContactModal, setShowChatAddContactModal] = useState(false)
+  
   //* 02 - FUNCTIONS
 
   return (
@@ -30,6 +32,9 @@ export default function MainContextProvider(props) {
         showPostFormModal,
         setShowPostFormModal,
         currentEvents,
+        showChatAddContactModal, 
+        setShowChatAddContactModal,
+        currentEvents, 
         setCurrentEvents,
         open,
         setOpen,

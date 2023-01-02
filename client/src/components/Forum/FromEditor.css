@@ -1,0 +1,57 @@
+.fromEditor ul li {
+  list-style: square;
+  margin-left: 25px;
+}
+
+.fromEditor ol li {
+  list-style-type: decimal;
+  margin-left: 25px;
+}
+
+.fromEditor blockquote {
+  margin-left: 15px;
+  padding: 17px 20px;
+  background: rgba(29, 73, 73, 0.5);
+  border-radius: 7px;
+}
+
+.fromEditor pre {
+  background: #1b2430;
+  color: #e7f6f2;
+  padding: 17px 20px;
+  border-radius: 7px;
+  margin-right: 12px;
+}
+
+.fromEditor h1 {
+  font-size: xx-large;
+}
+
+.fromEditor h2 {
+  font-size: x-large;
+}
+.fromEditor h3 {
+  font-size: medium;
+}
+
+.fromEditor h4 {
+  font-size: small;
+}
+
+.fromEditor h5 {
+  font-size: xx-small;
+}
+
+.ql-snow.ql-toolbar {
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+  background-color: rgba(255,255,255,0.1) ;
+}
+.ql-container {
+  border-bottom-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+ 
+}
+.ql-editor{
+  color: #e7f6f2;
+}

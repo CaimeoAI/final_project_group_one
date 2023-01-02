@@ -24,16 +24,15 @@ export const Register = (props) => {
         >
           <input
             className="
-        mt-4
-        w-72
-        h-12
-        text-base
-        rounded-full
-        text-white
-        border-2 
-        border-[#203354]
-        bg-[#152238]
-        text-center"
+            mt-4
+            w-72
+            h-12
+            text-base
+            rounded-full text-white
+            border-2 
+          border-[#203354]
+          bg-[#152238]
+            text-center"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"

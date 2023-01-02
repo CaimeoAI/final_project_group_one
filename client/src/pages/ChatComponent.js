@@ -1,7 +1,8 @@
-import ChatCreateGroup from "../components/Chat/ChatCreateGroup.js";
+import ChatAddContact from "../components/Chat/ChatAddContact.js";
 import ChatSearch from "../components/Chat/ChatSearch.js";
-import ChatParticipants from "../components/Chat/ChatParticipants.js";
+import ChatContacts from "../components/Chat/ChatContacts.js";
 import ChatFeed from "../components/Chat/ChatFeed.js";
+import AddContactModal from "../components/Chat/AddContactModal.js";
 
 export default function ChatComponent() {
     return (
@@ -19,12 +20,13 @@ export default function ChatComponent() {
                 lg:flex-row-reverse">            
                 
                 <div className="flex flex-col lg:mx-4 lg:mt-20 lg:mb-8 2xl:mt-4">
-                    <ChatCreateGroup/>
+                    <ChatAddContact/>
                     <ChatSearch/>
-                    <ChatParticipants/>
+                    <ChatContacts/>
                 </div>
                 
                 <ChatFeed/>
+                <AddContactModal/>
         </div>
     )
 }
