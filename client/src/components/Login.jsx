@@ -1,13 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LoginImage from "../assets/login.jpg";
+import axios from "axios";
 
 export const Login = (props) => {
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+
+  axios
+    .post(`${process.env.REACT_APP_BE_URL}/auth/login`, userData)
+    .then((res) => console.log("response from backend", res))
+    .catch((error) => console.log(error));
+
+  useEffect(() => {
+    console.log("The component is rendered");
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
+    setUserData({
+      email: e.target.email.value,
+      password: e.target.password.value,
+    });
   };
 
   return (
@@ -29,8 +44,6 @@ export const Login = (props) => {
           border-[#203354]
           bg-[#152238]
           text-center"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
             type="email"
             placeholder="email address"
             id="email"
@@ -49,8 +62,6 @@ export const Login = (props) => {
         border-[#203354]
         bg-[#152238]
         text-center"
-            value={pass}
-            onChange={(e) => setPass(e.target.value)}
             type="password"
             placeholder="password"
             id="password"
