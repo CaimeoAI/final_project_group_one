@@ -5,6 +5,7 @@ import App from "./App";
 import "./index.css";
 import MainContextProvider from "./context/MainContext";
 import { ContactsProvider } from "./context/ContactProvider";
+import { ForumProvider } from "./context/ForumProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -12,7 +13,9 @@ root.render(
     <BrowserRouter>
       <MainContextProvider>
         <ContactsProvider>
+          <ForumProvider>
             <App />
+          </ForumProvider>
         </ContactsProvider>
       </MainContextProvider>
     </BrowserRouter>
