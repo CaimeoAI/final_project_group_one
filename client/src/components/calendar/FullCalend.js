@@ -23,7 +23,6 @@ export default function FullCalend() {
   } = useContext(MainContext);
 
   const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
 
   useEffect(() => {
     if (selectedProp) {
@@ -35,7 +34,7 @@ export default function FullCalend() {
 
       if (objectModal) {
         calendarApi.addEvent({
-          id:`${objectModal.title}`,
+          id: `${objectModal.title}`,
           title: objectModal.title, // String
           start: objectModal.start, // '2022-12-29T10:30:00+01:00'
           end: objectModal.end, // '2022-12-29T10:30:00+01:00'
@@ -86,7 +85,7 @@ export default function FullCalend() {
         select={handleDateClick}
         eventClick={handleEventClick}
         eventsSet={(events) => setCurrentEvents(events)}
-        /*  initialEvents={[
+        initialEvents={[
           {
             id: "12315",
             title: "All-day event ",
@@ -98,7 +97,7 @@ export default function FullCalend() {
             title: "Timed event ",
             date: "2022-09-28",
           },
-        ]} */
+        ]}
       />
       {open && <Modal />}
     </div>
