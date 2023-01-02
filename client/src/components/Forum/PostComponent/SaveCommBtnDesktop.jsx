@@ -1,7 +1,7 @@
 import { MdOutlineModeComment, MdOutlineBookmarkBorder } from "react-icons/md";
 import { styles } from "../styles.js";
 
-const SaveCommBtnDesktop = ({comments}) => {
+const SaveCommBtnDesktop = ({ comments }) => {
   return (
     <div className={`flex flex-row w-[50%] `}>
       <div className={`${styles.flexRow} mr-4 `}>
@@ -9,7 +9,8 @@ const SaveCommBtnDesktop = ({comments}) => {
           className={`${styles.icons} w-[16px] h-[18px] mt-[2px]`}
         />
         <p className={`${styles.textPost} ${styles.hoverText} cursor-pointer`}>
-          {comments}<span> Comments</span>
+          {comments}
+          <span> Comments</span>
         </p>
       </div>
       <div className={`${styles.flexRow} `}>

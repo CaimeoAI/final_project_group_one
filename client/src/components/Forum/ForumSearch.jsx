@@ -7,7 +7,8 @@ const ForumSearch = () => {
           flex  
           w-full
           md:w-[70%]
-          lg:w-[75%]">
+          lg:w-[75%]"
+    >
       <input
         className="
                 w-[100%]

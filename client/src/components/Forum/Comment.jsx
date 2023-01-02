@@ -1,15 +1,12 @@
 import { BsDot } from "react-icons/bs";
-import "./FromEditor.css"
-
+import "./FromEditor.css";
 
 const Comment = ({ comment }) => {
-
-
   const timeStr = new Date(comment.createdAt).toString();
   const date = timeStr.slice(4, 10);
   const year = timeStr.slice(11, 15);
   const hour = timeStr.slice(16, 21);
-  
+
   return (
     <div>
       <div>
@@ -31,8 +28,11 @@ const Comment = ({ comment }) => {
             {hour}
           </p>
         </div>
-        <div className={`ml-9 py-6`}> 
-        <div className="fromEditor inline-block" dangerouslySetInnerHTML={{__html: comment.content}}></div>
+        <div className={`ml-9 py-6`}>
+          <div
+            className="fromEditor inline-block"
+            dangerouslySetInnerHTML={{ __html: comment.content }}
+          ></div>
         </div>
       </div>
     </div>

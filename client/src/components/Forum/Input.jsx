@@ -3,7 +3,7 @@ const Input = (props) => {
     <input
       {...props}
       className={
-        "bg-slate-200 text-sm p-2  focus:outline-none  " +
+        "bg-transparent border border-slate-400 focus:border-slate-300 rounded text-md p-1 md:p-3 md:py-3  focus:outline-none  " +
         props.className
       }
     />
