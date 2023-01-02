@@ -26,7 +26,7 @@ export default function ChatFeed() {
             
             2xl:max-h-[890px]">
         
-        <ChatGroupSelector groupName="Conversation Name"/>
+        <ChatGroupSelector/>
         
         <div className="overflow-y-scroll">
           {/* <ChatMessage
