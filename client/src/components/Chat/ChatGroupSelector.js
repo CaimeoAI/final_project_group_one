@@ -1,7 +1,12 @@
+import { useContacts } from '../../context/ContactProvider'
+
 export default function ChatGroupSelector(props) {
+
+  const { selectedContact } = useContacts()
+
   return (
     <div className="p-4 text-left text-lg font-bold lg:text-2xl">
-        <h1>{props.groupName}</h1>
+        <h1>{ selectedContact.selectedContactName } - { selectedContact.selectedContactID }</h1>
     </div>
   )
 }
