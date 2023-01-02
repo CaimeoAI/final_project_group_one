@@ -2,43 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
+.fc th {
+  border-top-right-radius: 20px;
+}
+
+.fc-theme-standard .fc-scrollgrid {
+  border-radius: 20px;
+}
 .fc-theme-standard td {
-  border: 1px solid #b7d91e !important;
-  border-bottom-left-radius: 20px;
+    border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
 
-.fc-daygrid-day-frame {
-  background-color: white;
-}
-
-.fc-scroller-harness {
-  border-radius: 20px;
-}
-
-.fc-scrollgrid-sync-inner {
-  background-color: white;
-  }
 .fc-toolbar-title {
   color: white;
- }
+}
 
 .fc-scrollgrid {
   background-color: white;
-  border-radius: 20px;
 }
 
-.fc-daygrid-day-frame {
-  border-radius: 20px;
-}
 .fc-scroller {
-  overflow-y: hidden !important;
- }
-
-@media (max-width:768px){
-.fc-toolbar-chunk:not(:first-child){
-  display: none;
-}
+  /* overflow-y: hidden !important; */
 }
 
+@media (max-width: 768px) {
+  .fc-toolbar-chunk:not(:first-child) {
+    display: none;
+  }
+}
+.fc .fc-daygrid-day-top {
+  flex-direction: row;
+}
 
+.fc-col-header-cell-cushion {
+  color: #152238;
+}
+
+.fc-daygrid-day-number {
+  color: #334954;
+}
+.fc .fc-button {
+  text-transform: capitalize;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  background-color: rgb(228, 232, 232);
+  border-radius: 0;
+}

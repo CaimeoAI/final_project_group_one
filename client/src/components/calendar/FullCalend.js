@@ -1,28 +1,61 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
 import { MainContext } from "../../context/MainContext";
+import Modal from "../calendar/Modal";
 
 export default function FullCalend() {
-  const { currentEvents, setCurrentEvents } = useContext(MainContext);
-  // console.log(currentEvents);
-  const handleDateClick = (selected) => {
-    const title = prompt("Please enter a new title for your event");
-    const calendarApi = selected.view.calendar;
-    calendarApi.unselect();
+  const {
+    /* currentEvents, */ setCurrentEvents,
+    open,
+    setOpen,
+    title,
+    setTitle,
+    setStart,
+    setEnd,
+    selectedProp,
+    setSelectedProp,
+    objectModal,
+    setObjectModal,
+  } = useContext(MainContext);
 
-    if (title) {
-      calendarApi.addEvent({
-        id: `${selected.dateStr}-${title}`,
-        title,
-        start: selected.startStr,
-        end: selected.endStr,
-        allDay: selected.allDay,
-      });
+  const handleOpen = () => setOpen(true);
+
+  useEffect(() => {
+    if (selectedProp) {
+      const calendarApi = selectedProp.view.calendar;
+      calendarApi.unselect();
+
+      // ObjectModal is the object created in modal module and received by FullCalend.js
+      // In this part the calendar event is created when data is submited from modal
+
+      if (objectModal) {
+        calendarApi.addEvent({
+          id: `${objectModal.title}`,
+          title: objectModal.title, // String
+          start: objectModal.start, // '2022-12-29T10:30:00+01:00'
+          end: objectModal.end, // '2022-12-29T10:30:00+01:00'
+          allDay: objectModal.allDay, // boolean
+        });
+        setObjectModal({
+          title: null,
+          allDay: false,
+          start: undefined,
+          end: undefined,
+        });
+        setTitle(null);
+        setEnd(null);
+        setStart(null);
+      }
     }
+  }, [title]);
+
+  const handleDateClick = async (selected) => {
+    setSelectedProp(selected);
+    await handleOpen();
   };
 
   const handleEventClick = (selected) => {
@@ -35,7 +68,7 @@ export default function FullCalend() {
     }
   };
   return (
-    <div className=" h-[50%] p-2 md:h-[70%] md:w-[80%] md:p-1">
+    <div className=" h-[50%] p-2 md:h-[80%] md:w-[80%] md:pl-4 md:pt-4">
       <FullCalendar
         height="100%"
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
@@ -52,19 +85,21 @@ export default function FullCalend() {
         select={handleDateClick}
         eventClick={handleEventClick}
         eventsSet={(events) => setCurrentEvents(events)}
-        /*   initialEvents={[
+        initialEvents={[
           {
             id: "12315",
-            title: "All-day event",
+            title: "All-day event ",
             date: "2022-09-14",
+            backgroundColor: "green",
           },
           {
             id: "5123",
-            title: "Timed event",
+            title: "Timed event ",
             date: "2022-09-28",
           },
-        ]} */
+        ]}
       />
+      {open && <Modal />}
     </div>
   );
 }
