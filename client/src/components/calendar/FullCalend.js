@@ -6,6 +6,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
 import { MainContext } from "../../context/MainContext";
 import Modal from "../calendar/Modal";
+import ModalDeleted from "./ModalDeleted";
 
 export default function FullCalend() {
   const {
@@ -20,6 +21,8 @@ export default function FullCalend() {
     setSelectedProp,
     objectModal,
     setObjectModal,
+    deleted,
+    setDeleted
   } = useContext(MainContext);
 
   const handleOpen = () => setOpen(true);
@@ -58,7 +61,7 @@ export default function FullCalend() {
     await handleOpen();
   };
 
-  const handleEventClick = (selected) => {
+ /*  const handleEventClick = (selected) => {
     if (
       window.confirm(
         `Are you sure you want to delete the event '${selected.event.title}'`
@@ -66,7 +69,14 @@ export default function FullCalend() {
     ) {
       selected.event.remove();
     }
+  }; */
+
+  const handleEventClick = (selected) => {
+  setSelectedProp(selected);
+  setDeleted(true);
   };
+
+
   return (
     <div className=" h-[50%] p-2 md:h-[80%] md:w-[80%] md:pl-4 md:pt-4">
       <FullCalendar
@@ -100,6 +110,7 @@ export default function FullCalend() {
         ]}
       />
       {open && <Modal />}
+      {deleted && <ModalDeleted/>}
     </div>
   );
 }
