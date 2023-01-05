@@ -7,7 +7,7 @@ const PostedBySection = ({ user, time }) => {
   const hour = timeStr.slice(16, 21);
 
   return (
-    <div className={`flex flex-row pr-4 w-[50%] justify-end pt-1 `}>
+    <div className={`flex flex-row pr-4 justify-end pt-1`}>
       <p className={`${styles.textTiming}`}>Posted by</p>
       <p className={`${styles.textTiming}`}>{user.split("@")[0]}</p>
       <p className={`${styles.textTiming}`}>

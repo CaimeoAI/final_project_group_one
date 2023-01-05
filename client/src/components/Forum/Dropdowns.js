@@ -16,8 +16,8 @@ export default function Example({ topic, setTopic }) {
 
   return (
     <Menu as="div" className="relative inline-block ">
-      <div className="mb-2 w-62 md:w-64 ">
-        <Menu.Button className="w-full rounded border flex flex-row items-center justify-between border-slate-800 bg-slate-600 px-2 py-3 text-md font-medium text-zinc-100 shadow-sm hover:bg-slate-200 hover:text-zinc-800 focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-300">
+      <div className="mb-2 min-w-[245px] md:w-64 ">
+        <Menu.Button className="w-full rounded border flex flex-row items-center justify-between border-slate-800 bg-slate-600 px-2 py-3 text-sm md:text-md font-medium text-zinc-100 shadow-sm hover:bg-slate-300 hover:text-zinc-800 focus:outline-none  focus:ring-offset-2 focus:ring-offset-gray-300">
           <div className="w-[80%] flex items-center">
           <CiGrid42 className="h-6 w-6 mr-3" aria-hidden="true" />
           {topic}
@@ -40,7 +40,7 @@ export default function Example({ topic, setTopic }) {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-10 mt-2 w-64 origin-top-right rounded-md bg-slate-200 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 z-10 mt-2 min-w-full md:w-64 origin-top-right rounded-md bg-slate-300 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <section className="py-1">
             {fileds.map((field, index) => (
               <Menu.Item key={index}>
@@ -49,7 +49,7 @@ export default function Example({ topic, setTopic }) {
                     value={field}
                     onClick={(e) => getValue(e.target.value)}
                     className={classNames(
-                      active ? "bg-slate-300 text-gray-900" : "text-gray-700",
+                      active ? "bg-slate-400 text-gray-900 cursor-pointer" : "text-gray-700",
                       "block px-4 py-2 text-sm"
                     )}
                   >
