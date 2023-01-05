@@ -14,6 +14,15 @@ export function ForumProvider({ children }) {
   const [singelPost, setSingelPost] = useState({});
   const [comments, setComments] = useState([]);
 
+  const modulesReactQuill = {
+    toolbar: [
+      ["bold", "underline", "italic"],
+      ["code-block", "blockquote"],
+      [{ list: "ordered" }],
+      [{ list: "bullet" }],
+    ],
+  };
+
   //* 02 - FUNCTIONS
   const getAllPost = async () => {
     const URL = `${process.env.REACT_APP_BE_URL}/academia/posts`;
@@ -24,7 +33,7 @@ export function ForumProvider({ children }) {
     };
     try {
       const result = await axios.get(URL, configuration);
-      setPosts(result.data.reverse());
+      setPosts(result.data);
     } catch (error) {
       console.log(error);
     }
@@ -47,7 +56,7 @@ export function ForumProvider({ children }) {
   };
 
   const voteNum = (post) => {
-    return post?.likes?.length - post?.dislikes?.length || 0;
+    return post?.likes?.length - post?.dislikes?.length || "Vote";
   };
 
   const voting = async (action, post, id) => {
@@ -68,14 +77,22 @@ export function ForumProvider({ children }) {
     }
   };
 
-  const modulesReactQuill = {
-    toolbar: [
-      ["bold", "underline", "italic"],
-      ["code-block", "blockquote"],
-      [{ header: [1, 2, 3, 4, 5] }],
-      [{ list: "ordered" }],
-      [{ list: "bullet" }],
-    ],
+  const htmlDecode = (content) => {
+    let e = document.createElement("div");
+    e.innerHTML = content;
+    return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
+  };
+
+  const bestPost = () => {
+    setPosts([...posts].sort((a, b) => b.likes.length - a.likes.length));
+  };
+
+  const hotPosts = () => {
+    setPosts([...posts].sort((a, b) => b.comments.length - a.comments.length));
+  };
+
+  const latestPosts = () => {
+    setPosts([...posts].reverse());
   };
 
   return (
@@ -91,6 +108,10 @@ export function ForumProvider({ children }) {
         voting,
         voteNum,
         modulesReactQuill,
+        htmlDecode,
+        bestPost,
+        hotPosts,
+        latestPosts,
       }}
     >
       {children}

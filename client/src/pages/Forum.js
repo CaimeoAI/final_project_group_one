@@ -5,7 +5,7 @@ import { useEffect, useContext } from "react";
 
 //* 02 - COMPONENTS
 import ForumSearch from "../components/Forum/ForumSearch";
-import ListingPosts from "../components/Forum/ListingPosts.jsx";
+import ListingPosts from "../components/Forum/ListingPosts";
 import BarCreatePost from "../components/Forum/BarCreatePost";
 import CreatePostModal from "../components/Forum/CreatePostModal";
 
@@ -23,12 +23,13 @@ const Forum = () => {
         w-screen
         h-screen
         overflow-auto
-      bg-slate-600
+       bg-[#152238]
         p-4
-        lg:pr-6
+        md:px-6
+        lg:px-10
         "
     >
-      <div className="flex flex-row justify-between mb-6">
+      <div className="flex flex-col justify-between mb-4">
         <ForumSearch />
         <BarCreatePost />
       </div>
