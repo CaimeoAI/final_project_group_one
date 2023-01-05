@@ -6,7 +6,7 @@ export default function ChatGroupSelector(props) {
 
   return (
     <div className="p-4 text-left text-lg font-bold lg:text-2xl">
-        <h1>{ selectedContact.selectedContactName } - { selectedContact.selectedContactID }</h1>
+        <h1>{ selectedContact.email } - { selectedContact.username }</h1>
     </div>
   )
 }
