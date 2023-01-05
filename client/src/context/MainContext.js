@@ -34,7 +34,6 @@ export default function MainContextProvider(props) {
         currentEvents,
         showChatAddContactModal, 
         setShowChatAddContactModal,
-        currentEvents, 
         setCurrentEvents,
         open,
         setOpen,
