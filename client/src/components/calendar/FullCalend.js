@@ -10,7 +10,7 @@ import ModalDeleted from "./ModalDeleted";
 
 export default function FullCalend() {
   const {
-    /* currentEvents, */ setCurrentEvents,
+    setCurrentEvents,
     open,
     setOpen,
     title,
@@ -22,7 +22,7 @@ export default function FullCalend() {
     objectModal,
     setObjectModal,
     deleted,
-    setDeleted
+    setDeleted,
   } = useContext(MainContext);
 
   const handleOpen = () => setOpen(true);
@@ -61,21 +61,10 @@ export default function FullCalend() {
     await handleOpen();
   };
 
- /*  const handleEventClick = (selected) => {
-    if (
-      window.confirm(
-        `Are you sure you want to delete the event '${selected.event.title}'`
-      )
-    ) {
-      selected.event.remove();
-    }
-  }; */
-
   const handleEventClick = (selected) => {
-  setSelectedProp(selected);
-  setDeleted(true);
+    setSelectedProp(selected);
+    setDeleted(true);
   };
-
 
   return (
     <div className=" h-[50%] p-2 md:h-[80%] md:w-[80%] md:pl-4 md:pt-4">
@@ -95,22 +84,9 @@ export default function FullCalend() {
         select={handleDateClick}
         eventClick={handleEventClick}
         eventsSet={(events) => setCurrentEvents(events)}
-        initialEvents={[
-          {
-            id: "12315",
-            title: "All-day event ",
-            date: "2022-09-14",
-            backgroundColor: "green",
-          },
-          {
-            id: "5123",
-            title: "Timed event ",
-            date: "2022-09-28",
-          },
-        ]}
       />
       {open && <Modal />}
-      {deleted && <ModalDeleted/>}
+      {deleted && <ModalDeleted />}
     </div>
   );
 }
