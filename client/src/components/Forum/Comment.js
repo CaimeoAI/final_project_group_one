@@ -32,7 +32,7 @@ const Comment = ({ comment }) => {
             {comment.author.email.split("@")[0]}
           </p>
           <BsDot />
-          <p className={`text-sm font-mono text-gray-400`}>
+          <p className={`text-[10px] md:text-sm font-mono text-gray-400`}>
             {date},<span> {year}</span>
             <span> at </span>
             {hour}

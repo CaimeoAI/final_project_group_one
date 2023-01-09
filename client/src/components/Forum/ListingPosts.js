@@ -67,7 +67,7 @@ const ListingPosts = ({ post }) => {
 
           <div className="hidden md:flex flex-row md:w-full py-2 justify-between ">
             <SaveCommBtnDesktop comments={post.comments.length} />
-            <PostedBySection user={post.author.email} time={post.createdAt} />
+            <PostedBySection user={post?.author?.name} time={post.createdAt} />
           </div>
         </div>
       </NavLink>

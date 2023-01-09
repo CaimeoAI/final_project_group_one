@@ -30,6 +30,10 @@ export const Login = (props) => {
               console.log("response from backend", res)
               console.log(res);
               Context.setUserProfile(res.data.data.user)
+              localStorage.setItem('email', res.data.data.user.email)
+              console.log('email', res.data.data.user.email)
+              localStorage.setItem("userID", res.data.data.user._id)
+              localStorage.setItem("token",  res.data.token)
             })
       .catch((error) => console.log(error));
     }

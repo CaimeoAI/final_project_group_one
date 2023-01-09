@@ -16,10 +16,9 @@ import DOMPurify from 'dompurify';
 import {MdClose} from "react-icons/md"
 import "react-quill/dist/quill.snow.css";
 import "./FromEditor.css";
-import { staticToken } from "./token";
 
 const SeePost = () => {
-  const { getPost, singelPost, comments, modulesReactQuill, htmlDecode } = useForum();
+  const { getPost, singelPost, comments, modulesReactQuill, htmlDecode, getLocalStorageData } = useForum();
   const { id } = useParams();
 
   const [content, setContent] = useState("");
@@ -34,7 +33,7 @@ const SeePost = () => {
     const URL = `${process.env.REACT_APP_BE_URL}/academia/posts/${id}`;
     const configuration = {
       headers: {
-        authorization: staticToken,
+        authorization: getLocalStorageData("token"),
       },
     };
     try {

@@ -2,13 +2,13 @@
 import { useForum } from "../../../context/ForumProvider";
 import { useParams } from "react-router-dom";
 
-//? 04 - STYLING
-import { BiUpvote, BiDownvote } from "react-icons/bi";
-import { styles } from "../styles.js";
 
 const VoteBtnDesktop = ({ post }) => {
-  const { voting, voteNum } = useForum();
+  const { voting, voteNum, votingIconColor, votingNumColor,dislikedBtnFun, likedBtnFun } = useForum();
   const { id } = useParams();
+
+const UpVote = likedBtnFun(post)
+const DownVote = dislikedBtnFun(post)
 
   return (
     <div
@@ -22,20 +22,20 @@ const VoteBtnDesktop = ({ post }) => {
       <div
         className={`flex flex-col justify-between items-center absolute left-2 top-2 py-2`}
       >
-        <BiUpvote
+        <UpVote
           onClick={() => {
             voting("like", post, id);
           }}
-          className={styles.votingIcons}
+          className={`w-[20px] h-[20px] md:w-[24px] md:h-[24px] cursor-pointer ${votingIconColor(post?.likes,"likes")}`}
         />
-        <div className="text-gray-200 text-lg p-2 font-mono w-12 h-12 flex justify-center items-center">
+        <div className={`text-lg p-2 font-mono w-12 h-12 flex justify-center items-center ${votingNumColor(post)}`}>
           {voteNum(post)}
         </div>
-        <BiDownvote
+        <DownVote
           onClick={() => {
             voting("dislike", post, id);
           }}
-          className={styles.votingIcons}
+          className={`w-[20px] h-[20px] md:w-[24px] md:h-[24px] cursor-pointer ${votingIconColor(post?.dislikes,"dislikes")}`}
         />
       </div>
     </div>
