@@ -24,11 +24,11 @@ const SidebarNav = () => {
     /* Sidebar Background Color */
 
     <div
-      className={`bg-[#0e2835d8] min-h-screen ${
+      className={`bg-tertiary min-h-screen ${
         open ? "w-72" : "w-16"
       } duration-500 text-gray-100 px-4 `}
     >
-      <div className="py-3 flex justify-end">
+      <div className="py-3 flex justify-end text-text-primary">
         <HiMenuAlt3
           size={26}
           className="cursor-pointer"
@@ -47,7 +47,7 @@ const SidebarNav = () => {
             key={i}
             className={` ${
               menu?.margin && "mt-5"
-            } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
+            } group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-secondary rounded-md text-text-primary`}
           >
             <div>{React.createElement(menu?.icon, { size: "20" })}</div>
             <h2
@@ -63,7 +63,7 @@ const SidebarNav = () => {
             <h2
               className={`${
                 open && "hidden"
-              } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
+              } absolute left-48 bg-accent-primary font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
             >
               {menu?.name}
             </h2>

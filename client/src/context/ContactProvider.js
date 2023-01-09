@@ -29,6 +29,7 @@ export function ContactsProvider({ children }) {
     }
 
     const createContact = (id, name) => {
+        console.log(userProfile)
         setContacts(prevContacts => {
             createConversation(id)
             return [...prevContacts, {id, name}]

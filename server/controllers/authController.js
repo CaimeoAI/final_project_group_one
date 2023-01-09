@@ -50,7 +50,7 @@ export const signup = catchAsync(async (req, res, next) => {
   });
 
   createSendToken(newUser, 201, res);
-});
+})
 
 //------------------- LOG IN ----------------------
 

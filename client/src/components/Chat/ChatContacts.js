@@ -11,16 +11,15 @@ export default function ChatContacts() {
             p-2 
             w-full
             rounded-[25px]
-      
+            bg-secondary
             lg:h-screen
-            lg:w-[224px]"
-        style={{backgroundColor:"#212D42"}}>
+            lg:w-[224px]">
 
-       <h2 className="font-bold">Contacts</h2>
+       <h2 className="font-bold text-accent-primary">Contacts</h2>
 
         <ul className="text-left">
             {contacts.map(contact => (
-               <li className="m-4 px-4 py-1 hover:bg-gray-600 rounded-full active:bg-gray-900 focus:" key={contact.id} onClick={() => setSelectedContact({email:contact.id, username:contact.name})}>{contact.name}</li>
+               <li className="m-4 px-4 py- text-accent-primary hover:bg-hover-primary rounded-full active:bg-gray-900 focus:" key={contact.id} onClick={() => setSelectedContact({email:contact.id, username:contact.name})}>{contact.name}</li>
             ))}
         </ul>
     </div>

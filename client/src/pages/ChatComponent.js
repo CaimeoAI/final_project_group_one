@@ -8,12 +8,12 @@ export default function ChatComponent() {
     return (
         <div 
             className="
-                bg-[#152238]
+                bg-primary
                 flex
                 flex-col
                 p-4
                 text-center 
-                text-white
+                text-text-primary
                 h-screen
                 w-screen
                 

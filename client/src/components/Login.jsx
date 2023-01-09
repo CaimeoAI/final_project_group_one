@@ -7,7 +7,7 @@ export const Login = (props) => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
-  });
+  })
 
   const Context = useContacts()
 
@@ -30,14 +30,15 @@ export const Login = (props) => {
               console.log("response from backend", res)
               console.log(res);
               Context.setUserProfile(res.data.data.user)
+              ;
             })
       .catch((error) => console.log(error));
     }
-  };
+  }
 
   return (
     <div className="lg:flex flex-row-reverse">
-      <div className="flex flex-col text-center text-white w-screen h-screen bg-[#152238] lg:w-1/2 justify-center">
+      <div className="flex flex-col text-center text-text-primary w-screen h-screen bg-primary lg:w-1/2 justify-center">
         <form
           className="flex flex-col flex-nowrap md:flex  justify-center items-center"
           onSubmit={handleSubmit}
@@ -49,10 +50,10 @@ export const Login = (props) => {
           h-12
           text-base
           rounded-full
-          text-white
+          text-text-primary
           border-2 
-          border-[#203354]
-          bg-[#152238]
+          border-secondary
+          bg-primary
           text-center"
             type="email"
             placeholder="email address"
@@ -67,10 +68,10 @@ export const Login = (props) => {
         h-12
         text-base
         rounded-full
-        text-white
+        text-text-primary
         border-2 
-        border-[#203354]
-        bg-[#152238]
+        border-secondary
+        bg-primary
         text-center"
             type="password"
             placeholder="password"
@@ -84,16 +85,17 @@ export const Login = (props) => {
                 h-12
                 text-base
                 rounded-full
-                text-white
-                bg-[#334563]"
+                text-text-primary
+                bg-accent-secondary
+                hover:bg-hover-secondary"
             type="submit"
           >
             LOGIN
           </button>
         </form>
-        <button className="mt-4 underline">Forgot your password? </button>
+        <button className="mt-4 underline text-text-primary">Forgot your password? </button>
         <button
-          className="mt-10 underline"
+          className="mt-10 underline text-text-primary"
           onClick={() => props.onFormSwitch("register")}
         >
           Don't have an account? Register here.

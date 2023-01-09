@@ -14,10 +14,9 @@ export default function ChatAddContact() {
                 h-9
                 text-base
                 rounded-full
-                text-black" 
-                
-            style={{
-                backgroundColor:"#D9D9D9"}}
+                text-text-primary
+                bg-accent-secondary
+                hover:bg-hover-secondary"
             type="button" onClick={() => setShowChatAddContactModal(true)}>Add Contact</button>
     </div>
   )

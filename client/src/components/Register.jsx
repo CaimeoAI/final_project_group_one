@@ -13,8 +13,8 @@ export const Register = (props) => {
 
   return (
     <div className="lg:flex flex-row">
-      <div className="flex flex-col text-center text-white w-screen h-screen bg-[#152238] lg:w-1/2 justify-center">
-        <h1 className="pt-10">REGISTRATION</h1>
+      <div className="flex flex-col text-center text-text-primary w-screen h-screen bg-primary lg:w-1/2 justify-center">
+        <h1 className="pt-10 text-text-primary">REGISTRATION</h1>
         <div className="flex justify-center">
           <img className="my-10 w-20" src={Avatar} alt="avatar" />
         </div>
@@ -30,8 +30,8 @@ export const Register = (props) => {
             text-base
             rounded-full text-white
             border-2 
-          border-[#203354]
-          bg-[#152238]
+          border-secondary
+          bg-primary
             text-center"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -49,9 +49,10 @@ export const Register = (props) => {
             h-12 
             text-base 
             rounded-full 
-            text-white border-2 
-            border-[#203354]
-            bg-[#152238]
+            text-text-primary
+            border-2 
+            border-secondary
+            bg-primary
             text-center"
           >
             <option value="" disabled selected>
@@ -70,10 +71,10 @@ export const Register = (props) => {
         h-12
         text-base
         rounded-full
-        text-white
+        text-text-primary
         border-2 
-        border-[#203354]
-        bg-[#152238]
+        border-secondary
+        bg-primary
         text-center"
             value={pass}
             onChange={(e) => setPass(e.target.value)}
@@ -91,8 +92,8 @@ export const Register = (props) => {
         rounded-full
         text-white
         border-2 
-        border-[#203354]
-        bg-[#152238]
+        border-secondary
+        bg-primary
         text-center"
             type="confpass"
             placeholder="confirm password"
@@ -106,15 +107,16 @@ export const Register = (props) => {
                 h-12
                 text-base
                 rounded-full
-                text-white
-                bg-[#334563]"
+                text-text-primary
+                bg-accent-secondary
+                hover:bg-hover-secondary"
             type="submit"
           >
             SUBMIT
           </button>
         </form>
         <button
-          className="mt-10 underline"
+          className="mt-10 underline text-text-primary"
           onClick={() => props.onFormSwitch("login")}
         >
           Already have an account? Login here.

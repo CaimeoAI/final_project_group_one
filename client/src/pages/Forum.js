@@ -23,7 +23,8 @@ const Forum = () => {
         w-screen
         h-screen
         overflow-auto
-       bg-[#152238]
+        bg-primary
+        text-text-primary
         p-4
         md:px-6
         lg:px-10

@@ -12,7 +12,7 @@ const Search = () => {
           "
     >
       <input
-        className="bg-slate-400 border-hidden placeholder:text-white mx-6 w-[100%] m-auto mt-4 h-9 pl-4 "
+        className="bg-secondary border-hidden placeholder:text-text-primary mx-6 w-[100%] m-auto mt-4 h-9 pl-4 "
         type="text"
         placeholder="Search..."
       />

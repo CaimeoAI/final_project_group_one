@@ -16,7 +16,7 @@ const BarCreatePost = () => {
           h-16 
           bottom-20 
           right-2
-        bg-[#064635]
+        bg-accent-secondary
           rounded-full 
           md:hidden 
           cursor-pointer`}
@@ -37,7 +37,7 @@ const BarCreatePost = () => {
        
         className={`
           
-          bg-gray-500
+          bg-grayed-out
           cursor-pointer
           hidden 
           md:flex 
@@ -62,7 +62,7 @@ const BarCreatePost = () => {
         <input 
          onClick={() => setShowPostFormModal(true)}
          placeholder="Create Post"
-        className="w-[95%] bg-slate-700 rounded-lg  hover:border hover:bg-transparent hover:border-slate-600 hover:transition hover:duration-60 hover:ease-in ease-out mr-5  md:p-4 md:py-4  focus:outline-none"/>
+        className="w-[95%] bg-slate-700 rounded-lg  hover:border hover:bg-transparent hover:border-grayed-out hover:transition hover:duration-60 hover:ease-in ease-out mr-5  md:p-4 md:py-4  focus:outline-none"/>
       </div>
     </>
   );

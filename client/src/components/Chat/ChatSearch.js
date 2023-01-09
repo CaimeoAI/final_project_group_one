@@ -4,7 +4,7 @@ export default function ChatSearch() {
       className="
         flex
         justify-between
-        bg-[#212D42]
+        bg-secondary
         mt-4
         rounded-full
         py-1.5

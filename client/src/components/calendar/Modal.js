@@ -19,7 +19,7 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 350,
-  bgcolor: "background.paper",
+  backgroundColor: "white",
   borderRadius: "20px",
   boxShadow: 24,
   p: 3,
@@ -113,7 +113,7 @@ export default function BasicModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box className='bg-tertiary text-accent-primary' sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Add Event
           </Typography>

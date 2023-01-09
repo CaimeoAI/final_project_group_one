@@ -5,7 +5,7 @@ export default function ChatGroupSelector(props) {
   const { selectedContact } = useContacts()
 
   return (
-    <div className="p-4 text-left text-lg font-bold lg:text-2xl">
+    <div className="p-4 text-left text-lg font-bold lg:text-2xl text-accent-primary">
         <h1>{ selectedContact.email } - { selectedContact.username }</h1>
     </div>
   )

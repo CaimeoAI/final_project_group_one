@@ -49,7 +49,7 @@ export default function AddContactModal() {
                                     flex-col 
                                     w-full 
                                     pointer-events-auto 
-                                    bg-[#212D42]
+                                    bg-secondary
                                     bg-clip-padding 
                                     rounded-md 
                                     outline-none 
@@ -61,14 +61,12 @@ export default function AddContactModal() {
                                         items-center 
                                         justify-between 
                                         p-4 
-                                        
-                                        
                                         rounded-t-md">
 
                         <h5 className="text-xl 
-                                        font-medium 
-                                        leading-normal 
-                                        text-white" id="exampleModalScrollableLabel">
+                                       font-medium 
+                                       leading-normal
+                                       text-accent-primary" id="exampleModalScrollableLabel">
 
                             Add Contact
 
@@ -79,16 +77,16 @@ export default function AddContactModal() {
                         <div className="modal-body 
                                         relative 
                                         p-4 
-                                        text-white">
+                                        text-accent-primary">
 
                         <p className="text-left">Email of new Contact</p>
 
-                        <input className="bg-[#212D42] border-2 rounded p-2 mb-4"
+                        <input className="bg-secondary border-2 rounded p-2 mb-4"
                                 type="email" placeholder="exampe@placeholder.com" ref={emailRef}></input>
 
                         <p className="text-left">Username of new Contact</p>
 
-                        <input className="bg-[#212D42] border-2 rounded p-2"
+                        <input className="bg-secondary border-2 rounded p-2"
                                 type="text" placeholder="Name" ref={nameRef}></input>
 
                         </div>
@@ -103,11 +101,56 @@ export default function AddContactModal() {
 
                         <button type="button"
                                 onClick={handleSubmit}
-                                className="inline-block mx-2 px-6 py-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out ml-1">
+                                className="inline-block
+                                           mx-2 
+                                           px-6 
+                                           py-2.5 
+                                           bg-accent-secondary
+                                           text-white 
+                                           font-medium 
+                                           text-xs 
+                                           leading-tight 
+                                           uppercase 
+                                           rounded 
+                                           shadow-md 
+                                           hover:bg-hover-secondary 
+                                           hover:shadow-lg 
+                                           focus:bg-hover-secondary 
+                                           focus:shadow-lg 
+                                           focus:outline-none 
+                                           focus:ring-0 
+                                           active:bg-active 
+                                           active:shadow-lg 
+                                           transition 
+                                           duration-150 
+                                           ease-in-out 
+                                           ml-1">
                             Add
                         </button>
                         <button type="button"
-                            className="inline-block px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out"
+                            className="inline-block 
+                                       px-6 
+                                       py-2.5
+                                       bg-accent-tertiary
+                                       text-white 
+                                       font-medium 
+                                       text-xs 
+                                       leading-tight 
+                                       uppercase 
+                                       rounded 
+                                       shadow-md 
+                                       hover:bg-hover-tertiary 
+                                       hover:shadow-lg 
+                                       focus:bg-hover-tertiary 
+                                       focus:shadow-lg 
+                                       focus:outline-none 
+                                       focus:ring-0 
+                                       active:bg-active 
+                                       active:shadow-lg 
+                                       transition 
+                                       duration-150 
+                                       ease-in-out"
+
                             data-bs-dismiss="modal" onClick={() => setShowChatAddContactModal(false)}>
                             Cancel
                         </button>

@@ -59,7 +59,7 @@ export default function BasicTabs() {
   return (
     /* Main Page */
 
-    <Box className="w-full h-full bg-slate-700 text-white ">
+    <Box className="w-full h-full bg-primary">
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           value={value}
@@ -115,7 +115,7 @@ export default function BasicTabs() {
           nostrum. Error doloremque vitae esse iusto labore sint! Esse explicabo
           laborum enim suscipit! Corrupti dolor inventore ipsa sit similique.{" "}
         </p>
-        <button className="my-6 px-6 py-2  bg-white  text-slate-600 hover:bg-gray-300">
+        <button className="my-6 px-6 py-2  bg-accent-secondary  text-text-primary hover:bg-hover-primary">
           Start the Quizz
         </button>
         <hr />
@@ -135,7 +135,7 @@ export default function BasicTabs() {
           nostrum. Error doloremque vitae esse iusto labore sint! Esse explicabo
           laborum enim suscipit! Corrupti dolor inventore ipsa sit similique.{" "}
         </p>
-        <button className="my-6 bg-slate-400 text-slate-600 px-6 py-2">
+        <button className="my-6 bg-accent-secondary text-text-primary hover:bg-hover-primary px-6 py-2">
           Start the Quizz
         </button>
       </TabPanel>

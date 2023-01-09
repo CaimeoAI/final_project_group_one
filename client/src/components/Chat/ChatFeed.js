@@ -7,7 +7,7 @@ export default function ChatFeed() {
   return (
     <div 
         className="
-            bg-[#212D42]
+            bg-secondary
             flex
             flex-col
             mt-4
