@@ -66,14 +66,29 @@
   background: transparent;
 }
 
-.fc-scroller::-webkit-scrollbar-track{
-background: transparent;
+.fc-scroller::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 /*.fc-scroller {
   overflow-y: hidden !important; 
 }*/
 
-.fc-event-title{
+.fc-event-title {
   font-size: x-small;
 }
+
+.fade-in {
+  margin:10px;
+  background-color: rgb(98, 98, 142);
+  transition: opacity 2s ease;
+  color: white;
+}
+.fade-out {
+  margin:10px;
+  background-color: rgb(98, 98, 142);
+  /* background-color: red; */
+  opacity: 0;
+  transition: opacity 2s ease;
+  color: white;
+  }
