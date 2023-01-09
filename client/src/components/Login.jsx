@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import LoginImage from "../assets/login.jpg";
 import axios from "axios";
 
@@ -8,21 +8,16 @@ export const Login = (props) => {
     password: "",
   });
 
-  axios
-    .post(`${process.env.REACT_APP_BE_URL}/auth/login`, userData)
-    .then((res) => console.log("response from backend", res))
-    .catch((error) => console.log(error));
-
-  useEffect(() => {
-    console.log("The component is rendered");
-  });
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setUserData({
       email: e.target.email.value,
       password: e.target.password.value,
     });
+    axios
+      .post(`${process.env.REACT_APP_BE_URL}/auth/login`, userData)
+      .then((res) => console.log("response from backend", res))
+      .catch((error) => console.log(error));
   };
 
   return (
