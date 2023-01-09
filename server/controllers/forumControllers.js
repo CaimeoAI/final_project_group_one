@@ -10,8 +10,8 @@ import Comment from "../models/commentModel.js";
 export const createPost = async (req, res) => {
   const { title, body, topic } = req.body;
 
-  const user = await UserModel.findOne({ _id: req.id });
-
+  const user = await UserModel.findById(req.id);
+  
   try {
     const newPost = new Post({
       title,
@@ -38,7 +38,7 @@ export const getListOfPosts = async (req, res) => {
         path: "comments",
         populate: { path: "author", select: "email" },
       })
-      .populate("author", "email _id");
+      .populate("author", "name _id");
     res.status(201).json(allPosts);
   } catch (error) {
     res.status(500).json({
@@ -56,7 +56,7 @@ export const getPost = async (req, res) => {
         path: "comments",
         populate: { path: "author", select: "email" },
       })
-      .populate("author", "email _id");
+      .populate("author", "name _id");
     res.status(201).json(post);
   } catch (error) {
     res.status(500).json({

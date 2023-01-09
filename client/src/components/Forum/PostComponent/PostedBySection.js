@@ -9,7 +9,7 @@ const PostedBySection = ({ user, time }) => {
   return (
     <div className={`flex flex-row pr-4 justify-end pt-1`}>
       <p className={`${styles.textTiming}`}>Posted by</p>
-      <p className={`${styles.textTiming}`}>{user.split("@")[0]}</p>
+      <p className={`${styles.textTiming}`}>{user}</p>
       <p className={`${styles.textTiming}`}>
         {date},<span> {year}</span>
         <span> at </span>

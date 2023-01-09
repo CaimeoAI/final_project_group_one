@@ -48,6 +48,7 @@ const BarCreatePost = () => {
           border-slate-700
           mt-[15px]
           md:w-full 
+          mb-4
           `}
         style={{ backgroundColor: " rgb(33,45,66)" }}
       > 
@@ -62,7 +63,7 @@ const BarCreatePost = () => {
         <input 
          onClick={() => setShowPostFormModal(true)}
          placeholder="Create Post"
-        className="w-[95%] bg-slate-700 rounded-lg  hover:border hover:bg-transparent hover:border-slate-600 hover:transition hover:duration-60 hover:ease-in ease-out mr-5  md:p-4 md:py-4  focus:outline-none"/>
+        className="w-[95%] bg-slate-700 rounded-lg  hover:border hover:bg-transparent hover:border-slate-600 hover:transition hover:duration-60 hover:ease-in ease-out mr-5  md:p-4 md:my-8  focus:outline-none"/>
       </div>
     </>
   );
