@@ -6,10 +6,11 @@ import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
 import { MainContext } from "../../context/MainContext";
 import Modal from "../calendar/Modal";
+import ModalDeleted from "./ModalDeleted";
 
 export default function FullCalend() {
   const {
-    /* currentEvents, */ setCurrentEvents,
+    setCurrentEvents,
     open,
     setOpen,
     title,
@@ -20,6 +21,8 @@ export default function FullCalend() {
     setSelectedProp,
     objectModal,
     setObjectModal,
+    deleted,
+    setDeleted,
   } = useContext(MainContext);
 
   const handleOpen = () => setOpen(true);
@@ -59,14 +62,10 @@ export default function FullCalend() {
   };
 
   const handleEventClick = (selected) => {
-    if (
-      window.confirm(
-        `Are you sure you want to delete the event '${selected.event.title}'`
-      )
-    ) {
-      selected.event.remove();
-    }
+    setSelectedProp(selected);
+    setDeleted(true);
   };
+
   return (
     <div className=" h-[50%] p-2 md:h-[80%] md:w-[80%] md:pl-4 md:pt-4">
       <FullCalendar
@@ -85,21 +84,9 @@ export default function FullCalend() {
         select={handleDateClick}
         eventClick={handleEventClick}
         eventsSet={(events) => setCurrentEvents(events)}
-        initialEvents={[
-          {
-            id: "12315",
-            title: "All-day event ",
-            date: "2022-09-14",
-            backgroundColor: "green",
-          },
-          {
-            id: "5123",
-            title: "Timed event ",
-            date: "2022-09-28",
-          },
-        ]}
       />
       {open && <Modal />}
+      {deleted && <ModalDeleted />}
     </div>
   );
 }

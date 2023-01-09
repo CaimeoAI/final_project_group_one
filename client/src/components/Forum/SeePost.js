@@ -16,10 +16,9 @@ import DOMPurify from 'dompurify';
 import {MdClose} from "react-icons/md"
 import "react-quill/dist/quill.snow.css";
 import "./FromEditor.css";
-import { staticToken } from "./token";
 
 const SeePost = () => {
-  const { getPost, singelPost, comments, modulesReactQuill, htmlDecode } = useForum();
+  const { getPost, singelPost, comments, modulesReactQuill, htmlDecode, getLocalStorageData } = useForum();
   const { id } = useParams();
 
   const [content, setContent] = useState("");
@@ -34,7 +33,7 @@ const SeePost = () => {
     const URL = `${process.env.REACT_APP_BE_URL}/academia/posts/${id}`;
     const configuration = {
       headers: {
-        authorization: staticToken,
+        authorization: getLocalStorageData("token"),
       },
     };
     try {
@@ -49,11 +48,11 @@ const SeePost = () => {
 
   return (
     <div
-      className={`bg-slate-600 p-2 text-slate-300 w-full h-screen overflow-auto`}
+      className={`bg-primary p-2 text-slate-300 w-full h-screen overflow-auto`}
     >
       {/* //---------- Question Section ----------- */}
-      <div className={`  bg-slate-700 rounded-t-md `}>
-        <div className="w-full flex flex-row py-2 mb-4 items-center shadow  bg-slate-700 rounded-t-md relative ">
+      <div className={`  bg-secondary rounded-t-md `}>
+        <div className="w-full flex flex-row py-2 mb-4 items-center shadow  bg-secondary rounded-t-md relative ">
           
             <SinglePostVote post={singelPost} />
           
@@ -71,7 +70,7 @@ const SeePost = () => {
       </div>
 
       {/* //---------- Comments Section ----------- */}
-      <div className={`px-4 md:py-6 md:px-14 bg-slate-700  `}>
+      <div className={`px-4 md:py-6 md:px-14 bg-secondary  `}>
         <h1 className="md:-ml-4 text-sm md:text-xl  text-orange-300 pb-6">
           <span>{comments.length}</span> Answers
         </h1>
@@ -82,7 +81,7 @@ const SeePost = () => {
       </div>
 
       {/* //---------- Form Section ----------- */}
-      <div className="shadow-xl bg-slate-700 rounded-b-md">
+      <div className="shadow-xl bg-secondary rounded-b-md">
         <h1 className="text-sm pl-4 md:text-xl mb-2 text-orange-300 md:pl-10">Your Answer</h1>
 
         <div className={`w-full  flex items-center flex-col`}>
@@ -102,7 +101,7 @@ const SeePost = () => {
                 addComment();
                 setContent("");
               }}
-              className={"inline-block mb-5 px-6 p-2.5 bg-green-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-700 hover:shadow-lg focus:bg-green-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out ml-1 "}
+              className={"inline-block mb-5 px-6 p-2.5 bg-accent-secondary text-text-primary font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-hover-secondary hover:shadow-lg focus:bg-hover-secondary focus:shadow-lg focus:outline-none focus:ring-0 active:bg-grayed-out active:shadow-lg transition duration-150 ease-in-out ml-1 "}
             >
               Post your answer
             </button>

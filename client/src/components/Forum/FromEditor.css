@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400&display=swap');
+
 .fromEditor {
+  word-wrap: break-word;
 }
 
 .fromEditor ul li {
@@ -16,7 +19,8 @@
   padding: 17px 20px;
   background: rgba(29, 73, 73, 0.3);
   border-radius: 7px;
-  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+    rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 }
 
 .fromEditor pre {
@@ -43,6 +47,16 @@
 }
 .ql-editor {
   color: #e7f6f2;
+}
+.ql-editor p {
+  font-size: 20px;
+}
+
+.quill > .ql-container > .ql-editor.ql-blank::before{
+  font-size: 13.5px;
+  color: #233142;
+  font-family: 'Roboto Mono', monospace;
+  font-style: normal;
 }
 
 @media (min-width: 1280px) {

@@ -26,7 +26,12 @@ module.exports = {
       'hover-tertiary': '#7f1d1d', // mouse hover color for accent-tertiary elements
       'active': '#111827', // color when something got clicked on
       'grayed-out': '#6b7280', // for things grayed out or specific elements
-      'orange-300': '#fdba74'     //! needs discussion
+      'orange-300': '#fdba74',
+      'slate-700': '#334155',
+      'slate-200': '#f1f5f9',
+      'slate-800': '#1e293b',
+      'slate-600': '#475569',
+      'slate-300': '#cbd5e1'
     }
   },
   plugins: [],

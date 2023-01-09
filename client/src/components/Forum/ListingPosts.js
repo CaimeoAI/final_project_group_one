@@ -29,7 +29,7 @@ const ListingPosts = ({ post }) => {
       md:p-0
       border
       border-slate-700
-      hover:border-gray-600
+      hover:border-grayed-out
       rounded-lg
       md:rounded-md
       hover:transition hover:duration-90 ease-in hover:ease-out
@@ -46,7 +46,7 @@ const ListingPosts = ({ post }) => {
         <div className="md:pl-4 md:pt-2">
           <div className="min-h-[100px]">
             <h1
-              className={`  text-gray-300 mb-2 font-bold cursor-pointer md:text-lg ${styles.hoverText}`}
+              className={`  text-grayed-out mb-2 font-bold cursor-pointer md:text-lg ${styles.hoverText}`}
             >
               {post.title}
             </h1>
@@ -67,7 +67,7 @@ const ListingPosts = ({ post }) => {
 
           <div className="hidden md:flex flex-row md:w-full py-2 justify-between ">
             <SaveCommBtnDesktop comments={post.comments.length} />
-            <PostedBySection user={post.author.email} time={post.createdAt} />
+            <PostedBySection user={post?.author?.name} time={post.createdAt} />
           </div>
         </div>
       </NavLink>

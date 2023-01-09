@@ -1,2 +1,0 @@
-export const staticToken =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYTJmZTRlYzc4ZGIzZTY0ZjZlZTgzNSIsImlhdCI6MTY3MjI2NTYyMywiZXhwIjoxNzAzODAxNjIzfQ.HZsI8EgkwWG9eM4uaV_3B2YbmvGAW04fRAbmxKukg5Y";

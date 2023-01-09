@@ -52,7 +52,6 @@ export default function BasicModal() {
   };
 
   const handleChange = (event) => {
-    // console.log(event.target.checked)
     setObjectModal((currentValue) => ({
       ...currentValue,
       allDay: event.target.checked,
@@ -65,7 +64,6 @@ export default function BasicModal() {
       start: selectedProp.startStr,
       end: selectedProp.startStr,
     }));
-    console.log(objectModal.allDay);
   };
 
   const formatHour = (time) => {
@@ -113,7 +111,7 @@ export default function BasicModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className='bg-tertiary text-accent-primary' sx={style}>
+        <Box className='bg-tertiary text-text-secondary' sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Add Event
           </Typography>

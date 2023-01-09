@@ -1,14 +1,30 @@
 import React, { useState } from "react";
 import Avatar from "../assets/avatar-profile.jpeg";
 import RegisterImage from "../assets/registration.jpg";
+import axios from "axios";
 
 export const Register = (props) => {
-  const [email, setEmail] = useState("");
-  const [pass, setPass] = useState("");
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    course: "",
+    password: "",
+    passwordConfirm: "",
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
+    setUserData({
+      name: e.target.name.value,
+      email: e.target.email.value,
+      course: e.target.course.value,
+      password: e.target.password.value,
+      passwordConfirm: e.target.passwordConfirm.value,
+    });
+    axios
+      .post(`${process.env.REACT_APP_BE_URL}/auth/signup`, userData)
+      .then((res) => console.log("response from backend", res))
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -33,8 +49,22 @@ export const Register = (props) => {
           border-secondary
           bg-primary
             text-center"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            placeholder="name"
+            id="name"
+            name="name"
+          />
+          <input
+            className="
+            mt-4
+            w-72
+            h-12
+            text-base
+            rounded-full text-white
+            border-2 
+          border-secondary
+          bg-primary
+            text-center"
             type="email"
             placeholder="email address"
             id="email"
@@ -54,6 +84,9 @@ export const Register = (props) => {
             border-secondary
             bg-primary
             text-center"
+            type="text"
+            id="course"
+            name="course"
           >
             <option value="" disabled selected>
               select field...
@@ -76,8 +109,6 @@ export const Register = (props) => {
         border-secondary
         bg-primary
         text-center"
-            value={pass}
-            onChange={(e) => setPass(e.target.value)}
             type="password"
             placeholder="password"
             id="password"
@@ -95,10 +126,10 @@ export const Register = (props) => {
         border-secondary
         bg-primary
         text-center"
-            type="confpass"
+            type="password"
             placeholder="confirm password"
-            id="confpass"
-            name="confpass"
+            id="passwordConfirm"
+            name="passwordConfirm"
           />
           <button
             className="

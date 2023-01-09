@@ -2,13 +2,12 @@
 import { useForum } from "../../context/ForumProvider";
 import { useParams } from "react-router-dom";
 
-//? 04 - STYLING
-import { BiUpvote, BiDownvote } from "react-icons/bi";
-import { styles } from "./styles.js";
-
 const SinglePostVote = ({ post }) => {
-  const { voting, voteNum } = useForum();
+  const { voting, voteNum, votingIconColor, votingNumColor, likedBtnFun, dislikedBtnFun } = useForum();
   const { id } = useParams();
+
+  const UpVote = likedBtnFun(post);
+  const DownVote = dislikedBtnFun(post);
 
   return (
     <div
@@ -19,20 +18,20 @@ const SinglePostVote = ({ post }) => {
               ml-2
               md:ml-5
               md:mr-2
-              my-4">
-           <BiUpvote
-              onClick={() => voting("like", post, id)}
-              className={`${styles.votingIcons} mb-2 ml-1.5 md:ml-0`}
-           />
-           <div 
-               className="text-gray-100 text-xs md:text-lg  font-mono w-8 h-8 flex justify-center items-center  ">
-               {voteNum(post)}
-           </div>
-           <BiDownvote
-                onClick={() => voting("dislike", post, id)}
-                className={`${styles.votingIcons}  mt-2 ml-1.5 md:ml-0`}
-            />
-     </div>
+              my-4"
+    >
+      <UpVote
+        onClick={() => voting("like", post, id)}
+        className={`${votingIconColor(post?.likes,"likes")}} mb-2 ml-1.5 md:ml-0`}
+      />
+      <div className={`${votingNumColor(post)} text-md md:text-lg  font-mono w-8 h-8 flex justify-center items-center `}>
+        {voteNum(post)}
+      </div>
+      <DownVote
+        onClick={() => voting("dislike", post, id)}
+        className={`${votingIconColor(post?.dislikes,"dislikes")}}  mt-2 ml-1.5 md:ml-0`}
+      />
+    </div>
   );
 };
 
