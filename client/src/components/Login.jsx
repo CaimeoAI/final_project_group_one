@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LoginImage from "../assets/login.jpg";
 import axios from "axios";
+import { useContacts } from "../context/ContactProvider.js";
 
 export const Login = (props) => {
   const [userData, setUserData] = useState({
@@ -8,16 +9,34 @@ export const Login = (props) => {
     password: "",
   });
 
+  const Context = useContacts();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setUserData({
-      email: e.target.email.value,
-      password: e.target.password.value,
-    });
-    axios
-      .post(`${process.env.REACT_APP_BE_URL}/auth/login`, userData)
-      .then((res) => console.log("response from backend", res))
-      .catch((error) => console.log(error));
+
+    //! Gives error 400 Bad Request
+    // setUserData({
+    //   email: e.target.email.value,
+    //   password: e.target.password.value,
+    // });
+
+    if (userData.email !== "" || userData.email !== undefined) {
+      axios
+        .post(`${process.env.REACT_APP_BE_URL}/auth/login`, {
+          email: e.target.email.value,
+          password: e.target.password.value,
+        })
+        .then((res) => {
+          console.log("response from backend", res);
+          console.log(res);
+          Context.setUserProfile(res.data.data.user);
+          localStorage.setItem("email", res.data.data.user.email);
+          console.log("email", res.data.data.user.email);
+          localStorage.setItem("userID", res.data.data.user._id);
+          localStorage.setItem("token", res.data.token);
+        })
+        .catch((error) => console.log(error));
+    }
   };
 
   return (

@@ -20,7 +20,7 @@ export default function ChatContacts() {
 
         <ul className="text-left">
             {contacts.map(contact => (
-               <li className="m-4 px-4 py-1 hover:bg-gray-600 rounded-full active:bg-gray-900 focus:" key={contact.id} onClick={() => setSelectedContact({selectedContactID:contact.id, selectedContactName:contact.name})}>{contact.name}</li>
+               <li className="m-4 px-4 py-1 hover:bg-gray-600 rounded-full active:bg-gray-900 focus:" key={contact.id} onClick={() => setSelectedContact({email:contact.id, username:contact.name})}>{contact.name}</li>
             ))}
         </ul>
     </div>

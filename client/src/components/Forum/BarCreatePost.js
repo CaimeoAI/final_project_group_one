@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { BsPlusLg } from "react-icons/bs";
-import { IoIosAddCircleOutline } from "react-icons/io";
 import { MainContext } from "../../context/MainContext";
 import { styles } from "./styles";
 
@@ -35,44 +34,36 @@ const BarCreatePost = () => {
       </div>
       {/* --------------TABLET|DESKTOP VERSION---------------------- */}
       <div
-        onClick={() => setShowPostFormModal(true)}
+       
         className={`
-          ${styles.flexCenter} 
+          
+          bg-gray-500
           cursor-pointer
           hidden 
           md:flex 
-          items-end
+          h-24
+          items-center
+          rounded-md
           border
-          rounded-full
-          border-zinc-500
-          shadow-md
-          h-10
+          border-slate-700
           mt-[15px]
-          justify-between 
-          ml-2
-          md:w-[30%] 
-          lg:w-[25%]`}
-      >
-        <p
-          className="
-                text-md 
-                lg:text-lg 
-                pl-5 
-                text-green-700
-                font-bold"
-        >
-          CREATE A POST
-        </p>
-        <IoIosAddCircleOutline
-          
-          className={`
-                mr-2
-              fill-gray-500  
-              hover:fill-green-700
-                w-[30px] 
-                h-[30px]
-                cursor-pointer`}
-        />
+          md:w-full 
+          mb-4
+          `}
+        style={{ backgroundColor: " rgb(33,45,66)" }}
+      > 
+        
+        <div className={`w-10 h-10 rounded-full mx-4`}>
+          <img
+            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+            alt="user profile pic"
+            className="w-[100%] object-cover rounded-full"
+          />
+        </div>
+        <input 
+         onClick={() => setShowPostFormModal(true)}
+         placeholder="Create Post"
+        className="w-[95%] bg-slate-700 rounded-lg  hover:border hover:bg-transparent hover:border-slate-600 hover:transition hover:duration-60 hover:ease-in ease-out mr-5  md:p-4 md:my-8  focus:outline-none"/>
       </div>
     </>
   );

@@ -1,7 +1,17 @@
+//! 01 - HOOKS
+import { useForum } from "../../context/ForumProvider";
+
+//* 02 - INSTALL
+import DOMPurify from "dompurify";
+
+//? 03 - STYLING
 import { BsDot } from "react-icons/bs";
 import "./FromEditor.css";
 
 const Comment = ({ comment }) => {
+  const { htmlDecode } = useForum();
+  const sanitizedHTML = DOMPurify.sanitize(comment.content);
+
   const timeStr = new Date(comment.createdAt).toString();
   const date = timeStr.slice(4, 10);
   const year = timeStr.slice(11, 15);
@@ -22,7 +32,7 @@ const Comment = ({ comment }) => {
             {comment.author.email.split("@")[0]}
           </p>
           <BsDot />
-          <p className={`text-sm  text-gray-400`}>
+          <p className={`text-[10px] md:text-sm font-mono text-gray-400`}>
             {date},<span> {year}</span>
             <span> at </span>
             {hour}
@@ -30,8 +40,8 @@ const Comment = ({ comment }) => {
         </div>
         <div className={`ml-9 py-6`}>
           <div
-            className="fromEditor inline-block"
-            dangerouslySetInnerHTML={{ __html: comment.content }}
+            className="fromEditor text-sm md:text-lg"
+            dangerouslySetInnerHTML={{ __html: htmlDecode(sanitizedHTML) }}
           ></div>
         </div>
       </div>
