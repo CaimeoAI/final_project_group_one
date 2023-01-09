@@ -52,7 +52,6 @@ export default function BasicModal() {
   };
 
   const handleChange = (event) => {
-    // console.log(event.target.checked)
     setObjectModal((currentValue) => ({
       ...currentValue,
       allDay: event.target.checked,
@@ -65,7 +64,6 @@ export default function BasicModal() {
       start: selectedProp.startStr,
       end: selectedProp.startStr,
     }));
-    console.log(objectModal.allDay);
   };
 
   const formatHour = (time) => {

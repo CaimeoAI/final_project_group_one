@@ -3,27 +3,12 @@
 @tailwind utilities;
 
 .fc th {
-  border-top-right-radius: 20px;
+  border-right: none;
 }
 
-.fc-theme-standard .fc-scrollgrid {
-  border-radius: 20px;
-}
-.fc-theme-standard td {
-    border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-
-.fc-toolbar-title {
-  color: white;
-}
-
-.fc-scrollgrid {
+.fc-list {
   background-color: white;
-}
-
-.fc-scroller {
-  /* overflow-y: hidden !important; */
+  border-radius: 20px;
 }
 
 @media (max-width: 768px) {
@@ -31,22 +16,64 @@
     display: none;
   }
 }
-.fc .fc-daygrid-day-top {
-  flex-direction: row;
+.fc-list-table {
+  background-color: rgb(255, 250, 223);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.fc-scroller {
+  border-radius: 20px;
+  /* border: red solid 2px; */
+  background-color: white;
+}
+
+.fc-scrollgrid {
+  border-radius: 20px;
+  background-color: white;
+  border: none;
+}
+
+.fc .fc-button {
+  text-transform: capitalize;
+}
+
+.fc-daygrid-day-number {
+  color: #334954;
+}
+
+.fc-toolbar-title {
+  color: white;
 }
 
 .fc-col-header-cell-cushion {
   color: #152238;
 }
 
-.fc-daygrid-day-number {
-  color: #334954;
-}
-.fc .fc-button {
-  text-transform: capitalize;
-}
-
 .fc .fc-daygrid-day.fc-day-today {
   background-color: rgb(228, 232, 232);
   border-radius: 0;
+}
+
+.fc td:last-child {
+  border-right: none;
+  border-bottom: none;
+}
+.fc .fc-daygrid-day-top {
+  flex-direction: row;
+}
+
+.fc-scroller::-webkit-scrollbar {
+  background: transparent;
+}
+
+.fc-scroller::-webkit-scrollbar-track{
+background: transparent;
+}
+
+/*.fc-scroller {
+  overflow-y: hidden !important; 
+}*/
+
+.fc-event-title{
+  font-size: x-small;
 }

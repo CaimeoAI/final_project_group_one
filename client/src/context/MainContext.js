@@ -9,6 +9,7 @@ export default function MainContextProvider(props) {
   const [showPostFormModal, setShowPostFormModal] = useState(false);
 
   //Calendar States
+  const [deleted, setDeleted] = useState(false);
   const [open, setOpen] = useState(false); // controll the open close modal state
   const [title, setTitle] = useState(null); // control useEffect state in FullCalend.js
   const [start, setStart] = useState(null); // reference state for <TimePicker> Mui element in Modal.js
@@ -22,8 +23,8 @@ export default function MainContextProvider(props) {
     end: undefined,
   }); // model object to create calendar event FullCalend.js
 
-  const [showChatAddContactModal, setShowChatAddContactModal] = useState(false)
-  
+  const [showChatAddContactModal, setShowChatAddContactModal] = useState(false);
+
   //* 02 - FUNCTIONS
 
   return (
@@ -32,14 +33,14 @@ export default function MainContextProvider(props) {
         showPostFormModal,
         setShowPostFormModal,
         currentEvents,
-        showChatAddContactModal, 
+        showChatAddContactModal,
         setShowChatAddContactModal,
         setCurrentEvents,
         open,
         setOpen,
         title,
         setTitle,
-        start, 
+        start,
         setStart,
         end,
         setEnd,
@@ -48,7 +49,9 @@ export default function MainContextProvider(props) {
         selectedProp,
         setSelectedProp,
         objectModal,
-        setObjectModal
+        setObjectModal,
+        deleted,
+        setDeleted,
       }}
     >
       {props.children}
