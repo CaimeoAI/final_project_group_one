@@ -32,7 +32,7 @@ export default function FullCalend() {
   useEffect(() => {
     setTimeout(function () {
       setShowElement(false);
-    }, 2000);
+    }, 20000);
 
     if (selectedProp) {
       const calendarApi = selectedProp.view.calendar;
@@ -74,8 +74,11 @@ export default function FullCalend() {
 
   return (
     <div className=" h-[50%] p-2 md:h-[80%] md:w-[80%] md:pl-4 md:pt-4">
-      {/* {showElement && <Welcome/>} */}
-      {showElement ? <Welcome text={"fade-in"}/>: <Welcome text={"fade-out"}/>}
+      {showElement ? (
+        <Welcome text={"fade-in"} />
+      ) : (
+        <Welcome text={"fade-out"} />
+      )}
       <FullCalendar
         height="100%"
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}

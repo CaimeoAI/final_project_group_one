@@ -79,16 +79,15 @@
 }
 
 .fade-in {
-  margin:10px;
-  background-color: rgb(98, 98, 142);
+ /*  margin: 5px; */
+ /*  background-color: rgba(98, 98, 142, 0.454); */
   transition: opacity 2s ease;
   color: white;
 }
 .fade-out {
-  margin:10px;
-  background-color: rgb(98, 98, 142);
-  /* background-color: red; */
+  /* margin: 5px; */
+  /* background-color: rgba(98, 98, 142, 0.47); */
   opacity: 0;
   transition: opacity 2s ease;
   color: white;
-  }
+}
