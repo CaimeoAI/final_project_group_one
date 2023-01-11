@@ -50,3 +50,30 @@ export const getListOfClasses = async (req, res) => {
   }
 }
 
+//-------------------- GET CLASSES BY FIELD--------------------
+export const getClassesByField = async (req, res) => {
+  const { field } = req.params;
+  try {
+    const classes = await classesModel.find({ field: field });
+    res.status(201).json(classes);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+}
+
+//-------------------- GET CLASSES BY TYPE--------------------
+export const getClassesByType = async (req, res) => {
+  const { type } = req.params;
+  try {
+    const classes = await classesModel
+      .find({ type: type })
+      .populate("students", "name email");
+    res.status(201).json(classes);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+}
