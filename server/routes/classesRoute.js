@@ -2,8 +2,8 @@ import express from "express";
 
 import {
     createClass,
-    getListOfClasses,
-    getClass
+    getClass,
+    getListOfClasses
 } from "../controllers/classesControllers.js";
 
 const router = express.Router();

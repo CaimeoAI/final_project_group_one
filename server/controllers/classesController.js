@@ -2,7 +2,7 @@
 
 import classesModel from "../models/classesModel";
 
-//* CONTROLLER FUNCTIONS
+//* CLASSES CONTROLLER FUNCTIONS
 
 //-------------------- CREATE A CLASS --------------------
 export const createClass = async (req, res) => {
@@ -23,17 +23,6 @@ export const createClass = async (req, res) => {
   }
 }
 
-//-------------------- GET ALL CLASSES --------------------
-export const getListOfClasses = async (req, res) => {
-  try {
-    const allClasses = await classesModel.find();
-    res.status(201).json(allClasses);
-  } catch (error) {
-    res.status(500).json({
-      error: error.message,
-    });
-  }
-}
 
 //-------------------- GET SINGLE CLASS --------------------
 export const getClass = async (req, res) => {
@@ -47,3 +36,17 @@ export const getClass = async (req, res) => {
     });
   }
 }   
+
+
+//-------------------- GET ALL CLASSES --------------------
+export const getListOfClasses = async (req, res) => {
+  try {
+    const allClasses = await classesModel.find();
+    res.status(201).json(allClasses);
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+}
+
