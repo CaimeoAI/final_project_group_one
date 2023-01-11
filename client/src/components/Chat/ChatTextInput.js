@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useContacts } from "../../context/ContactProvider"
 
 
@@ -10,14 +10,17 @@ export default function ChatTextInput() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    sendMessage(JSON.parse(localStorage.getItem('chat-app-currentConversation')).email, text)
-    setText("")
+    if (text !== "") {
+      sendMessage(JSON.parse(localStorage.getItem('chat-app-currentConversation')).email, text)
+      setText("")
+    }
   }
 
-  const enterSubmit  = () => {
-    sendMessage(JSON.parse(localStorage.getItem('chat-app-currentConversation')).email, text)
-    setText("")
-  }
+  // const enterSubmit  = (e) => {
+  //   e.preventDefault()
+  //   sendMessage(JSON.parse(localStorage.getItem('chat-app-currentConversation')).email, text)
+  //   setText("")
+  // }
 
   return (
     <div className="mt-auto 
@@ -32,14 +35,14 @@ export default function ChatTextInput() {
                           bg-transparent 
                           font-bold 
                           outline-none 
-                          text-accent-primary" 
+                          text-accent-primary"
                type="text" 
                onChange={(e) => setText(e.target.value)}
-               onKeyPress={(e) => {
-                if (e.key === "Enter") {
-                  enterSubmit()
-                }
-               }}
+              //  onKeyPress={(e) => {
+              //   if (e.key === "Enter") {
+              //     enterSubmit(e)
+              //   }}}
+
                value={text} 
                placeholder="Enter text..."/>
 

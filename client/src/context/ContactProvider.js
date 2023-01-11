@@ -21,6 +21,10 @@ export function ContactsProvider({ children }) {
         username: ''
     })
 
+    useEffect(() => {
+      return
+    }, [conversations])
+    
     const createConversation = (id) => {
         setConversations(prevConversations => {
             return [...prevConversations, {id: id, messages: []}]
@@ -84,12 +88,3 @@ export function ContactsProvider({ children }) {
         </ContactsContext.Provider>
     )
 }
-
-
-
-// { id: recipientEmail
-//   messages: [ { sender, text }, { sender, text }, { sender, text }]
-// },
-// { id: recipientEmail
-//     messages: [ { sender, text }, { sender, text }, { sender, text }]
-//  },
