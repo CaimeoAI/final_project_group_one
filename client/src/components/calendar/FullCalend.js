@@ -32,7 +32,7 @@ export default function FullCalend() {
   useEffect(() => {
     setTimeout(function () {
       setShowElement(false);
-    }, 20000);
+    }, 20000);// 20 seconds
 
     if (selectedProp) {
       const calendarApi = selectedProp.view.calendar;
