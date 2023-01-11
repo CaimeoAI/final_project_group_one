@@ -31,6 +31,7 @@ export const Login = (props) => {
           console.log(res);
           Context.setUserProfile(res.data.data.user);
           localStorage.setItem("email", res.data.data.user.email);
+          localStorage.setItem("currentCourse", res.data.data.user.course)
           console.log("email", res.data.data.user.email);
           localStorage.setItem("userID", res.data.data.user._id);
           localStorage.setItem("token", res.data.token);

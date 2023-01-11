@@ -14,7 +14,7 @@ const IconsMobile = ({ post, comments }) => {
           flex
           flex-row
           justify-between
-         border-slate-500
+         border-slate-600
           md:hidden 
           border-t
           mt-2
@@ -43,11 +43,11 @@ const IconsMobile = ({ post, comments }) => {
         <div className={`flex flex-row items-center`}>
           <ModeCommentOutlinedIcon
            style = {{fontSize: '20px'}}
-            className={`text-slate-500
+            className={`text-slate-600
               ${styles.hoverIcons} 
               w-[16px] h-[22px] ml-5`}
           />
-          <p className="text-slate-400 font-mono ml-2 text-md">
+          <p className="text-slate-300 font-mono ml-2 text-md">
             {comments}
           </p>
         </div>

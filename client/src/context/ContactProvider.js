@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useState, useEffect } from "react"
 import useLocalStorage from "../components/hooks/useLocalStorage"
 
 const ContactsContext = createContext()
@@ -15,7 +15,7 @@ export function ContactsProvider({ children }) {
 
     const [contacts, setContacts] = useLocalStorage('contacts', [])
 
-    const [selectedContact, setSelectedContact] = useState({
+    const [selectedContact, setSelectedContact] = useLocalStorage('currentConversation', {
         email: '',
         username: ''
     })
@@ -64,13 +64,11 @@ export function ContactsProvider({ children }) {
     }
 
     const sendMessage = (selectedContact, text) => {
-        console.log(selectedContact);
-        addMessage(selectedContact, text, userProfile.email)
+        const myEmail = localStorage.getItem('email')
+        addMessage(selectedContact, text, myEmail)
     }
 
     const messageOrigin = conversations
-
-    console.log(messageOrigin);
 
     return (
         <ContactsContext.Provider value={{

@@ -2,8 +2,11 @@ import ChatGroupSelector from "./ChatGroupSelector";
 import ChatMessage from "./ChatMessage";
 import ChatTextInput from "./ChatTextInput";
 import './ChatFeedCustomScroll.css'
+import { useContacts } from "../../context/ContactProvider";
 
 export default function ChatFeed() {
+
+    const { conversations, selectedContact } = useContacts()
   return (
     <div 
         className="
@@ -29,6 +32,9 @@ export default function ChatFeed() {
         <ChatGroupSelector/>
         
         <div className="overflow-y-scroll">
+
+            <div className=" h-full flex flex-col px-4">
+            </div>
           {/* <ChatMessage
               alignment="text-left flex flex-col"
               name="George"
