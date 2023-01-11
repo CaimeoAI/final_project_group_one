@@ -297,3 +297,4 @@ export const updatePassword = catchAsync(async (req, res, next) => {
 //     next(error);
 //   }
 // };
+
