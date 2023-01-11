@@ -1,9 +1,11 @@
+import { useEffect } from 'react'
 import { useContacts } from '../../context/ContactProvider'
 
 export default function ChatContacts() {
 
   const { contacts, setSelectedContact, conversations } = useContacts()
   
+
   return (
     <div 
         className="
@@ -19,7 +21,21 @@ export default function ChatContacts() {
 
         <ul className="text-left">
             {contacts.map(contact => (
-               <li className="m-4 px-4 py- text-accent-primary hover:bg-hover-primary rounded-full active:bg-gray-900 focus:" key={contact.id} onClick={() => setSelectedContact({email:contact.id, username:contact.name, conversation: conversations?.filter(e => e.id === JSON.parse(localStorage.getItem('chat-app-currentConversation')).email)})}>{contact.name}</li>
+               <li className="m-4
+                              px-4 
+                              py-2 
+                              text-accent-primary 
+                              hover:bg-hover-primary 
+                              rounded-full 
+                              active:bg-grayed-out
+                              focus:" 
+                    key={contact.id} 
+                    onClick={() => setSelectedContact({
+                                          email:contact.id, 
+                                          username:contact.name, 
+                                          conversation: JSON.parse(localStorage.getItem('chat-app-conversations')).filter(e => e.id === JSON.parse(localStorage.getItem('chat-app-currentConversation')).email)
+                                          })}>
+               {contact.name}</li>
             ))}
         </ul>
     </div>

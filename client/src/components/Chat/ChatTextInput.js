@@ -14,6 +14,11 @@ export default function ChatTextInput() {
     setText("")
   }
 
+  const enterSubmit  = () => {
+    sendMessage(JSON.parse(localStorage.getItem('chat-app-currentConversation')).email, text)
+    setText("")
+  }
+
   return (
     <div className="mt-auto 
                     w-full 
@@ -32,7 +37,7 @@ export default function ChatTextInput() {
                onChange={(e) => setText(e.target.value)}
                onKeyPress={(e) => {
                 if (e.key === "Enter") {
-                  handleSubmit()
+                  enterSubmit()
                 }
                }}
                value={text} 

@@ -11,17 +11,14 @@ export const useContacts = () => {
 export function ContactsProvider({ children }) {
 
     const [userProfile, setUserProfile] = useState({})
-    // console.log(userProfile.email);
 
     const [contacts, setContacts] = useLocalStorage('contacts', [])
 
     const [conversations, setConversations] = useLocalStorage('conversations', [])
 
-    console.log(conversations.filter(e => e.id === JSON.parse(localStorage.getItem('chat-app-currentConversation')).email));
     const [selectedContact, setSelectedContact] = useLocalStorage('currentConversation', {
         email: '',
-        username: '',
-        conversation: {}
+        username: ''
     })
 
     const createConversation = (id) => {
