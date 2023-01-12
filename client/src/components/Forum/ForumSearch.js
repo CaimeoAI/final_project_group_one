@@ -19,6 +19,8 @@ const {setSearchInput} = useForum();
         items-center
         shadow-md
         rounded-full
+        mb-4
+        md:mb-0
         py-1.5
         w-full
         pl-4

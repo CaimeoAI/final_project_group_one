@@ -1,25 +1,38 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { HiMenuAlt3 } from "react-icons/hi";
-
 import { RiSettings4Line } from "react-icons/ri";
 import { BsBook, BsCalendar3 } from "react-icons/bs";
 import { FiMessageSquare } from "react-icons/fi";
 import { SlGraduation } from "react-icons/sl";
+import { IoLogOutOutline } from "react-icons/io5";
 
 import { Link } from "react-router-dom";
-import { Avatar } from "@mui/material";
 
 const SidebarNav = () => {
   const menus = [
-    { name: "Calendar", link: "/calendar", icon: BsCalendar3 },
+    { name: "Calendar", link: "/", icon: BsCalendar3 },
     { name: "Learning Support", link: "/learningsupport", icon: BsBook },
     { name: "Academia", link: "/academia", icon: SlGraduation },
     { name: "Chat", link: "/chat", icon: FiMessageSquare },
-
-    { name: "Setting", link: "/", icon: RiSettings4Line },
+    { name: "Setting", link: "/settings", icon: RiSettings4Line },
   ];
+  const logout = { name: "Logout", icon: IoLogOutOutline };
+  const userProfileImg = localStorage.getItem("photo");
+
   const [open, setOpen] = useState(true);
+  const navigateTo = useNavigate();
+
+  const logOut = () => {
+    localStorage.removeItem("email");
+    localStorage.removeItem("userID");
+    localStorage.removeItem("token");
+    localStorage.removeItem("isLogedIn");
+    navigateTo("/login");
+    window.location.reload(false);
+  };
+
   return (
     /* Sidebar Background Color */
 
@@ -35,11 +48,20 @@ const SidebarNav = () => {
           onClick={() => setOpen(!open)}
         />
       </div>
-      <Avatar
-        alt="Remy Sharp"
-        src="/static/images/avatar/1.jpg"
-        className="content-evenly"
-      />
+      
+      <div className="w-10 h-10 rounded-full">
+
+        <img
+          crossOrigin="anonymous"
+          src={userProfileImg}
+          alt=""
+
+          className="w-full h-full rounded-full object-cover"
+
+          
+
+        />
+      </div>
       <div className="mt-4 flex flex-col gap-4 relative ">
         {menus?.map((menu, i) => (
           <Link
@@ -63,12 +85,36 @@ const SidebarNav = () => {
             <h2
               className={`${
                 open && "hidden"
-              } absolute left-48 bg-accent-primary font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
+              } absolute left-48 bg-accent-primary font-semibold whitespace-pre text-text-secondary rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
             >
               {menu?.name}
             </h2>
           </Link>
         ))}
+      </div>
+
+      <div
+        onClick={logOut}
+        className={`mt-4 group flex items-center text-sm  gap-3.5 font-medium p-2 hover:bg-secondary rounded-md text-text-primary cursor-pointer`}
+      >
+        <div>{React.createElement(logout.icon, { size: "20" })}</div>
+        <h2
+          style={{
+            transitionDelay: `${5 + 3}00ms`,
+          }}
+          className={`whitespace-pre duration-500 ${
+            !open && "opacity-0 translate-x-28 overflow-hidden"
+          }`}
+        >
+          {logout.name}
+        </h2>
+        <h2
+          className={`${
+            open && "hidden"
+          } absolute  left-28 bg-accent-primary font-semibold whitespace-pre text-text-secondary rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
+        >
+          {logout.name}
+        </h2>
       </div>
     </div>
   );

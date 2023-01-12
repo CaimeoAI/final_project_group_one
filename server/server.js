@@ -48,6 +48,7 @@ app.use(xss()); // clean all malicious code
 app.use(cors());
 app.use(morgan("dev")); // Developer Information in Terminal showing each request to the server
 
+
 //* ROUTES
 
 // http://localhost:5000/auth

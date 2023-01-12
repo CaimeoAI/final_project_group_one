@@ -102,6 +102,8 @@ export function ForumProvider({ children }) {
   };
 
   const bestPost = () => {
+    console.log('best posts func')
+    console.log([...posts].sort((a, b) => b.likes.length - a.likes.length))
     setPosts([...posts].sort((a, b) => b.likes.length - a.likes.length));
   };
 
@@ -115,21 +117,21 @@ export function ForumProvider({ children }) {
 
   const votingIconColor = (arr, vote) => {
     if (arr?.includes(user) && vote === "likes") {
-      return "text-green-600 hover:fill-green-700 ";
+      return "text-accent-secondary hover:fill-hover-secondary hover:text-hover-secondary";
     } else if (arr?.includes(user) && vote === "dislikes") {
-      return "text-blue-400  hover:fill-blue-500";
+      return "text-accent-tertiary hover:text-hover-tertiary  hover:fill-hover-tertiary";
     } else {
-      return "text-slate-500 hover:fill-slate-400";
+      return "text-grayed-out hover:fill-hover-primary hover:text-hover-tertiary";
     }
   };
 
   const votingNumColor = (post) => {
     if (post?.likes?.includes(user)) {
-      return "text-green-700";
+      return "text-accent-secondary";
     } else if (post?.dislikes?.includes(user)) {
-      return "text-blue-400";
+      return "text-accent-tertiary";
     } else {
-      return "text-gray-200";
+      return "text-grayed-out";
     }
   };
 

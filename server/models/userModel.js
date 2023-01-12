@@ -6,7 +6,7 @@ import bcrypt from "bcrypt";
 const userSchema = mongoose.Schema({
   name: {
     type: String,
-    require: [true, "Please tell us your name!"],
+    required: [true, "Please tell us your name!"],
   },
   email: {
     type: String,
@@ -18,10 +18,12 @@ const userSchema = mongoose.Schema({
   },
   course: {
     type: String,
-    require: [true, "Please choose your course!"],
+    required: [true, "Please choose your course!"],
   },
-  photo: String,
-
+  photo: {
+    type: String,
+    default: "default.jpg",
+  },
   password: {
     type: String,
     required: [true, "Please provide a password"],

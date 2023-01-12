@@ -20,7 +20,7 @@ const CreatePostModal = ({ getAllPost }) => {
   const { setShowPostFormModal } = useContext(MainContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [topic, setTopic] = useState("Choose a field");
+  const [topic, setTopic] = useState("Select a field");
   const [val, setVal] = useState(true);
 
   const createPost = async () => {
@@ -50,7 +50,6 @@ const CreatePostModal = ({ getAllPost }) => {
 
   useEffect(() => {
     checkValability();
-    console.log(val);
   }, [body, title, topic]);
 
   return (
@@ -61,7 +60,7 @@ const CreatePostModal = ({ getAllPost }) => {
       <div
         className="
                 shadow-2xl
-                bg-secondary
+                bg-primary
                 w-3/4 
                 md:w-[62%]
                 lg:w-[52%]
@@ -76,8 +75,8 @@ const CreatePostModal = ({ getAllPost }) => {
                 "
       >
         <div className={`w-full border-b border-slate-700 mb-4`}>
-          <h1 className="text-lg md:text-2xl pb-3 text-slate-200">
-            Create a post
+          <h1 className="text-lg md:text-2xl pb-3 text-text-primary">
+            Create Post
           </h1>
         </div>
         <div className="">
@@ -85,10 +84,12 @@ const CreatePostModal = ({ getAllPost }) => {
         </div>
 
         <div
-          className={`bg-slate-600 w-full flex flex-col items-center p-3 pb-20 md:pb-14 lg:py-5 lg:pb-10 rounded`}
+          className={`bg-secondary w-full flex flex-col items-center p-3 pb-20 md:pb-14 lg:py-5 lg:pb-10 rounded`}
         >
           <Input
-            className={"w-[97%] mb-2 pl-2 placeholder:text-slate-800 placeholder:font-mono placeholder:text-[15px]"}
+            className={
+              "w-[97%] mb-2 pl-2 placeholder:text-grayed-out placeholder:text-[14px]"
+            }
             placeholder={`Title`}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -96,11 +97,10 @@ const CreatePostModal = ({ getAllPost }) => {
 
           <ReactQuill
             modules={modulesReactQuill}
-            placeholder={`What are the details of your problem? Introduce the problem and expand on what you put in the title. `}
             theme="snow"
             value={body}
             onChange={setBody}
-            className="w-[97%] h-[250px] md:h-[300px] lg:h-[300px] rounded mb-6 text-slate-200"
+            className="w-[97%] h-[250px] md:h-[300px] lg:h-[250px] rounded mb-6 text-text-primary text-md"
           />
         </div>
 
@@ -127,7 +127,7 @@ const CreatePostModal = ({ getAllPost }) => {
               setTopic("Choose a field");
             }}
             className={
-              "inline-block px-6 py-2.5 bg-accent-tertiary text-text-primary font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-grayed-out hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-slate-800 active:shadow-lg transition duration-150 ease-in-out"
+              "inline-block px-6 py-2.5 bg-accent-tertiary text-text-primary font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-hover-tertiary hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-slate-800 active:shadow-lg transition duration-150 ease-in-out"
             }
           >
             Cancel
