@@ -9,7 +9,7 @@ import {
   updatePassword,
 } from "../controllers/authController.js";
 import { updateMe, deleteMe } from "../controllers/userController.js";
-//? CONTROLLER IMPORTS
+//? CONTROLLER). IMPORTS
 // import { registerUser, loginUser } from "../controllers/authController.js";
 
 //* ROUTER
