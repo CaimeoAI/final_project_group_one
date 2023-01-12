@@ -23,7 +23,6 @@
 }
 .fc-scroller {
   border-radius: 20px;
-  /* border: red solid 2px; */
   background-color: white;
 }
 
@@ -70,6 +69,14 @@
   background: transparent;
 }
 
+.fc-scroller::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.fc-scroller::-webkit-scrollbar-thumb {
+  display: none;
+}
+
 /*.fc-scroller {
   overflow-y: hidden !important; 
 }*/
@@ -79,14 +86,10 @@
 }
 
 .fade-in {
- /*  margin: 5px; */
- /*  background-color: rgba(98, 98, 142, 0.454); */
   transition: opacity 2s ease;
   color: white;
 }
 .fade-out {
-  /* margin: 5px; */
-  /* background-color: rgba(98, 98, 142, 0.47); */
   opacity: 0;
   transition: opacity 2s ease;
   color: white;
