@@ -21,10 +21,16 @@ export const Register = (props) => {
     return setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
 
+
+  
+
+
+
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
+
 
       fileReader.onload = () => {
         resolve(fileReader.result);

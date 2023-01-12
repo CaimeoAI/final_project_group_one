@@ -48,13 +48,18 @@ const SidebarNav = () => {
           onClick={() => setOpen(!open)}
         />
       </div>
+      
+      <div className="w-10 h-10 rounded-full">
 
-      <div className="w-12 h-12 rounded-full">
         <img
           crossOrigin="anonymous"
           src={userProfileImg}
           alt=""
-          className="w-full h-full rounded-full"
+
+          className="w-full h-full rounded-full object-cover"
+
+          
+
         />
       </div>
       <div className="mt-4 flex flex-col gap-4 relative ">

@@ -11,6 +11,7 @@ import Settings from "./pages/Settings";
 const App = () => {
   return (
     <div className="width-full h-screen flex relative">
+    
       {localStorage.getItem("isLogedIn") ? (
         <>
           <SidebarNav className="fixed" />

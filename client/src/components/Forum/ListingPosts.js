@@ -11,9 +11,6 @@ import PostedBySection from "./PostComponent/PostedBySection";
 //! 03 - INSTALL
 import DOMPurify from "dompurify";
 
-//? 04 - STYLING
-import { styles } from "./styles";
-
 const ListingPosts = ({ post }) => {
   const { htmlDecode } = useForum();
 
@@ -28,12 +25,13 @@ const ListingPosts = ({ post }) => {
       p-4
       md:p-0
       border
+      shadow-md
       border-slate-700
-      hover:border-grayed-out
+      hover:border-hover-primary
       rounded-lg
       md:rounded-md
       hover:transition hover:duration-90 ease-in hover:ease-out
-      mb-[14px]
+      mb-[11px]
       md:grid
       md:grid-cols-[60px_2fr]
       lg:grid-cols-[65px_2fr]
@@ -46,18 +44,21 @@ const ListingPosts = ({ post }) => {
         <div className="md:pl-4 md:pt-2">
           <div className="min-h-[100px]">
             <h1
-              className={`  text-grayed-out mb-2 font-bold cursor-pointer md:text-lg ${styles.hoverText}`}
+              className={`text-text-primary mb-2 font-bold cursor-pointer md:text-lg hover:text-slate-200`}
             >
               {post.title}
             </h1>
 
             <div
               className={`
-            ${styles.textPost} 
+            text-sm
+            md:text-md
+            text-slate-300
             overflow-hidden 
             mb-2
             md:mb-1 
-            lg:pr-2`}>
+            lg:pr-2`}
+            >
               <div
                 className="inAllPosts"
                 dangerouslySetInnerHTML={{ __html: htmlDecode(sanitizedHTML) }}

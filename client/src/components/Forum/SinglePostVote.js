@@ -22,14 +22,14 @@ const SinglePostVote = ({ post }) => {
     >
       <UpVote
         onClick={() => voting("like", post, id)}
-        className={`${votingIconColor(post?.likes,"likes")}} mb-2 ml-1.5 md:ml-0`}
+        className={`${votingIconColor(post?.likes,"likes")}} mb-2 ml-1.5 md:ml-0 cursor-pointer`}
       />
       <div className={`${votingNumColor(post)} text-md md:text-lg  font-mono w-8 h-8 flex justify-center items-center `}>
         {voteNum(post)}
       </div>
       <DownVote
         onClick={() => voting("dislike", post, id)}
-        className={`${votingIconColor(post?.dislikes,"dislikes")}}  mt-2 ml-1.5 md:ml-0`}
+        className={`${votingIconColor(post?.dislikes,"dislikes")}}  mt-2 ml-1.5 md:ml-0 cursor-pointer`}
       />
     </div>
   );
