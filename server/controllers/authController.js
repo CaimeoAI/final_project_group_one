@@ -6,7 +6,6 @@ import AppError from "../utils/appError.js";
 
 //? ENCRYPTION, AUTHENTICATION AND VERIFICATION IMPORTS
 import crypto from "crypto";
-import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { promisify } from "util";
 
@@ -42,16 +41,24 @@ const createSendToken = (user, statusCode, res) => {
 //------------------- SIGN UP ---------------------
 
 export const signup = catchAsync(async (req, res, next) => {
+  //console.log(req.body.photo)
+
+  const photo =
+    req.body.photo === ""
+      ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+      : req.body.photo;
+
   const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
     course: req.body.course,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
+    photo,
   });
 
   createSendToken(newUser, 201, res);
-})
+});
 
 //------------------- LOG IN ----------------------
 
@@ -208,93 +215,3 @@ export const updatePassword = catchAsync(async (req, res, next) => {
   //4)Log user in, send JWT
   createSendToken(user, 200, res);
 });
-
-// //* CONTROLLER FUNCTIONS
-
-// // http://localhost:5000/auth/register
-// export const registerUser = async (req, res, next) => {
-//   try {
-//     const { email, password } = req.body;
-//     if (!email) {
-//       return res.json({ message: "Please provide an email address" });
-//     }
-
-//     const userFound = await User.findOne({ email });
-
-//     if (userFound)
-//       return res.status(401).json({
-//         status: "failed",
-//         message: "User with this email already exists",
-//       });
-
-//     //* PASSWORD ENCRYPTION
-//     const saltRound = 15; // Determines salt rounds
-//     const salt = await bcrypt.genSalt(saltRound); // Encyrption based on salt rounds
-
-//     const hashpw = await bcrypt.hash(password, salt); // Hash Process
-//     req.body.password = hashpw;
-
-//     //* DATABASE SAVE
-//     const user = new User(req.body); // Taking frontend inputs and saving them in a variable
-//     await user.save(); // Saving the above variable data into the database
-
-//     //*TOKEN CREATION
-
-//     const payload = {
-//       id: user._id,
-//       email: user.email,
-//     };
-
-//     jwt.sign(
-//       payload,
-//       process.env.JWT_SECRET,
-//       { expiresIn: "5d" },
-//       (error, token) => {
-//         if (error) throw error;
-
-//         res.status(200).json({ status: "success", message: "Account created" });
-//       }
-//     );
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-
-// // http://localhost:5000/auth/login
-// export const loginUser = async (req, res, next) => {
-//   try {
-//     const { email, password } = req.body;
-//     const currentUser = await User.findOne({ email });
-
-//     //* EMAIL VERIFICATION
-//     if (!currentUser)
-//       return res
-//         .status(400)
-//         .json({ status: "failed", message: "Email or Password wrong" });
-
-//     //* PASSWORD VERIFICATION
-//     const verified = await bcrypt.compare(password, currentUser.password);
-
-//     if (!verified)
-//       return res
-//         .status(400)
-//         .json({ status: "failed", message: "Email or Password wrong" });
-
-//     const payLoad = {
-//       email,
-//     };
-
-//     const token = jwt.sign(payLoad, process.env.JWT_SECRET, {
-//       expiresIn: "5d",
-//     });
-
-//     return res.status(200).json({
-//       status: "success",
-//       message: `User with email ${currentUser.email} successfully logged in`,
-//       data: { email: currentUser.email, token },
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// };
-
