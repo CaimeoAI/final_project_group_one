@@ -11,7 +11,7 @@ export const createPost = async (req, res) => {
   const { title, body, topic } = req.body;
 
   const user = await UserModel.findById(req.id);
-  
+
   try {
     const newPost = new Post({
       title,
@@ -36,9 +36,9 @@ export const getListOfPosts = async (req, res) => {
     const allPosts = await Post.find()
       .populate({
         path: "comments",
-        populate: { path: "author", select: "email" },
+        populate: { path: "author", select: "name photo" },
       })
-      .populate("author", "name _id");
+      .populate("author", "name _id photo");
     res.status(201).json(allPosts);
   } catch (error) {
     res.status(500).json({
@@ -54,9 +54,9 @@ export const getPost = async (req, res) => {
     const post = await Post.findById(id)
       .populate({
         path: "comments",
-        populate: { path: "author", select: "email" },
+        populate: { path: "author", select: "name photo" },
       })
-      .populate("author", "name _id");
+      .populate("author", "name _id photo");
     res.status(201).json(post);
   } catch (error) {
     res.status(500).json({

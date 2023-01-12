@@ -10,8 +10,7 @@ import NewReleasesOutlinedIcon from "@mui/icons-material/NewReleasesOutlined";
 import TagOutlinedIcon from "@mui/icons-material/TagOutlined";
 
 const FilterBtn = () => {
-  const { latestPosts, bestPost, hotPosts, getAllPost, filterBy, setFilterBy } =
-    useForum();
+  const { latestPosts, bestPost, hotPosts, getAllPost, filterBy, setFilterBy } = useForum();
   const [active, setActive] = useState("");
   const fileds = ["webdev", "AWS", "onlinemarketing", "python"];
 
@@ -26,7 +25,7 @@ const FilterBtn = () => {
           bestPost();
           setActive("best");
         }}
-        className={`ml-2 lg:ml-6 cursor-pointer hover:bg-slate-700 px-3 py-1.5 rounded-full  hover:text-slate-300 ${
+        className={`ml-2 lg:ml-6 cursor-pointer hover:bg-slate-700 px-3 py-1.5 rounded-full  hover:text-text-primary ${
           active === "best" && "bg-slate-700"
         }`}
       >
@@ -38,7 +37,7 @@ const FilterBtn = () => {
           hotPosts();
           setActive("hot");
         }}
-        className={`ml-2 lg:ml-2 cursor-pointer hover:bg-slate-700 px-3 py-1.5 rounded-full  hover:text-slate-300 ${
+        className={`ml-2 lg:ml-2 cursor-pointer hover:bg-slate-700 px-3 py-1.5 rounded-full  hover:text-text-primary ${
           active === "hot" && "bg-slate-700"
         }`}
       >
@@ -50,7 +49,7 @@ const FilterBtn = () => {
           latestPosts();
           setActive("latest");
         }}
-        className={`ml-2 lg:ml-2 cursor-pointer hover:bg-slate-700 px-3 py-1.5 rounded-full  hover:text-slate-300 ${
+        className={`ml-2 lg:ml-2 cursor-pointer hover:bg-slate-700 px-3 py-1.5 rounded-full  hover:text-text-primary ${
           active === "latest" && "bg-slate-700"
         }`}
       >
@@ -60,11 +59,12 @@ const FilterBtn = () => {
       <div className="md:hidden lg:flex text-md font-semibold ml-3 border-l border-slate-500">
         {fileds.map((field, id) => (
           <div
+            key={id}
             onClick={() => {
               setActive(field);
               setFilterBy(field);
             }}
-            className={`ml-2 cursor-pointer  hover:bg-slate-700 px-2.5 py-1.5 rounded-lg  hover:text-slate-300 ${
+            className={`ml-2 cursor-pointer  hover:bg-slate-700 px-2.5 py-1.5 rounded-lg  hover:text-text-primary ${
               active === field && "bg-slate-700"
             }`}
           >
