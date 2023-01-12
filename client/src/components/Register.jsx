@@ -120,6 +120,7 @@ export const Register = (props) => {
             placeholder="name"
             id="name"
             name="name"
+            minLength="8"
             onChange={(e) => updateUserDetails(e)}
           />
           <input
@@ -193,6 +194,7 @@ export const Register = (props) => {
             placeholder="password"
             id="password"
             name="password"
+            minLength="8"
             onChange={(e) => updateUserDetails(e)}
           />
           <input
@@ -211,6 +213,7 @@ export const Register = (props) => {
             placeholder="confirm password"
             id="passwordConfirm"
             name="passwordConfirm"
+            minLength="8"
             onChange={(e) => updateUserDetails(e)}
           />
           <button
