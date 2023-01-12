@@ -8,14 +8,9 @@ import {
   signup,
   updatePassword,
 } from "../controllers/authController.js";
-import {
-  updateMe,
-  deleteMe,
-  uploadUserPhoto,
-  resizeUserPhoto,
-} from "../controllers/userController.js";
-//? CONTROLLER IMPORTS
-// import { registerUser, loginUser } from "../controllers/authController.js";
+
+import { updateMe, deleteMe } from "../controllers/userController.js";
+//? CONTROLLER). IMPORTS
 
 //* ROUTER
 const router = express.Router();
