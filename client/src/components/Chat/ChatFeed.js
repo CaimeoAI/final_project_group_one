@@ -1,11 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
 import ChatGroupSelector from "./ChatGroupSelector";
 import ChatTextInput from "./ChatTextInput";
+import ChatMessage from "./ChatMessage";
+
 import './ChatFeedCustomScroll.css'
-import { useContacts } from "../../context/ContactProvider";
 
-export default function ChatFeed() {
 
-    const { conversations, selectedContact } = useContacts()
+export default function ChatFeed(props) {
+
 
   return (
     <div 
@@ -33,20 +36,21 @@ export default function ChatFeed() {
         
         <div className="overflow-y-scroll">
 
-            <div className=" h-full flex flex-col px-4">
-                {JSON.parse(localStorage.getItem('chat-app-conversations'))?.filter(e => e.id === JSON.parse(localStorage.getItem('chat-app-currentConversation')).email)[0]?.messages?.map( message => 
-                        <div key={message.index} className={"px-4 m-4 text-sm " + "text-left"}>
-                            <h3 className={"text-left"}>YOU</h3>
-                            <p 
-                                className={"p-3 px-6 w-fit m-2 rounded-[25px] " + "text-left"}  
-                                style={{backgroundColor: "#6F76F8", color: "white"}}>{message.text}</p>
-                        </div>)}
+            <div className="h-full flex flex-col px-4">
 
+                {/* <ChatMessage selectedConversation={props.selectedConversation}/> */}
+
+                {props.selectedConversation?.map( message => 
+                    <div key={message.index} className={"flex flex-col px-4 m-2 text-sm " + "text-right"}>
+                    {message.sender === localStorage.getItem('email')? <h3 className="mx-2 text-right">YOU</h3> : <h3 className="mx-2 text-left">{JSON.parse(localStorage.getItem('chat'))}</h3>}
+                    <p className={"p-3 px-6 w-fit m-2 rounded-[25px] " + "text-left ml-auto"}  
+                    style={{backgroundColor: "#6F76F8", color: "white"}}>{message.text}</p>
+                </div>)}
             </div>
 
         </div>
 
-        <ChatTextInput/>
+        <ChatTextInput messageToggler={props.messageToggler} />
     </div>
   )
 }

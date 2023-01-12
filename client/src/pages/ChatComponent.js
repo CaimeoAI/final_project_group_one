@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import ChatAddContact from "../components/Chat/ChatAddContact.js";
 import ChatSearch from "../components/Chat/ChatSearch.js";
 import ChatContacts from "../components/Chat/ChatContacts.js";
@@ -5,6 +6,21 @@ import ChatFeed from "../components/Chat/ChatFeed.js";
 import AddContactModal from "../components/Chat/AddContactModal.js";
 
 export default function ChatComponent() {
+
+    const [messageSent, setMessageSent] = useState(false)
+
+    const [selectedConversation, setSelectedConversation] = useState([])
+
+    const messageToggler = () => {
+        console.log('Message Toggler called', messageSent)
+        setMessageSent(oldstate => !oldstate)
+    }
+
+    useEffect(() => {
+        console.log('Chatfeed rerendered');
+        setSelectedConversation(JSON.parse(localStorage.getItem('chat-app-conversations'))?.filter(e => e.id === JSON.parse(localStorage.getItem('chat-app-currentConversation')).email)[0]?.messages)
+    }, [messageSent])
+
     return (
         <div 
             className="
@@ -25,7 +41,7 @@ export default function ChatComponent() {
                     <ChatContacts/>
                 </div>
                 
-                <ChatFeed/>
+                <ChatFeed messageToggler={messageToggler} selectedConversation={selectedConversation}/>
                 <AddContactModal/>
         </div>
     )

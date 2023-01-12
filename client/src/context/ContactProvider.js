@@ -3,7 +3,6 @@ import useLocalStorage from "../components/hooks/useLocalStorage"
 
 const ContactsContext = createContext()
 
-
 export const useContacts = () => {
     return useContext(ContactsContext)
 }
@@ -20,10 +19,6 @@ export function ContactsProvider({ children }) {
         email: '',
         username: ''
     })
-
-    useEffect(() => {
-      return
-    }, [conversations])
     
     const createConversation = (id) => {
         setConversations(prevConversations => {
@@ -71,8 +66,6 @@ export function ContactsProvider({ children }) {
         addMessage(selectedContact, text, myEmail)
     }
 
-    const messageOrigin = conversations
-
     return (
         <ContactsContext.Provider value={{
             contacts,
@@ -82,7 +75,6 @@ export function ContactsProvider({ children }) {
             sendMessage,
             setUserProfile,
             userProfile,
-            messageOrigin
         }}>
             { children }
         </ContactsContext.Provider>
