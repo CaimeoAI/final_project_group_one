@@ -8,11 +8,10 @@ import {
   signup,
   updatePassword,
 } from "../controllers/authController.js";
-import {
-  updateMe,
-  deleteMe,
-} from "../controllers/userController.js";
+
 //? CONTROLLER IMPORTS
+
+import { updateMe, deleteMe } from "../controllers/userController.js";
 
 
 //* ROUTER
@@ -26,14 +25,15 @@ router.route("/login").post(login);
 router.route("/forgotPassword").post(forgotPassword);
 router.route("/resetPassword/:token").patch(resetPassword);
 
-router.route("/updateMyPassword").patch(protect, updatePassword);
-
 //User Routers
+
 router
   .route("/updateMe")
   .patch(protect, updateMe);
 router.route("/deleteMe").delete(protect, deleteMe);
 
+
+router.route("/updateMyPassword").patch(protect, updatePassword);
 
 
 export default router;

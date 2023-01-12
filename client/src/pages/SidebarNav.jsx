@@ -10,7 +10,6 @@ import { IoLogOutOutline } from "react-icons/io5";
 
 import { Link } from "react-router-dom";
 
-
 const SidebarNav = () => {
   const menus = [
     { name: "Calendar", link: "/", icon: BsCalendar3 },
@@ -51,11 +50,16 @@ const SidebarNav = () => {
       </div>
       
       <div className="w-10 h-10 rounded-full">
+
         <img
           crossOrigin="anonymous"
           src={userProfileImg}
           alt=""
+
           className="w-full h-full rounded-full object-cover"
+
+          
+
         />
       </div>
       <div className="mt-4 flex flex-col gap-4 relative ">

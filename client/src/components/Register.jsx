@@ -5,7 +5,6 @@ import RegisterImage from "../assets/registration.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import UploadAndDisplayImage from "./UploadAndDisplayImage";
 
-
 export const Register = (props) => {
   const navigateTo = useNavigate();
   const [userDetails, setUserDetails] = useState({
@@ -22,10 +21,16 @@ export const Register = (props) => {
     return setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
 
+
+  
+
+
+
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
+
 
       fileReader.onload = () => {
         resolve(fileReader.result);
