@@ -32,7 +32,7 @@ export default function FullCalend() {
   useEffect(() => {
     setTimeout(function () {
       setShowElement(false);
-    }, 20000);// 20 seconds
+    }, 20000); // 20 seconds
 
     if (selectedProp) {
       const calendarApi = selectedProp.view.calendar;
@@ -62,9 +62,9 @@ export default function FullCalend() {
     }
   }, [title, showElement]);
 
-  const handleDateClick = async (selected) => {
+  const handleDateClick = (selected) => {
     setSelectedProp(selected);
-    await handleOpen();
+    handleOpen(); 
   };
 
   const handleEventClick = (selected) => {
