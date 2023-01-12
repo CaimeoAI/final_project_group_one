@@ -1,24 +1,19 @@
-import React, { useState } from "react";
-import LoginImage from "../assets/login.jpg";
+/* eslint-disable*/
+import { useState } from "react";
 import axios from "axios";
-import { useContacts } from "../context/ContactProvider.js";
+import LoginImage from "../assets/login.jpg";
+import toast, { Toaster } from "react-hot-toast";
 
 export const Login = (props) => {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
-  })
+  });
 
-  const Context = useContacts();
+  //const Context = useContacts();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    //! Gives error 400 Bad Request
-    // setUserData({
-    //   email: e.target.email.value,
-    //   password: e.target.password.value,
-    // });
 
     if (userData.email !== "" || userData.email !== undefined) {
       axios
@@ -27,20 +22,47 @@ export const Login = (props) => {
           password: e.target.password.value,
         })
         .then((res) => {
-          console.log("response from backend", res);
-          console.log(res);
-          Context.setUserProfile(res.data.data.user);
+          console.log("LOGIN response from backend", res);
           localStorage.setItem("email", res.data.data.user.email);
-          console.log("email", res.data.data.user.email);
           localStorage.setItem("userID", res.data.data.user._id);
           localStorage.setItem("token", res.data.token);
+          localStorage.setItem("photo", res.data.data.user.photo);
+          if (res.data.status === "success") {
+            //console.log("photo", res.data.data.user.photo);
+            localStorage.setItem("isLogedIn", true);
+            toast.success("Logged in successfully!");
+            window.setTimeout(() => {
+              location.assign("/");
+            });
+          }
+          // Context.setUserProfile(res.data.data.user);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          toast.error(error.response.data.message);
+        });
     }
-  }
+  };
 
   return (
     <div className="lg:flex flex-row-reverse">
+      <Toaster
+        toastOptions={{
+          success: {
+            style: {
+              boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+              color: "#111827",
+              padding: "15px 25px",
+            },
+          },
+          error: {
+            style: {
+              boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+              color: "#111827",
+              padding: "15px 25px",
+            },
+          },
+        }}
+      />
       <div className="flex flex-col text-center text-text-primary w-screen h-screen bg-primary lg:w-1/2 justify-center">
         <form
           className="flex flex-col flex-nowrap md:flex  justify-center items-center"
@@ -96,7 +118,9 @@ export const Login = (props) => {
             LOGIN
           </button>
         </form>
-        <button className="mt-4 underline text-text-primary">Forgot your password? </button>
+        <button className="mt-4 underline text-text-primary">
+          Forgot your password?{" "}
+        </button>
         <button
           className="mt-10 underline text-text-primary"
           onClick={() => props.onFormSwitch("register")}
