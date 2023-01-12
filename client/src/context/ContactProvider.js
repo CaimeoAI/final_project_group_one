@@ -1,8 +1,7 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useState, useEffect } from "react"
 import useLocalStorage from "../components/hooks/useLocalStorage"
 
 const ContactsContext = createContext()
-
 
 export const useContacts = () => {
     return useContext(ContactsContext)
@@ -11,17 +10,16 @@ export const useContacts = () => {
 export function ContactsProvider({ children }) {
 
     const [userProfile, setUserProfile] = useState({})
-    // console.log(userProfile.email);
 
     const [contacts, setContacts] = useLocalStorage('contacts', [])
 
-    const [selectedContact, setSelectedContact] = useState({
+    const [conversations, setConversations] = useLocalStorage('conversations', [])
+
+    const [selectedContact, setSelectedContact] = useLocalStorage('currentConversation', {
         email: '',
         username: ''
     })
-
-    const [conversations, setConversations] = useLocalStorage('conversations', [])
-
+    
     const createConversation = (id) => {
         setConversations(prevConversations => {
             return [...prevConversations, {id: id, messages: []}]
@@ -64,13 +62,9 @@ export function ContactsProvider({ children }) {
     }
 
     const sendMessage = (selectedContact, text) => {
-        console.log(selectedContact);
-        addMessage(selectedContact, text, userProfile.email)
+        const myEmail = localStorage.getItem('email')
+        addMessage(selectedContact, text, myEmail)
     }
-
-    const messageOrigin = conversations
-
-    console.log(messageOrigin);
 
     return (
         <ContactsContext.Provider value={{
@@ -81,18 +75,8 @@ export function ContactsProvider({ children }) {
             sendMessage,
             setUserProfile,
             userProfile,
-            messageOrigin
         }}>
             { children }
         </ContactsContext.Provider>
     )
 }
-
-
-
-// { id: recipientEmail
-//   messages: [ { sender, text }, { sender, text }, { sender, text }]
-// },
-// { id: recipientEmail
-//     messages: [ { sender, text }, { sender, text }, { sender, text }]
-//  },

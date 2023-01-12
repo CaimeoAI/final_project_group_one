@@ -1,9 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
 import ChatGroupSelector from "./ChatGroupSelector";
-import ChatMessage from "./ChatMessage";
 import ChatTextInput from "./ChatTextInput";
+import ChatMessage from "./ChatMessage";
+
 import './ChatFeedCustomScroll.css'
 
-export default function ChatFeed() {
+
+export default function ChatFeed(props) {
+
+
   return (
     <div 
         className="
@@ -29,101 +35,22 @@ export default function ChatFeed() {
         <ChatGroupSelector/>
         
         <div className="overflow-y-scroll">
-          {/* <ChatMessage
-              alignment="text-left flex flex-col"
-              name="George"
-              message="Hi"
-              color="#6F76F8"
-              text="white"/>
-          <ChatMessage
-              alignment="text-right flex flex-col items-end"
-              name="Melanie"
-              message="Hi, how are you doing?"
-              color="#D9D9D9"
-              text="black"/>
-          <ChatMessage
-              alignment="text-left flex flex-col"
-              name="George"
-              message="Fine, thanks."
-              color="#6F76F8"
-              text="white"/>
 
-          <ChatMessage
-              alignment="text-right flex flex-col items-end"
-              name="Melanie"
-              message="Hi, how are you doing?"
-              color="#D9D9D9"
-              text="black"/>
-          <ChatMessage
-              alignment="text-left flex flex-col"
-              name="George"
-              message="Fine, thanks."
-              color="#6F76F8"
-              text="white"/>
-          <ChatMessage
-              alignment="text-right flex flex-col items-end"
-              name="Melanie"
-              message="Hi, how are you doing?"
-              color="#D9D9D9"
-              text="black"/>
-          <ChatMessage
-              alignment="text-left flex flex-col"
-              name="George"
-              message="Fine, thanks."
-              color="#6F76F8"
-              text="white"/>
-          <ChatMessage
-              alignment="text-right flex flex-col items-end"
-              name="Melanie"
-              message="Hi, how are you doing?"
-              color="#D9D9D9"
-              text="black"/>
-          <ChatMessage
-              alignment="text-left flex flex-col"
-              name="George"
-              message="Fine, thanks."
-              color="#6F76F8"
-              text="white"/>
-          <ChatMessage
-              alignment="text-right flex flex-col items-end"
-              name="Melanie"
-              message="Hi, how are you doing?"
-              color="#D9D9D9"
-              text="black"/>
-          <ChatMessage
-              alignment="text-left flex flex-col"
-              name="George"
-              message="Fine, thanks."
-              color="#6F76F8"
-              text="white"/>
-          <ChatMessage
-              alignment="text-right flex flex-col items-end"
-              name="Melanie"
-              message="Hi, how are you doing?"
-              color="#D9D9D9"
-              text="black"/>
-          <ChatMessage
-              alignment="text-left flex flex-col"
-              name="George"
-              message="Fine, thanks."
-              color="#6F76F8"
-              text="white"/>
-          <ChatMessage
-              alignment="text-right flex flex-col items-end"
-              name="Melanie"
-              message="Hi, how are you doing?"
-              color="#D9D9D9"
-              text="black"/>
-          <ChatMessage
-              alignment="text-left flex flex-col"
-              name="Jude"
-              message="Hello World"
-              color="#6F76F8"
-              text="white"/> */}
+            <div className="h-full flex flex-col px-4">
+
+                {/* <ChatMessage selectedConversation={props.selectedConversation}/> */}
+
+                {props.selectedConversation?.map( message => 
+                    <div key={message.index} className={"flex flex-col px-4 m-2 text-sm " + "text-right"}>
+                    {message.sender === localStorage.getItem('email')? <h3 className="mx-2 text-right">YOU</h3> : <h3 className="mx-2 text-left">{JSON.parse(localStorage.getItem('chat'))}</h3>}
+                    <p className={"p-3 px-6 w-fit m-2 rounded-[25px] " + "text-left ml-auto"}  
+                    style={{backgroundColor: "#6F76F8", color: "white"}}>{message.text}</p>
+                </div>)}
+            </div>
 
         </div>
 
-        <ChatTextInput/>
+        <ChatTextInput messageToggler={props.messageToggler} />
     </div>
   )
 }
