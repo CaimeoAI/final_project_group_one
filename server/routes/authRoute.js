@@ -8,9 +8,11 @@ import {
   signup,
   updatePassword,
 } from "../controllers/authController.js";
-import { updateMe, deleteMe } from "../controllers/userController.js";
+
 //? CONTROLLER IMPORTS
-// import { registerUser, loginUser } from "../controllers/authController.js";
+
+import { updateMe, deleteMe } from "../controllers/userController.js";
+
 
 //* ROUTER
 const router = express.Router();
@@ -18,15 +20,20 @@ const router = express.Router();
 //Authorization Routers
 router.route("/signup").post(signup);
 router.route("/login").post(login);
+// Necessary to create the Logout
+
 router.route("/forgotPassword").post(forgotPassword);
 router.route("/resetPassword/:token").patch(resetPassword);
 
+//User Routers
+
+router
+  .route("/updateMe")
+  .patch(protect, updateMe);
+router.route("/deleteMe").delete(protect, deleteMe);
+
+
 router.route("/updateMyPassword").patch(protect, updatePassword);
 
-//User Routers
-router.route("/updateMe").patch(protect, updateMe);
-router.route("/deleteMe").delete(protect, deleteMe);
-// router.route("/login").post(loginUser);
-// router.route("/register").post(registerUser);
 
 export default router;

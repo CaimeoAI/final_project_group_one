@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -7,6 +7,7 @@ import listPlugin from "@fullcalendar/list";
 import { MainContext } from "../../context/MainContext";
 import Modal from "../calendar/Modal";
 import ModalDeleted from "./ModalDeleted";
+import Welcome from "./Welcome";
 
 export default function FullCalend() {
   const {
@@ -26,8 +27,13 @@ export default function FullCalend() {
   } = useContext(MainContext);
 
   const handleOpen = () => setOpen(true);
+  const [showElement, setShowElement] = useState(true);
 
   useEffect(() => {
+    setTimeout(function () {
+      setShowElement(false);
+    }, 20000); // 20 seconds
+
     if (selectedProp) {
       const calendarApi = selectedProp.view.calendar;
       calendarApi.unselect();
@@ -54,11 +60,11 @@ export default function FullCalend() {
         setStart(null);
       }
     }
-  }, [title]);
+  }, [title, showElement]);
 
-  const handleDateClick = async (selected) => {
+  const handleDateClick = (selected) => {
     setSelectedProp(selected);
-    await handleOpen();
+    handleOpen(); 
   };
 
   const handleEventClick = (selected) => {
@@ -68,6 +74,11 @@ export default function FullCalend() {
 
   return (
     <div className=" h-[50%] p-2 md:h-[80%] md:w-[80%] md:pl-4 md:pt-4">
+      {showElement ? (
+        <Welcome text={"fade-in"} />
+      ) : (
+        <Welcome text={"fade-out"} />
+      )}
       <FullCalendar
         height="100%"
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
@@ -84,7 +95,7 @@ export default function FullCalend() {
         select={handleDateClick}
         eventClick={handleEventClick}
         eventsSet={(events) => setCurrentEvents(events)}
-      />
+      />{" "}
       {open && <Modal />}
       {deleted && <ModalDeleted />}
     </div>

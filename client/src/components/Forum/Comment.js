@@ -9,6 +9,7 @@ import { BsDot } from "react-icons/bs";
 import "./FromEditor.css";
 
 const Comment = ({ comment }) => {
+  //console.log(comment)
   const { htmlDecode } = useForum();
   const sanitizedHTML = DOMPurify.sanitize(comment.content);
 
@@ -23,14 +24,12 @@ const Comment = ({ comment }) => {
         <div className="flex flex-row text-right w-full justify-start items-center">
           <div className={`w-7 h-7 rounded-full bg-gray-300 mr-2`}>
             <img
-              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+              src={comment?.author?.photo}
               alt="user profile pic"
-              className="w-[100%] object-cover rounded-full"
+              className="w-full h-full object-cover rounded-full"
             />
           </div>
-          <p className={`font-bold text-green-700`}>
-            {comment.author.email.split("@")[0]}
-          </p>
+          <p className={`font-bold text-orange-300`}>{comment?.author?.name}</p>
           <BsDot />
           <p className={`text-[10px] md:text-sm font-mono text-gray-400`}>
             {date},<span> {year}</span>

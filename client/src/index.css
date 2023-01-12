@@ -23,7 +23,6 @@
 }
 .fc-scroller {
   border-radius: 20px;
-  /* border: red solid 2px; */
   background-color: white;
 }
 
@@ -66,14 +65,45 @@
   background: transparent;
 }
 
-.fc-scroller::-webkit-scrollbar-track{
-background: transparent;
+.fc-scroller::-webkit-scrollbar-track {
+  background: transparent;
+
+}
+
+.fc-scroller::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.fc-scroller::-webkit-scrollbar-thumb {
+  display: none;
+
 }
 
 /*.fc-scroller {
   overflow-y: hidden !important; 
 }*/
 
-.fc-event-title{
+.fc-event-title {
   font-size: x-small;
+}
+
+
+.fade-in {
+  transition: opacity 2s ease;
+  color: white;
+}
+.fade-out {
+  opacity: 0;
+  transition: opacity 2s ease;
+  color: white;
+
+input[type="file"] {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+
 }

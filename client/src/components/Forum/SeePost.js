@@ -48,7 +48,7 @@ const SeePost = () => {
 
   return (
     <div
-      className={`bg-primary p-2 text-slate-300 w-full h-screen overflow-auto`}
+      className={`bg-primary p-6 md:py-8 md:px-8 text-slate-300 w-full h-screen overflow-auto`}
     >
       {/* //---------- Question Section ----------- */}
       <div className={`  bg-secondary rounded-t-md `}>
@@ -56,11 +56,11 @@ const SeePost = () => {
           
             <SinglePostVote post={singelPost} />
           
-          <h1 className="text-md md:text-xl font-semibold  text-orange-300 p-3">
+          <h1 className="text-md md:text-xl font-semibold  text-text-primary p-3">
             {singelPost.title}
           </h1>
          <NavLink to={`/academia`}>
-         <MdClose className="cursor-pointer absolute top-[6px] right-[6px] md:top-2 md:right-2  w-[20px] h-[20px] md:w-[24px] md:h-[24px] text-slate-500 hover:text-slate-800"/>
+         <MdClose className="cursor-pointer absolute top-[6px] right-[6px] md:top-2 md:right-2  w-[20px] h-[20px] md:w-[24px] md:h-[24px] text-grayed-out hover:text-hover-primary"/>
          </NavLink>
         </div>
         <div
@@ -71,7 +71,7 @@ const SeePost = () => {
 
       {/* //---------- Comments Section ----------- */}
       <div className={`px-4 md:py-6 md:px-14 bg-secondary  `}>
-        <h1 className="md:-ml-4 text-sm md:text-xl  text-orange-300 pb-6">
+        <h1 className="md:-ml-4 text-sm md:text-xl  text-accent-secondary pb-6">
           <span>{comments.length}</span> Answers
         </h1>
         {comments.length > 0 &&
@@ -82,7 +82,7 @@ const SeePost = () => {
 
       {/* //---------- Form Section ----------- */}
       <div className="shadow-xl bg-secondary rounded-b-md">
-        <h1 className="text-sm pl-4 md:text-xl mb-2 text-orange-300 md:pl-10">Your Answer</h1>
+        <h1 className="text-sm pl-4 md:text-xl mb-2 text-accent-secondary md:pl-10">Your Answer</h1>
 
         <div className={`w-full  flex items-center flex-col`}>
           <div className="pb-5 w-[90%] md:w-[70%] ">

@@ -17,7 +17,7 @@ export default function Example({ topic, setTopic }) {
   return (
     <Menu as="div" className="relative inline-block ">
       <div className="mb-2 min-w-[245px] md:w-64 ">
-        <Menu.Button className="w-full rounded border flex flex-row items-center justify-between border-slate-800 bg-slate-600 px-2 py-3 text-sm md:text-md font-medium text-text-primary shadow-sm hover:bg-slate-300 hover:text-slate-800 focus:outline-none  focus:ring-offset-2 focus:ring-offset-grayed-out">
+        <Menu.Button className="w-full rounded border flex flex-row items-center justify-between border-slate-800 bg-secondary px-2 py-3 text-sm md:text-md font-medium text-text-primary shadow-sm hover:bg-slate-300 hover:text-slate-800 focus:outline-none  focus:ring-offset-2 focus:ring-offset-grayed-out">
           <div className="w-[80%] flex items-center">
           <CiGrid42 className="h-6 w-6 mr-3" aria-hidden="true" />
           {topic}

@@ -32,10 +32,10 @@ const Forum = () => {
         h-screen
         overflow-auto
         bg-primary
-        text-text-primary
+        text-grayed-out
         p-4
         md:px-6
-        lg:px-10
+        lg:px-8
         flex
         flex-col
         "
@@ -54,7 +54,7 @@ const Forum = () => {
             up, you can click
             <span
               onClick={() => setShowPostFormModal(true)}
-              className="text-blue-500 underline hover:text-blue-600 cursor-pointer mx-2"
+              className="text-accent-secondary underline hover:text-hover-secondary cursor-pointer mx-2"
             >
               here
             </span>
