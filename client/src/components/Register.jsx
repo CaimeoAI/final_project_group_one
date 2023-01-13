@@ -65,6 +65,7 @@ export const Register = (props) => {
       localStorage.setItem("userID", response.data.data.user._id);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("photo", response.data.data.user.photo);
+      localStorage.setItem("name", response.data.data.user.name);
       if (response.data.status === "success") {
         localStorage.setItem("isLogedIn", true);
         toast.success("You are successfully registered");

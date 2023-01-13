@@ -1,19 +1,15 @@
 import React from "react";
 
 export default function Welcome(text) {
-  console.log(text);
-  /* const [userName, setUserName] = useState("");
-
-  useEffect(() => {
-    const name = localStorage.getItem("name");
-    setUserName(name);
-  }, []); */
+  
+  const userName = localStorage.getItem("name");
+  const upperCaseName = userName.charAt(0).toUpperCase() + userName.slice(1);
 
   return (
     <div className={text.text}>
-     {/*  <h1>{`Welcome ${
-        userName.charAt(0).toUpperCase() + userName.slice(1)
-      }`}</h1> */}
+       <h1>
+        Welcome {upperCaseName}!
+      </h1>
     </div>
   );
 }
