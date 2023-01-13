@@ -1,19 +1,26 @@
-import React, { useRef } from 'react'
-import { useContext } from 'react'
+import React, { useRef, useContext, useState } from 'react'
 import { useContacts } from '../../context/ContactProvider'
 import { MainContext } from '../../context/MainContext'
 
 export default function AddContactModal() {
 
+    const [alreadyExistsMessage, setAlreadyExistsMessage] = useState(false)
     const { showChatAddContactModal, setShowChatAddContactModal } = useContext(MainContext)
-    const emailRef = useRef()
+    const emailRef = useRef()   
     const nameRef = useRef()
-    const { createContact } = useContacts()
+    const { conversations, createContact, contacts } = useContacts()
 
     const handleSubmit = () => {
+        
+        console.log(JSON.parse(localStorage.getItem('chat-app-conversations')).filter(e => e.id === emailRef.current.value).length > 0);
+        if (JSON.parse(localStorage.getItem('chat-app-conversations')).filter(e => e.id === emailRef.current.value).length > 0) {
+            setAlreadyExistsMessage(true)
+        } else {
+            createContact( emailRef.current.value, nameRef.current.value)
+            setShowChatAddContactModal(false)
+            setAlreadyExistsMessage(false)
+        }
 
-        createContact( emailRef.current.value, nameRef.current.value)
-        setShowChatAddContactModal(false)
     }
 
     if (!showChatAddContactModal) return null
@@ -83,12 +90,14 @@ export default function AddContactModal() {
 
                         <input className="bg-secondary border-2 rounded p-2 mb-4"
                                 type="email" placeholder="exampe@placeholder.com" ref={emailRef}></input>
+                        
 
                         <p className="text-left">Username of new Contact</p>
 
                         <input className="bg-secondary border-2 rounded p-2"
                                 type="text" placeholder="Name" ref={nameRef}></input>
-
+                        
+                        {alreadyExistsMessage? <p className='text-accent-tertiary pt-2'>Contact with this email already exists</p> : null}
                         </div>
                         <div className="modal-footer 
                                         flex 
@@ -98,7 +107,9 @@ export default function AddContactModal() {
                                         justify-end 
                                         p-4 
                                         rounded-b-md">
-
+                        
+                        
+                        
                         <button type="button"
                                 onClick={handleSubmit}
                                 className="inline-block
