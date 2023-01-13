@@ -27,6 +27,7 @@ export const Login = (props) => {
           localStorage.setItem("userID", res.data.data.user._id);
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("photo", res.data.data.user.photo);
+         /*  localStorage.setItem("name", res.data.data.user.name); */
           if (res.data.status === "success") {
             //console.log("photo", res.data.data.user.photo);
             localStorage.setItem("isLogedIn", true);
