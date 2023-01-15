@@ -5,7 +5,7 @@ import { MainContext } from "../../context/MainContext";
 export default function List() {
   const { currentEvents } = useContext(MainContext);
   return (
-    <div className="flex flex-col md:w-[20%] md:pt-10 text-center text-text-primary">
+    <div className="flex flex-col h-[100%] pt-8 md:w-[30%] text-center text-text-primary">
       Events Scheduled
       {currentEvents.map((event) => {
         const obj = { title: event.title, date: event.startStr };

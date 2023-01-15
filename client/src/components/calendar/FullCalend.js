@@ -73,7 +73,7 @@ export default function FullCalend() {
   };
 
   return (
-    <div className=" h-[50%] p-2 md:h-[80%] md:w-[80%] md:pl-4 md:pt-4">
+    <div className=" h-[100%] w-[100%] p-2 md:h-[80%] md:pl-4 md:pt-4">
       {showElement ? (
         <Welcome text={"fade-in"} />
       ) : (
