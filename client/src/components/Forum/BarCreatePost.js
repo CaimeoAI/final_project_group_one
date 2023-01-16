@@ -1,7 +1,6 @@
 import { useContext } from "react";
-import { BsPlusLg } from "react-icons/bs";
+import MapsUgcIcon from "@mui/icons-material/MapsUgc";
 import { MainContext } from "../../context/MainContext";
-import { styles } from "./styles";
 
 const BarCreatePost = () => {
   const { setShowPostFormModal } = useContext(MainContext);
@@ -11,27 +10,38 @@ const BarCreatePost = () => {
     <>
       {/* --------------MOBILE VERSION---------------------- */}
       <div
-        className={`${styles.flexCenter} 
-          fixed 
-          w-16 
-          h-16 
-          bottom-20 
-          right-2
-        bg-accent-secondary
-          rounded-full 
-          md:hidden 
-          cursor-pointer`}
+        onClick={() => setShowPostFormModal(true)}
+        className="
+                  flex
+                  md:hidden
+                  justify-center
+                  items-center 
+                  bg-accent-secondary
+                  text-text-primary
+                  cursor-pointer
+                  text-xs 
+                  fixed 
+                  w-16 
+                  h-16 
+                  bottom-[6.35em] 
+                  right-2
+                  leading-tight 
+                  rounded-full 
+                  shadow-xl 
+                  hover:bg-hover-secondary 
+                  hover:shadow-lg 
+                  focus:bg-hover-secondary 
+                  focus:shadow-lg 
+                  focus:outline-none 
+                  focus:ring-0 
+                  active:bg-active 
+                  active:shadow-lg 
+                  transition 
+                  duration-150 
+                  ease-in-out 
+                  "
       >
-        <BsPlusLg
-          onClick={() => setShowPostFormModal(true)}
-          className={`
-                md:hidden 
-                w-[24px] 
-                h-[24px]
-              fill-gray-100
-              hover:fill-zinc-50 
-              cursor-pointer`}
-        />
+        <MapsUgcIcon style={{ fontSize: "30px" }} />
       </div>
       {/* --------------TABLET|DESKTOP VERSION---------------------- */}
       <div
@@ -44,8 +54,7 @@ const BarCreatePost = () => {
           h-24
           items-center
           rounded-md
-          border
-          border-slate-700
+      
           mt-[15px]
           md:w-full 
           mb-4
@@ -63,31 +72,31 @@ const BarCreatePost = () => {
           onClick={() => setShowPostFormModal(true)}
           placeholder="Create Post"
           className="
-        w-[94.5%]
-        mr-3
-        my-4 
-        px-6 
-        py-2.5 
-        bg-slate-700
-        text-white 
-        font-medium 
-        text-xs 
-        leading-tight 
-        uppercase 
-        rounded 
-        shadow-md 
-        hover:bg-slate-800
-        hover:shadow-lg 
-        focus:bg-slate-800
-        focus:shadow-lg 
-        focus:outline-none 
-        focus:ring-0 
-        active:bg-active 
-        active:shadow-lg 
-        transition 
-        duration-150 
-        ease-in-out 
-        ml-1"
+                          w-[94.5%]
+                          mr-3
+                          my-4 
+                          px-6 
+                          py-2.5 
+                          bg-slate-700
+                          text-white 
+                          font-medium 
+                          text-xs 
+                          leading-tight 
+                          uppercase 
+                          rounded 
+                          shadow-md 
+                          hover:bg-slate-800
+                          hover:shadow-lg 
+                          focus:bg-slate-800
+                          focus:shadow-lg 
+                          focus:outline-none 
+                          focus:ring-0 
+                          active:bg-active 
+                          active:shadow-lg 
+                          transition 
+                          duration-150 
+                          ease-in-out 
+                          ml-1"
         />
       </div>
     </>

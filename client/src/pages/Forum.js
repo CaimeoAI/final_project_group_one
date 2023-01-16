@@ -29,7 +29,7 @@ const Forum = () => {
     <div
       className="
         w-screen
-        h-screen
+        h-full
         overflow-auto
         bg-primary
         text-grayed-out
@@ -38,6 +38,9 @@ const Forum = () => {
         lg:px-8
         flex
         flex-col
+        flex-initial
+        pb-[70px]
+        md:pb-4
         "
     >
       <ForumSearch />
@@ -70,6 +73,7 @@ const Forum = () => {
             ))}
         </>
       )}
+       <div className="h-16"></div>
     </div>
   );
 };
