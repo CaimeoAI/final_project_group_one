@@ -121,7 +121,7 @@ export function ForumProvider({ children }) {
     } else if (arr?.includes(user) && vote === "dislikes") {
       return "text-accent-tertiary hover:text-hover-tertiary  hover:fill-hover-tertiary";
     } else {
-      return "text-grayed-out hover:fill-hover-primary hover:text-hover-tertiary";
+      return "text-grayed-out hover:fill-hover-primary hover:text-hover-primary";
     }
   };
 

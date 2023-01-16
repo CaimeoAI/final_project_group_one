@@ -7,10 +7,10 @@ const PostedBySection = ({ user, time }) => {
   const hour = timeStr.slice(16, 21);
 
   return (
-    <div className={`flex flex-row pr-4 justify-end pt-1`}>
-      <p className={`text-[13px] lg:text-[14px] font-mono pr-2 text-grayed-out`}>Posted by</p>
-      <p className={`text-[13px] lg:text-[14px] font-mono pr-2 text-grayed-out`}>{user}</p>
-      <p className={`text-[13px] lg:text-[14px] font-mono pr-2 text-grayed-out`}>
+    <div className={`flex flex-row pr-4 justify-end pt-2`}>
+      <p className={`text-[13px] lg:text-[14px] font-mono pr-2 text-hover-primary`}>Posted by</p>
+      <p className={`text-[13px] lg:text-[14px] font-mono pr-2 text-hover-primary`}>{user}</p>
+      <p className={`text-[13px] lg:text-[14px] font-mono pr-2 text-hover-primary`}>
         {date},<span> {year}</span>
         <span> at </span>
         {hour}

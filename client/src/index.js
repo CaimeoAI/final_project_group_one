@@ -6,17 +6,20 @@ import "./index.css";
 import MainContextProvider from "./context/MainContext";
 import { RoomsProvider } from "./context/RoomProvider";
 import { ForumProvider } from "./context/ForumProvider";
+import AuthProvider from "./context/AuthProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <MainContextProvider>
-        <RoomsProvider>
-          <ForumProvider>
-            <App />
-          </ForumProvider>
-        </RoomsProvider>
+        <AuthProvider>
+          <RoomsProvider>
+            <ForumProvider>
+              <App />
+            </ForumProvider>
+          </RoomsProvider>
+        </AuthProvider>
       </MainContextProvider>
     </BrowserRouter>
   </React.StrictMode>

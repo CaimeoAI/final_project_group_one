@@ -15,13 +15,15 @@ const DownVote = dislikedBtnFun(post)
       className="
             hidden 
             md:flex
-            relative
-            py-2
-           bg-slate-800
+            pt-4
+            flex-col
+            justify-start
+            items-center
+            bg-slate-800
+            pl-[1px]
+           
             rounded-l-md">
-      <div
-        className={`flex flex-col justify-between items-center absolute left-2 top-2 py-2`}
-      >
+    
         <UpVote
           onClick={() => {
             voting("like", post, id);
@@ -37,7 +39,7 @@ const DownVote = dislikedBtnFun(post)
           }}
           className={`w-[20px] h-[20px] md:w-[24px] md:h-[24px] cursor-pointer ${votingIconColor(post?.dislikes,"dislikes")}`}
         />
-      </div>
+     
     </div>
   );
 };

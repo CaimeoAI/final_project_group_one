@@ -24,7 +24,7 @@ export default function ChatComponent() {
                 text-text-primary
                 h-screen
                 w-screen
-                
+                pb-20
                 lg:flex-row-reverse">            
                 
                 <div className="flex flex-col lg:mx-4 lg:mt-20 lg:mb-8 2xl:mt-4">
