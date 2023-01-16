@@ -32,6 +32,9 @@ export const Login = (props) => {
           localStorage.setItem("name", res.data.data.user.name);
           localStorage.setItem("course", res.data.data.user.course)
           console.log( res.data.data.user.course)
+
+        
+
           if (res.data.status === "success") {
             localStorage.setItem("isLogedIn", true);
             toast.success("Logged in successfully!");

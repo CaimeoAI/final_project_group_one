@@ -22,11 +22,6 @@ export const Register = (props) => {
     return setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
 
-
-  
-
-
-
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -123,6 +118,7 @@ export const Register = (props) => {
             placeholder="name"
             id="name"
             name="name"
+            minLength="8"
             onChange={(e) => updateUserDetails(e)}
           />
           <input
