@@ -1,25 +1,17 @@
 import { useState, useEffect } from 'react'
-import ChatAddContact from "../components/Chat/ChatAddContact.js";
-import ChatSearch from "../components/Chat/ChatSearch.js";
-import ChatContacts from "../components/Chat/ChatContacts.js";
+import JoinRoom from "../components/Chat/JoinRoom.js";
+import ChatContacts from "../components/Chat/RoomList.js";
 import ChatFeed from "../components/Chat/ChatFeed.js";
-import AddContactModal from "../components/Chat/AddContactModal.js";
+import JoinRoomModal from "../components/Chat/JoinRoomModal.js";
 
 export default function ChatComponent() {
 
-    const [messageSent, setMessageSent] = useState(false)
-
     const [selectedConversation, setSelectedConversation] = useState([])
 
-    const messageToggler = () => {
-        console.log('Message Toggler called', messageSent)
-        setMessageSent(oldstate => !oldstate)
-    }
-
-    useEffect(() => {
-        console.log('Chatfeed rerendered');
-        setSelectedConversation(JSON.parse(localStorage.getItem('chat-app-conversations'))?.filter(e => e.id === JSON.parse(localStorage.getItem('chat-app-currentConversation')).email)[0]?.messages)
-    }, [messageSent])
+    // useEffect(() => {
+    //     console.log('Chatfeed rerendered');
+    //     setSelectedConversation(JSON.parse(localStorage.getItem('chat-app-conversations'))?.filter(e => e.id === JSON.parse(localStorage.getItem('chat-app-currentConversation')).email)[0]?.messages)
+    // }, [messageSent])
 
     return (
         <div 
@@ -36,13 +28,12 @@ export default function ChatComponent() {
                 lg:flex-row-reverse">            
                 
                 <div className="flex flex-col lg:mx-4 lg:mt-20 lg:mb-8 2xl:mt-4">
-                    <ChatAddContact/>
-                    <ChatSearch/>
+                    <JoinRoom/>
                     <ChatContacts/>
                 </div>
                 
-                <ChatFeed messageToggler={messageToggler} selectedConversation={selectedConversation}/>
-                <AddContactModal/>
+                <ChatFeed/>
+                <JoinRoomModal/>
         </div>
     )
 }

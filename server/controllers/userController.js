@@ -45,3 +45,5 @@ export const deleteMe = catchAsync(async (req, res, next) => {
     data: null,
   });
 });
+
+//------------------- ADD USER ROOM -------------

@@ -92,10 +92,12 @@
   transition: opacity 2s ease;
   color: white;
 }
+
 .fade-out {
   opacity: 0;
   transition: opacity 2s ease;
   color: white;
+}
 
 input[type="file"] {
   width: 100%;

@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import MainContextProvider from "./context/MainContext";
-import { ContactsProvider } from "./context/ContactProvider";
+import { RoomsProvider } from "./context/RoomProvider";
 import { ForumProvider } from "./context/ForumProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -12,11 +12,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <MainContextProvider>
-        <ContactsProvider>
+        <RoomsProvider>
           <ForumProvider>
             <App />
           </ForumProvider>
-        </ContactsProvider>
+        </RoomsProvider>
       </MainContextProvider>
     </BrowserRouter>
   </React.StrictMode>

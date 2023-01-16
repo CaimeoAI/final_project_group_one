@@ -1,19 +1,15 @@
 import { useState } from "react"
-import { useContacts } from "../../context/ContactProvider"
+import { useRooms } from "../../context/RoomProvider"
 
+export default function ChatTextInput() {
 
-export default function ChatTextInput(props) {
-
-  const [text, setText] = useState("")
-
-  const { sendMessage } = useContacts()
+  const { currentMessage, setCurrentMessage, sendMessage } = useRooms()
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.messageToggler()
-    if (text !== "") {
-      sendMessage(JSON.parse(localStorage.getItem('chat-app-currentConversation')).email, text)
-      setText("")
+    if (currentMessage !== "") {
+      sendMessage()
+      setCurrentMessage("")
     }
   }
 
@@ -32,13 +28,9 @@ export default function ChatTextInput(props) {
                           outline-none 
                           text-accent-primary"
                type="text" 
-               onChange={(e) => setText(e.target.value)}
-               onKeyPress={(e) => {
-                 if (e.key === "Enter") {
-                   handleSubmit(e)
-                 }}}
+               onChange={(event) => setCurrentMessage(event.target.value)}
 
-               value={text} 
+               value={currentMessage} 
                placeholder="Enter text..."/>
 
         <button type="submit" className="px-4 py-1 bg-accent-secondary hover:bg-hover-secondary rounded">SEND</button>

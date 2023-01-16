@@ -23,6 +23,7 @@ export const Login = (props) => {
         })
         .then((res) => {
           console.log("LOGIN response from backend", res);
+          localStorage.setItem("username", res.data.data.user.name);
           localStorage.setItem("email", res.data.data.user.email);
           localStorage.setItem("userID", res.data.data.user._id);
           localStorage.setItem("token", res.data.token);
