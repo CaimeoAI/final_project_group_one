@@ -5,6 +5,8 @@ import rateLimit from "express-rate-limit"; //REQUEST RATE LIMIT
 import helmet from "helmet"; //ADITIONAL SECURE MEASURES
 import mongoSanitize from "express-mongo-sanitize";
 import xss from "xss-clean";
+import http from "http" // CONNECTION REQUIREMENT FOR SOCKET IO
+import { Server } from "socket.io"
 
 //? MIDDLEWARE IMPORTS
 import cors from "cors"; // TRANSMITTING HTTP HEADERS
@@ -23,6 +25,15 @@ import forumRoute from "./routes/forumRoute.js";
 dotenv.config();
 
 const app = express();
+
+const server = http.createServer(app)
+
+const io = new Server(server, {
+  cors: {
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST'],
+  }
+})
 
 //? MIDDLEWARE CONFIGURATION
 //Set security HTTP headers
@@ -69,6 +80,7 @@ app.use((error, req, res, next) => {
 });
 
 //! DATABASE CONNECTION
+console.log(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`);
 
 mongoose
   .connect(
@@ -82,3 +94,26 @@ mongoose
     });
   })
   .catch((e) => console.log(e));
+
+
+io.on('connection', (socket) => {
+  console.log('User connected on socket ' + socket.id)
+
+  socket.on('join_room', (data) => {
+    socket.join(data)
+    console.log('User with ID:' + socket.id + ' joined room ' + data);
+  })
+
+  socket.on('send_message', (data) => {
+    console.log(data)
+    socket.to(data.room).emit('receive_message', data)
+  })
+
+  socket.on('disconnect', () => {
+    console.log('User disconnected from socket ' + socket.id);
+  })
+})
+
+server.listen(3001, () => {
+  console.log('http server listening on port 5001');
+})

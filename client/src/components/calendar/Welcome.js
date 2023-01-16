@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function Welcome(text) {
-  console.log(text);
   /* const [userName, setUserName] = useState("");
 
   useEffect(() => {
