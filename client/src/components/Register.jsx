@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import RegisterImage from "../assets/registration.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import UploadAndDisplayImage from "./UploadAndDisplayImage";
+import { MainContext } from "../context/MainContext";
 
 export const Register = (props) => {
+  const {convertBase64} = useContext(MainContext);
   const navigateTo = useNavigate();
   const [userDetails, setUserDetails] = useState({
     name: "",
@@ -22,23 +24,8 @@ export const Register = (props) => {
     return setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
 
-  const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
-
   const updateUserImage = async (e) => {
+    
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
 
@@ -189,7 +176,7 @@ export const Register = (props) => {
         bg-primary
         text-center"
             type="password"
-            placeholder="password"
+            placeholder="password(8 characters minimum)"
             id="password"
             name="password"
             minLength='8'

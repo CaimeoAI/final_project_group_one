@@ -3,7 +3,7 @@ import { MdAddPhotoAlternate } from "react-icons/md";
 
 const UploadAndDisplayImage = ({ updateUserImage }) => {
   const [selectedImage, setSelectedImage] = useState(null);
-  //console.log(selectedImage)
+  
   return (
     <div className=" relative p-3">
       <div className="flex justify-center">

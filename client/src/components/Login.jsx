@@ -10,10 +10,6 @@ export const Login = (props) => {
     password: "",
   });
 
-  console.log("hello")
-
-  //const Context = useContacts();
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -21,8 +17,7 @@ export const Login = (props) => {
       axios
         .post(`${process.env.REACT_APP_BE_URL}/auth/login`, {
           email: e.target.email.value,
-          password: e.target.password.value,
-        })
+          password: e.target.password.value,})
         .then((res) => {
           console.log("LOGIN response from backend", res);
           localStorage.setItem("username", res.data.data.user.name);
@@ -31,25 +26,21 @@ export const Login = (props) => {
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("photo", res.data.data.user.photo);
           localStorage.setItem("name", res.data.data.user.name);
-          localStorage.setItem("course", res.data.data.user.course)
-          console.log( res.data.data.user.course)
-
-        
+          localStorage.setItem("course", res.data.data.user.course);
 
           if (res.data.status === "success") {
-            localStorage.setItem("isLogedIn", true);
-            toast.success("Logged in successfully!");
-            window.setTimeout(() => {
-              location.assign("/");
-            });
-          }
-          // Context.setUserProfile(res.data.data.user);
-        })
+                localStorage.setItem("isLogedIn", true);
+                toast.success("Logged in successfully!");
+                window.setTimeout(() => {
+                  location.assign("/");
+                });
+            }
+          })
         .catch((error) => {
           toast.error(error.response.data.message);
         });
-    }
-  };
+       }
+   };
 
   return (
     <div className="lg:flex flex-row-reverse">
@@ -73,68 +64,63 @@ export const Login = (props) => {
       />
       <div className="flex flex-col text-center text-text-primary w-screen h-screen bg-primary lg:w-1/2 justify-center">
         <form
-          className="flex flex-col flex-nowrap md:flex  justify-center items-center"
-          onSubmit={handleSubmit}
-        >
+              onSubmit={handleSubmit}
+              className="flex flex-col flex-nowrap md:flex  justify-center items-center">
           <input
-            className="
-          mt-4
-          w-72
-          h-12
-          text-base
-          rounded-full
-          text-text-primary
-          border-2 
-          border-secondary
-          bg-primary
-          text-center"
-            type="email"
-            placeholder="email address"
-            id="email"
-            name="email"
-          />
-
+              type="email"
+              placeholder="email address"
+              id="email"
+              name="email"
+              className="
+                      mt-4
+                      w-72
+                      h-12
+                      text-base
+                      rounded-full
+                      text-text-primary
+                      border-2 
+                      border-secondary
+                      bg-primary
+                      text-center"/>
           <input
-            className="
-        mt-4
-        w-72
-        h-12
-        text-base
-        rounded-full
-        text-text-primary
-        border-2 
-        border-secondary
-        bg-primary
-        text-center"
-            type="password"
-            placeholder="password"
-            id="password"
-            name="password"
-          />
+              type="password"
+              placeholder="password"
+              id="password"
+              name="password"
+              className="
+                      mt-4
+                      w-72
+                      h-12
+                      text-base
+                      rounded-full
+                      text-text-primary
+                      border-2 
+                      border-secondary
+                      bg-primary
+                      text-center"/>
           <button
-            className="
-                mt-4
-                w-72
-                h-12
-                text-base
-                rounded-full
-                text-text-primary
-                bg-accent-secondary
-                hover:bg-hover-secondary"
-            type="submit"
-          >
+              type="submit"
+              className="
+                      mt-4
+                      w-72
+                      h-12
+                      text-base
+                      rounded-full
+                      text-text-primary
+                      bg-accent-secondary
+                      hover:bg-hover-secondary">
             LOGIN
           </button>
         </form>
-        <button className="mt-4 underline text-text-primary">
-          Forgot your password?{" "}
-        </button>
-        <button
-          className="mt-10 underline text-text-primary"
-          onClick={() => props.onFormSwitch("register")}
-        >
-          Don't have an account? Register here.
-        </button>
+          <button className="mt-4 underline text-text-primary">
+            Forgot your password?{" "}
+          </button>
+          <button
+            className="mt-10 underline text-text-primary"
+            onClick={() => props.onFormSwitch("register")}
+          >
+            Don't have an account? Register here.
+          </button>
       </div>
       <div className="hidden lg:block w-1/2">
         <img
