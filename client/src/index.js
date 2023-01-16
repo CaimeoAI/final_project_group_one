@@ -6,17 +6,20 @@ import "./index.css";
 import MainContextProvider from "./context/MainContext";
 import { ContactsProvider } from "./context/ContactProvider";
 import { ForumProvider } from "./context/ForumProvider";
+import AuthProvider from "./context/AuthProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <MainContextProvider>
+        <AuthProvider>
         <ContactsProvider>
           <ForumProvider>
             <App />
           </ForumProvider>
         </ContactsProvider>
+        </AuthProvider>
       </MainContextProvider>
     </BrowserRouter>
   </React.StrictMode>
