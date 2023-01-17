@@ -5,7 +5,6 @@ import express from "express";
 import {forgotPassword,login,protect,resetPassword,signup,updatePassword} from "../controllers/authController.js";
 import { updateMe, deleteMe, getUser } from "../controllers/userController.js";
 
-
 //* ROUTER
 const router = express.Router();
 
@@ -38,6 +37,7 @@ router
   .route("/updateMe")
   .patch(protect, updateMe);
 
+
 router
   .route("/updateMyPassword")
   .patch(protect, updatePassword);
@@ -45,5 +45,13 @@ router
 router
   .route("/deleteMe")
   .delete(protect, deleteMe);
+
+
+//--------ADD EVENT--------//
+router.route("/addEvent").patch(protect, addEvent);
+///---------------//
+
+
+
 
 export default router;

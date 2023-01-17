@@ -50,6 +50,7 @@ export const Register = (props) => {
       localStorage.setItem("photo", response.data.data.user.photo);
       localStorage.setItem("name", response.data.data.user.name);
       localStorage.setItem("course", response.data.data.user.course)
+
       if (response.data.status === "success") {
         localStorage.setItem("isLogedIn", true);
         toast.success("You are successfully registered");
@@ -61,7 +62,7 @@ export const Register = (props) => {
       toast.error(error.response?.data?.message?.split(":")[2]);
     }
   };
-  //console.log("userDetails", userDetails);
+  
   return (
     <div className="lg:flex flex-row">
       <Toaster
