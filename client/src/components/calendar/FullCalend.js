@@ -8,6 +8,7 @@ import { MainContext } from "../../context/MainContext";
 import Modal from "../calendar/Modal";
 import ModalDeleted from "./ModalDeleted";
 import Welcome from "./Welcome";
+/* import axios from "axios"; */
 
 export default function FullCalend() {
   const {
@@ -41,6 +42,17 @@ export default function FullCalend() {
       // ObjectModal is the object created in modal module and received by FullCalend.js
       // In this part the calendar event is created when data is submited from modal
 
+     /*  if (objectModal) {
+        const newEvent = {
+          id: `${objectModal.title}`,
+          title: objectModal.title, 
+          start: objectModal.start, 
+          end: objectModal.end, 
+          allDay: objectModal.allDay, 
+          userId: userData.id,
+
+        }; */
+     
       if (objectModal) {
         calendarApi.addEvent({
           id: `${objectModal.title}`,
@@ -49,6 +61,17 @@ export default function FullCalend() {
           end: objectModal.end, // '2022-12-29T10:30:00+01:00'
           allDay: objectModal.allDay, // boolean
         });
+      
+       /*  axios.post('api/events', newEvent)
+        .then(response => {
+          // do something with the response
+        })
+        .catch(error => {
+           // handle error
+         })
+
+         calendarApi.addEvent(newEvent); */
+
         setObjectModal({
           title: null,
           allDay: false,
@@ -64,7 +87,7 @@ export default function FullCalend() {
 
   const handleDateClick = (selected) => {
     setSelectedProp(selected);
-    handleOpen(); 
+    handleOpen();
   };
 
   const handleEventClick = (selected) => {
