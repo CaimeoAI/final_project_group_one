@@ -25,11 +25,10 @@ export default function MainContextProvider(props) {
     end: undefined,
   }); // model object to create calendar event FullCalend.js
 
-  
   //* 02 - FUNCTIONS
 
   const navigateTo = useNavigate();
-  
+
   const logOut = () => {
     localStorage.removeItem("email");
     localStorage.removeItem("userID");
@@ -39,7 +38,20 @@ export default function MainContextProvider(props) {
     window.location.reload(false);
   };
 
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
 
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
 
   return (
     <MainContext.Provider
@@ -66,7 +78,8 @@ export default function MainContextProvider(props) {
         setObjectModal,
         deleted,
         setDeleted,
-        logOut
+        logOut,
+        convertBase64,
       }}
     >
       {props.children}

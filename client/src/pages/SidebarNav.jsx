@@ -24,6 +24,7 @@ const SidebarNav = () => {
   const logout = { name: "Logout", icon: RiLogoutCircleRLine };
   const userProfileImg = localStorage.getItem("photo");
   const userCourse = localStorage.getItem("course");
+  const userName = localStorage.getItem("name")
 
   return (
     /* Sidebar Background Color */
@@ -54,6 +55,9 @@ const SidebarNav = () => {
             className={`w-full h-full rounded-full object-cover`}
           />
         </div>
+        <h2 className={`${
+            !open && "opacity-0"
+          } text-text-primary font-bold mt-3 text-center md:hidden lg:block`}>{userName}</h2>
         <h2
           className={`${
             !open && "opacity-0"
@@ -61,6 +65,7 @@ const SidebarNav = () => {
         >
           Course: {userCourse}
         </h2>
+
       </div>
 
       <div className="md:mt-8 h-[85%]  flex flex-col  gap-4  relative  ">

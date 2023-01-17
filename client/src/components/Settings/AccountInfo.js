@@ -1,43 +1,82 @@
 import axios from "axios";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForum } from "../../context/ForumProvider";
+import { MainContext } from "../../context/MainContext";
 import UpdatePhoto from "./UpdatePhoto";
 
 const AccountInfo = () => {
-  const {getLocalStorageData} = useForum();
-  
-  const updateUserData = async () =>{
-    const URL = `${process.env.REACT_APP_BE_URL}/auth/updateMe`;
-    const configuration = {
-      headers: {
-        authorization: getLocalStorageData("token"),
-      },
-    };
-  try {
-    await axios.patch(URL, configuration)
-  } catch (error) {
-    console.log(error)
-  }
-  }
+      const { getLocalStorageData } = useForum();
+      const { convertBase64 } = useContext(MainContext);
+      const [userData, setUserData] = useState();
+      const courses = ["WebDev", "DigitalMarketing", "AWS", "Python"];
+      const token = getLocalStorageData("token");
 
-  const handleSubmit = (e) =>{
-    e.preventDefault();
-    //updateUserData()
-  }
+      const getUserData = async () => {
+        const URL = `${process.env.REACT_APP_BE_URL}/auth/user`;
+        const configuration = {
+          headers: {
+            authorization: token,
+          },
+        };
+        try {
+          const result = await axios.get(URL, configuration);
+          setUserData(result.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      const updateUserDetails = (e) => {
+        return setUserData({ ...userData, [e.target.name]: e.target.value });
+      };
+
+      const updateUserImage = async (e) => {
+        
+        const file = e.target.files[0];
+        const base64 = await convertBase64(file);
+
+        return setUserData({ ...userData, photo: base64 });
+      };
+
+      useEffect(() => {
+        getUserData();
+      }, []);
+
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        const URL = `${process.env.REACT_APP_BE_URL}/auth/updateMe`;
+        const configuration = {
+          headers: {
+            authorization: token,
+          },
+        };
+        try {
+          const response = await axios.patch(URL, userData, configuration);
+          localStorage.setItem("email", response.data.data.user.email);
+          localStorage.setItem("photo", response.data.data.user.photo);
+          localStorage.setItem("name", response.data.data.user.name);
+          localStorage.setItem("course", response.data.data.user.course);
+          window.location.reload(false);
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
   return (
     <div className=" mb-4 pb-10 md:m-5 lg:w-5/12 ">
-      
-        <h1 className="text-xl md:text-[25px] font-bold px-10 md:px-20 lg:pl-10 pt-8 text-text-primary">
-          Account Information
-        </h1>
-        <p className="text-sm text-grayed-out pt-3 pl-10 md:pl-20 lg:pl-10 pb-4">
-          Edit your profile quickly
-        </p>
-        
-        <form  onSubmit={handleSubmit}>
-        <UpdatePhoto/>
-        
+      <h1 className="text-xl md:text-[25px] font-bold px-10 md:px-20 lg:pl-10 pt-8 text-text-primary">
+        Account Information
+      </h1>
+      <p className="text-sm text-grayed-out pt-3 pl-10 md:pl-20 lg:pl-10 pb-4">
+        Edit your profile quickly
+      </p>
+
+      <form onSubmit={handleSubmit}>
+        <UpdatePhoto
+          imgSrc={userData?.photo}
+          updateUserImage={updateUserImage}
+        />
+
         <div className="w-full mt-4 ">
           <div className="mb-8 px-10 md:px-20 lg:px-10">
             <label className="mb-3 block text-base font-medium text-[#929DA7]">
@@ -45,6 +84,8 @@ const AccountInfo = () => {
             </label>
             <div className="relative">
               <input
+                name="name"
+                onChange={(e) => updateUserDetails(e)}
                 type="text"
                 placeholder="Devid Jhon"
                 className="bg-transparent w-full rounded-md border  border-hover-primary p-3 pl-12 placeholder-hover-primary outline-none transition focus:border-grayed-out active:border-grayed-out text-text-primary  disabled:cursor-default disabled:bg-[#F5F7FD]"
@@ -84,6 +125,8 @@ const AccountInfo = () => {
             </label>
             <div className="relative">
               <input
+                name="email"
+                onChange={(e) => updateUserDetails(e)}
                 type="email"
                 placeholder="info@yourmail.com"
                 className="bg-transparent w-full rounded-md border  border-hover-primary p-3 pl-12  placeholder-hover-primary outline-none transition focus:border-grayed-out active:border-grayed-out text-text-primary disabled:cursor-default disabled:bg-[#F5F7FD]"
@@ -118,17 +161,20 @@ const AccountInfo = () => {
 
         <div className="w-full">
           <div className="mb-8 px-10 md:px-20 lg:px-10">
-            <label
-              className="mb-3 block text-base font-medium text-[#929DA7]"
-            >
+            <label className="mb-3 block text-base font-medium text-[#929DA7]">
               Course
             </label>
             <div className="relative">
-              <select className="bg-transparent  border-hover-primary  focus:border-grayed-out active:border-grayed-out text-grayed-out w-full appearance-none rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-text-primary">
-                <option value="">WebDeb</option>
-                <option value="">DigitalMarketing</option>
-                <option value="">Aws</option>
-                <option value="">Python</option>
+              <select
+                name="course"
+                onChange={(e) => updateUserDetails(e)}
+                className="bg-transparent  border-hover-primary  focus:border-grayed-out active:border-grayed-out text-grayed-out w-full appearance-none rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-text-primary"
+              >
+                {courses.map((course) => (
+                  <option key={course} value={course}>
+                    {course}
+                  </option>
+                ))}
               </select>
               <span className=" text-grayed-out absolute right-4 top-1/2 mt-[-2px] h-[10px] w-[10px] -translate-y-1/2 rotate-45 border-r-2 border-b-2"></span>
             </div>
@@ -140,8 +186,7 @@ const AccountInfo = () => {
             Update Now
           </button>
         </div>
-     
-        </form>
+      </form>
     </div>
   );
 };
