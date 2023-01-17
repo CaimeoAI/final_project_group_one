@@ -7,6 +7,7 @@ import {
   resetPassword,
   signup,
   updatePassword,
+  addEvent,
 } from "../controllers/authController.js";
 
 //? CONTROLLER IMPORTS
@@ -31,8 +32,9 @@ router
   .route("/updateMe")
   .patch(protect, updateMe);
 router.route("/deleteMe").delete(protect, deleteMe);
-
-
+//--------ADD EVENT--------//
+router.route("/addEvent").patch(protect, addEvent);
+///---------------//
 router.route("/updateMyPassword").patch(protect, updatePassword);
 
 

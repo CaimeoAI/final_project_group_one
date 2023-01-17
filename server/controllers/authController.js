@@ -216,3 +216,54 @@ export const updatePassword = catchAsync(async (req, res, next) => {
   createSendToken(user, 200, res);
 });
 
+//------------------- ADD EVENT -------------------------
+
+export const addEvent = async (req,res) => {
+  // Find user by ID
+  await User.findByIdAndUpdate(req.user.id, {
+    events: [...events, newEvent]
+  });
+  console.log(req.user)
+  // Add the new event to events array of the user
+/*   user.events.push(event); */
+  // Save the modifications to data 
+
+  
+  res.status(201).json({
+    status: "success",
+    message: "Event added successfully!",
+    });
+  
+};
+
+/* export const addEvent = catchAsync(async (req, res, next) => {
+  // console.log(req.headers)
+  const { title, allDay, start, end } = req.body;
+  const user = await User.findById(req.headers.id);
+  console.log(user);
+  user.events.push({
+  title,
+  allDay,
+  start,
+  end,
+  });
+  await user.save();
+  
+  res.status(201).json({
+  status: "success",
+  message: "Event added successfully!",
+  });
+  }); */
+
+//------------------- GET USER'S EVENTS -------------------------
+
+/*   export const getEvents = catchAsync(async (req, res, next) => {
+  const user = await User.findById(req.id);
+  
+  res.status(200).json({
+  status: "success",
+  data: {
+  events: user.events,
+  },
+  });
+  }); */

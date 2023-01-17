@@ -10,10 +10,6 @@ export const Login = (props) => {
     password: "",
   });
 
-  console.log("hello")
-
-  //const Context = useContacts();
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -33,15 +29,13 @@ export const Login = (props) => {
           localStorage.setItem("name", res.data.data.user.name);
           localStorage.setItem("course", res.data.data.user.course)
           console.log( res.data.data.user.course)
-
-        
-
+      
           if (res.data.status === "success") {
             localStorage.setItem("isLogedIn", true);
             toast.success("Logged in successfully!");
             window.setTimeout(() => {
               location.assign("/");
-            });
+            }); 
           }
           // Context.setUserProfile(res.data.data.user);
         })
