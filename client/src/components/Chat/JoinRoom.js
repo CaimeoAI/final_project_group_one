@@ -17,7 +17,7 @@ export default function ChatAddContact() {
                 text-text-primary
                 bg-accent-secondary
                 hover:bg-hover-secondary"
-            type="button" onClick={() => setShowChatAddContactModal(true)}>Add Contact</button>
+            type="button" onClick={() => setShowChatAddContactModal(true)}>JOIN ROOM</button>
     </div>
   )
 }

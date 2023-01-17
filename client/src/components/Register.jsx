@@ -16,15 +16,11 @@ export const Register = (props) => {
     passwordConfirm: "",
   });
   const fields = ["Webdev", "DigitalMarketing", "AWS", "Python"];
+  console.log()
 
   const updateUserDetails = (e) => {
     return setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
-
-
-  
-
-
 
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -66,6 +62,8 @@ export const Register = (props) => {
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("photo", response.data.data.user.photo);
       localStorage.setItem("name", response.data.data.user.name);
+      localStorage.setItem("course", response.data.data.user.course)
+
       if (response.data.status === "success") {
         localStorage.setItem("isLogedIn", true);
         toast.success("You are successfully registered");
@@ -77,7 +75,7 @@ export const Register = (props) => {
       toast.error(error.response?.data?.message?.split(":")[2]);
     }
   };
-  console.log("userDetails", userDetails);
+  
   return (
     <div className="lg:flex flex-row">
       <Toaster
@@ -195,7 +193,7 @@ export const Register = (props) => {
             placeholder="password"
             id="password"
             name="password"
-            minLength="8"
+            minLength='8'
             onChange={(e) => updateUserDetails(e)}
           />
           <input
@@ -214,7 +212,7 @@ export const Register = (props) => {
             placeholder="confirm password"
             id="passwordConfirm"
             name="passwordConfirm"
-            minLength="8"
+            minLength='8'
             onChange={(e) => updateUserDetails(e)}
           />
           <button

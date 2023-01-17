@@ -13,7 +13,7 @@ import ReactQuill from "react-quill";
 import DOMPurify from 'dompurify';
 
 //? 04 - STYLING
-import {MdClose} from "react-icons/md"
+import {IoArrowBackCircleOutline} from "react-icons/io5"
 import "react-quill/dist/quill.snow.css";
 import "./FromEditor.css";
 
@@ -48,31 +48,32 @@ const SeePost = () => {
 
   return (
     <div
-      className={`bg-primary p-6 md:py-8 md:px-8 text-slate-300 w-full h-screen overflow-auto`}
+      className={`bg-primary md:py-2 md:px-9 text-text-primary w-full h-screen overflow-auto`}
     >
       {/* //---------- Question Section ----------- */}
-      <div className={`  bg-secondary rounded-t-md `}>
-        <div className="w-full flex flex-row py-2 mb-4 items-center shadow  bg-secondary rounded-t-md relative ">
-          
-            <SinglePostVote post={singelPost} />
-          
-          <h1 className="text-md md:text-xl font-semibold  text-text-primary p-3">
+       <NavLink to={`/academia`}>
+         <div className="flex justify-end  text-grayed-out font-semibold pr-2 py-3  hover:text-hover-primary">
+         <IoArrowBackCircleOutline className="cursor-pointer mx-2 w-[20px] h-[20px] md:w-[26px] md:h-[26px] "/>
+         Go Back
+         </div>
+         </NavLink>
+      <div className="flex flex-row  bg-secondary rounded-md shadow">
+      <SinglePostVote post={singelPost} />
+      <div className="pl-5 py-4 ">
+      <h1 className="text-md md:text-[23px]  text-grayed-out font-serif ">
             {singelPost.title}
           </h1>
-         <NavLink to={`/academia`}>
-         <MdClose className="cursor-pointer absolute top-[6px] right-[6px] md:top-2 md:right-2  w-[20px] h-[20px] md:w-[24px] md:h-[24px] text-grayed-out hover:text-hover-primary"/>
-         </NavLink>
-        </div>
-        <div
-          className="fromEditor md:px-14 p-4 font-semibold  text-sm md:text-lg "
+          <div
+          className="fromEditor text-text-primary pr-5 pt-2"
           dangerouslySetInnerHTML={{ __html: htmlDecode(sanitizedHTML) }}
         ></div>
       </div>
+      </div>
 
       {/* //---------- Comments Section ----------- */}
-      <div className={`px-4 md:py-6 md:px-14 bg-secondary  `}>
-        <h1 className="md:-ml-4 text-sm md:text-xl  text-accent-secondary pb-6">
-          <span>{comments.length}</span> Answers
+      <div className={`px-4 md:py-6 md:px-10 text-text-primary  `}>
+        <h1 className="text-sm md:text-[18px] font-bold  text-accent-secondary pb-6  font-serif">
+          <span className="text-[24px] pr-1">{comments.length}</span> answers
         </h1>
         {comments.length > 0 &&
           comments.map((comment) => (
@@ -81,11 +82,11 @@ const SeePost = () => {
       </div>
 
       {/* //---------- Form Section ----------- */}
-      <div className="shadow-xl bg-secondary rounded-b-md">
-        <h1 className="text-sm pl-4 md:text-xl mb-2 text-accent-secondary md:pl-10">Your Answer</h1>
+      <div className="">
+        <h1 className="text-sm md:text-[18px] font-bold font-serif mb-2 text-accent-secondary md:pl-[40px]">Your answer</h1>
 
         <div className={`w-full  flex items-center flex-col`}>
-          <div className="pb-5 w-[90%] md:w-[70%] ">
+          <div className="pb-5 w-[90%] md:w-[55%] ">
             <ReactQuill
               modules={modulesReactQuill}
               theme="snow"
@@ -103,7 +104,7 @@ const SeePost = () => {
               }}
               className={"inline-block mb-5 px-6 p-2.5 bg-accent-secondary text-text-primary font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-hover-secondary hover:shadow-lg focus:bg-hover-secondary focus:shadow-lg focus:outline-none focus:ring-0 active:bg-grayed-out active:shadow-lg transition duration-150 ease-in-out ml-1 "}
             >
-              Post your answer
+              Comment
             </button>
          
         </div>

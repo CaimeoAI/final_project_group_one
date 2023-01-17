@@ -59,6 +59,10 @@ const userSchema = mongoose.Schema({
     default: true,
     select: false,
   },
+  rooms: [{
+    type: String,
+    ref: "room",
+  }]
 });
 
 userSchema.pre("save", async function (next) {

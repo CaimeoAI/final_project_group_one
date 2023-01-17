@@ -1,26 +1,18 @@
 import React, { useRef, useContext, useState } from 'react'
-import { useContacts } from '../../context/ContactProvider'
 import { MainContext } from '../../context/MainContext'
+import { useRooms } from '../../context/RoomProvider'
 
 export default function AddContactModal() {
 
-    const [alreadyExistsMessage, setAlreadyExistsMessage] = useState(false)
+    const { room, setRoom, joinRoom,setCurrentRoom, setRoomList } = useRooms()
     const { showChatAddContactModal, setShowChatAddContactModal } = useContext(MainContext)
-    const emailRef = useRef()   
-    const nameRef = useRef()
-    const { conversations, createContact, contacts } = useContacts()
+    const roomRef = useRef()
 
     const handleSubmit = () => {
-        
-        console.log(JSON.parse(localStorage.getItem('chat-app-conversations')).filter(e => e.id === emailRef.current.value).length > 0);
-        if (JSON.parse(localStorage.getItem('chat-app-conversations')).filter(e => e.id === emailRef.current.value).length > 0) {
-            setAlreadyExistsMessage(true)
-        } else {
-            createContact( emailRef.current.value, nameRef.current.value)
-            setShowChatAddContactModal(false)
-            setAlreadyExistsMessage(false)
-        }
-
+        setShowChatAddContactModal(false)
+        joinRoom()
+        setRoomList((prevRooms) => [...prevRooms,room])
+        setCurrentRoom(room)
     }
 
     if (!showChatAddContactModal) return null
@@ -75,7 +67,7 @@ export default function AddContactModal() {
                                        leading-normal
                                        text-accent-primary" id="exampleModalScrollableLabel">
 
-                            Add Contact
+                            Join a new room
 
                         </h5>
 
@@ -84,20 +76,13 @@ export default function AddContactModal() {
                         <div className="modal-body 
                                         relative 
                                         p-4 
-                                        text-accent-primary">
+                                        text-accent-primary">                        
 
-                        <p className="text-left">Email of new Contact</p>
-
-                        <input className="bg-secondary border-2 rounded p-2 mb-4"
-                                type="email" placeholder="exampe@placeholder.com" ref={emailRef}></input>
-                        
-
-                        <p className="text-left">Username of new Contact</p>
+                        <p className="text-left">Room ID</p>
 
                         <input className="bg-secondary border-2 rounded p-2"
-                                type="text" placeholder="Name" ref={nameRef}></input>
+                                type="text" placeholder="ex. Learning Group 5" onChange={(event) => setRoom(event.target.value)}></input>
                         
-                        {alreadyExistsMessage? <p className='text-accent-tertiary pt-2'>Contact with this email already exists</p> : null}
                         </div>
                         <div className="modal-footer 
                                         flex 

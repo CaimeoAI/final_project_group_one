@@ -1,15 +1,28 @@
 import React from 'react'
 import './ChatFeedCustomScroll.css'
+import { useRooms } from '../../context/RoomProvider'
 
-export default function ChatMessage(props) {
+export default function ChatMessage() {
+
+    const { messageList } = useRooms()
+
     return (
         <>
-            {props.selectedConversation?.map( message => 
-                <div key={message.index} className={"flex flex-col px-4 m-2 text-sm " + "text-right"}>
-                {message.sender === localStorage.getItem('email')? <h3 className="mx-2 text-right">YOU</h3> : <h3 className="mx-2 text-left">{JSON.parse(localStorage.getItem('chat'))}</h3>}
-                <p className={"p-3 px-6 w-fit m-2 rounded-[25px] " + "text-left ml-auto"}  
-                style={{backgroundColor: "#6F76F8", color: "white"}}>{message.text}</p>
-            </div>)}
+            {messageList?.map( (message, index) => 
+                
+                <div key={index} className={"flex flex-col px-4 m-2 text-sm " + "text-right"}>
+                    
+                    {message.author === localStorage.getItem('username')? 
+                        <h3 className="px-2 mx-2 text-right">YOU</h3> 
+                        : 
+                        <h3 className="px-2 mx-2 text-left">{message.author}</h3>}
+
+                    {message.author === localStorage.getItem('username')? 
+                        <p className="bg-accent-primary text-text-secondary p-3 px-6 w-fit m-2 rounded-[25px] text-left ml-auto">{message.message}</p>
+                        :
+                        <p className="bg-accent-secondary text-text-primary p-3 px-6 w-fit m-2 rounded-[25px] text-left">{message.message}</p>}
+
+                </div>)}
         </>
     )
 }

@@ -7,6 +7,7 @@ import ChatComponent from "./pages/ChatComponent";
 import Forum from "./pages/Forum";
 import SeePost from "./components/Forum/SeePost";
 import Settings from "./pages/Settings";
+import MobileNavBar from "./components/MobileNavBar";
 
 const App = () => {
   return (
@@ -14,7 +15,8 @@ const App = () => {
     
       {localStorage.getItem("isLogedIn") ? (
         <>
-          <SidebarNav className="fixed" />
+          <SidebarNav  />
+          <MobileNavBar/>
 
           <Routes>
             <Route path="/learningsupport" element={<LearningSupport />} />

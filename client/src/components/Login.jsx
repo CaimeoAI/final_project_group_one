@@ -10,8 +10,6 @@ export const Login = (props) => {
     password: "",
   });
 
-  //const Context = useContacts();
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -23,11 +21,15 @@ export const Login = (props) => {
         })
         .then((res) => {
           console.log("LOGIN response from backend", res);
+          localStorage.setItem("username", res.data.data.user.name);
           localStorage.setItem("email", res.data.data.user.email);
           localStorage.setItem("userID", res.data.data.user._id);
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("photo", res.data.data.user.photo);
           localStorage.setItem("name", res.data.data.user.name);
+          localStorage.setItem("course", res.data.data.user.course)
+          console.log( res.data.data.user.course)
+      
           if (res.data.status === "success") {
             localStorage.setItem("isLogedIn", true);
             toast.success("Logged in successfully!");
