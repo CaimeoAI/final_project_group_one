@@ -18,10 +18,15 @@ export default function ChatMessage() {
                         <h3 className="px-2 mx-2 text-left">{message.author}</h3>}
 
                     {message.author === localStorage.getItem('username')? 
-                        <p className="bg-accent-primary text-text-secondary p-3 px-6 w-fit m-2 rounded-[25px] text-left ml-auto">{message.message}</p>
+                        <p className="bg-accent-primary text-text-secondary p-3 px-6 w-fit mt-1 mx-2 rounded-[25px] text-left ml-auto">{message.message}</p>
                         :
-                        <p className="bg-accent-secondary text-text-primary p-3 px-6 w-fit m-2 rounded-[25px] text-left">{message.message}</p>}
+                        <p className="bg-accent-secondary text-text-primary p-3 px-6 w-fit mt-1 mx-2 rounded-[25px] text-left">{message.message}</p>}
 
+                    {message.author === localStorage.getItem('username')?
+                        <p className="mx-4 text-xs text-right text-grayed-out">{message.time}</p>
+                        :
+                        <p className="mx-4 text-xs text-left text-grayed-out">{message.time}</p>
+                    }
                 </div>)}
         </>
     )
