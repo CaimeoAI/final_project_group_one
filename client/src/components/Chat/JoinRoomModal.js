@@ -4,7 +4,7 @@ import { useRooms } from '../../context/RoomProvider'
 
 export default function AddContactModal() {
 
-    const { room, setRoom, joinRoom,setCurrentRoom, setRoomList } = useRooms()
+    const { room, setRoom, joinRoom,setCurrentRoom, setRoomList, getAllRooms } = useRooms()
     const { showChatAddContactModal, setShowChatAddContactModal } = useContext(MainContext)
     const roomRef = useRef()
 
@@ -13,6 +13,7 @@ export default function AddContactModal() {
         joinRoom()
         setRoomList((prevRooms) => [...prevRooms,room])
         setCurrentRoom(room)
+        getAllRooms()
     }
 
     if (!showChatAddContactModal) return null

@@ -10,7 +10,6 @@ import { ForumProvider } from "./context/ForumProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
     <BrowserRouter>
       <MainContextProvider>
         <RoomsProvider>
@@ -20,5 +19,4 @@ root.render(
         </RoomsProvider>
       </MainContextProvider>
     </BrowserRouter>
-  </React.StrictMode>
 );
