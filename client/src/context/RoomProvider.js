@@ -83,7 +83,7 @@ export function RoomsProvider({ children }) {
             setMessageList((list) => [...list, data])
         })
         getAllRooms()
-    },[])
+    },[socket])
 
     useEffect(() => {
         getAllRoomMessages();

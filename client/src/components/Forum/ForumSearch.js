@@ -12,7 +12,7 @@ const ForumSearch = () => {
         };
 
   return (
-      <div className="flex flex-row mt-5">
+      <div className="flex flex-col md:flex-row mt-5">
             <div
               style={{ backgroundColor: " rgb(33,45,66)" }} 
               className="
@@ -26,11 +26,12 @@ const ForumSearch = () => {
                         w-full
                         pl-4
                         lg:pl-6
-                        md:w-[50%]
-                        lg:w-[40%]">
+                        md:w-[70%]
+                        lg:w-[50%]
+                        ">
                 <input
                   onChange={inputHandler}
-                  className="bg-transparent md:h-8 lg:h- outline-none w-[90%] text-slate-100"
+                  className="bg-transparent  outline-none w-[90%] text-text-primary"
                   type="text"
                   placeholder="Search..."/>
 

@@ -30,10 +30,7 @@ export default function MainContextProvider(props) {
   const navigateTo = useNavigate();
 
   const logOut = () => {
-    localStorage.removeItem("email");
-    localStorage.removeItem("userID");
-    localStorage.removeItem("token");
-    localStorage.removeItem("isLogedIn");
+    localStorage.clear()
     navigateTo("/login");
     window.location.reload(false);
   };

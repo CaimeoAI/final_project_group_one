@@ -8,7 +8,7 @@ const UpdatePhoto = ({imgSrc, updateUserImage}) => {
   const [selectedImage, setSelectedImage] = useState(null);
   
   return (
-    <div className="relative pb-4 pl-11 md:pl-20 lg:pl-11">
+    <div className="relative pb-4 ml-11 md:ml-20 lg:ml-11 inline-block">
       <div className=" mt-4 ">
         <div className={`w-[4.7rem] h-[4.7rem]`}>
           <img
@@ -22,7 +22,7 @@ const UpdatePhoto = ({imgSrc, updateUserImage}) => {
           />
         </div>
       </div>
-      <div className="absolute cursor-pointer bottom-[2px] left-[4.13rem] md:-bottom-0 md:left-[6.3rem] lg:bottom-[1px] lg:left-[4rem] p-1">
+      <div className="absolute cursor-pointer bottom-[2px] left-[21px]  p-1">
         <div 
         style={{backgroundColor: "rgb(211,211,211)"}}
         className="relative cursor-pointer flex flex-col items-center rounded-full">
