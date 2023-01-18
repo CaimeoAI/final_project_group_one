@@ -12,8 +12,6 @@ import Stack from "@mui/material/Stack";
 import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { MainContext } from "../../context/MainContext";
-// import {User} from  "../../../../server/models/userModel"
-import axios from "axios";
 
 const style = {
   position: "absolute",
@@ -51,7 +49,6 @@ export default function BasicModal() {
     setEnd(dayjs(objectModal.end));
     setTitle(objectModal.title);
     setOpen(false);
-    /* handleAddEvent(); */
   };
 
   const handleChange = (event) => {
@@ -105,32 +102,6 @@ export default function BasicModal() {
       title: event,
     }));
   };
-
-  // // // // // // //
-
-/*   const handleAddEvent = async () => {
-    let token = localStorage.getItem("token");
-    let userId=localStorage.getItem("userID")
-    /*  console.log(token); */
-   /*  const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        id:userId
-      },
-    };
-
-    const response = await axios.post(
-      `${process.env.REACT_APP_BE_URL}/auth/addEvent`,
-      objectModal,
-      config
-    );
-    const data = response.data;
-    console.log(data);
-    
-    setOpen(false);
-  }; */ 
-
-  // // // // // // //
 
   return (
     <div>
