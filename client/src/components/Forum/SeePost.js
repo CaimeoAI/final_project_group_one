@@ -48,23 +48,23 @@ const SeePost = () => {
 
   return (
     <div
-      className={`bg-primary md:py-2 md:px-9 text-text-primary w-full h-screen overflow-auto`}
+      className={`bg-primary md:py-2 md:px-9 text-text-primary w-full h-screen overflow-auto pb-16`}
     >
       {/* //---------- Question Section ----------- */}
        <NavLink to={`/academia`}>
-         <div className="flex justify-end  text-grayed-out font-semibold pr-2 py-3  hover:text-hover-primary">
+         <div className="flex justify-end  text-grayed-out font-semibold md:pr-2 py-3  hover:text-hover-primary">
          <IoArrowBackCircleOutline className="cursor-pointer mx-2 w-[20px] h-[20px] md:w-[26px] md:h-[26px] "/>
-         Go Back
+         <span className="hidden md:block">Go Back</span>
          </div>
          </NavLink>
-      <div className="flex flex-row  bg-secondary rounded-md shadow">
+      <div className="flex flex-row  bg-secondary rounded-md shadow mx-4 md:mx-0">
       <SinglePostVote post={singelPost} />
       <div className="pl-5 py-4 ">
       <h1 className="text-md md:text-[23px]  text-grayed-out font-serif ">
             {singelPost.title}
           </h1>
           <div
-          className="fromEditor text-text-primary pr-5 pt-2"
+          className="fromEditor  text-text-primary pr-5 pt-2"
           dangerouslySetInnerHTML={{ __html: htmlDecode(sanitizedHTML) }}
         ></div>
       </div>
@@ -72,7 +72,7 @@ const SeePost = () => {
 
       {/* //---------- Comments Section ----------- */}
       <div className={`px-4 md:py-6 md:px-10 text-text-primary  `}>
-        <h1 className="text-sm md:text-[18px] font-bold  text-accent-secondary pb-6  font-serif">
+        <h1 className="text-sm md:text-[18px] font-bold  text-accent-secondary md:pb-6  font-serif py-3">
           <span className="text-[24px] pr-1">{comments.length}</span> answers
         </h1>
         {comments.length > 0 &&
@@ -83,10 +83,10 @@ const SeePost = () => {
 
       {/* //---------- Form Section ----------- */}
       <div className="">
-        <h1 className="text-sm md:text-[18px] font-bold font-serif mb-2 text-accent-secondary md:pl-[40px]">Your answer</h1>
+        <h1 className="text-sm md:text-[18px] font-bold font-serif mb-2 text-accent-secondary pl-5 md:pl-[40px]">Your answer</h1>
 
         <div className={`w-full  flex items-center flex-col`}>
-          <div className="pb-5 w-[90%] md:w-[55%] ">
+          <div className="pb-5 w-[90%] md:w-[75%] lg:w-[55%]">
             <ReactQuill
               modules={modulesReactQuill}
               theme="snow"
@@ -98,14 +98,36 @@ const SeePost = () => {
 
          
             <button
-              onClick={() => {
-                addComment();
-                setContent("");
-              }}
-              className={"inline-block mb-5 px-6 p-2.5 bg-accent-secondary text-text-primary font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-hover-secondary hover:shadow-lg focus:bg-hover-secondary focus:shadow-lg focus:outline-none focus:ring-0 active:bg-grayed-out active:shadow-lg transition duration-150 ease-in-out ml-1 "}
-            >
-              Comment
-            </button>
+                  onClick={() => {
+                    addComment();
+                    setContent("");
+                  }}
+                   className="inline-block 
+                              mb-5 
+                              px-6  
+                              p-2.5
+                              bg-accent-secondary
+                              text-text-primary 
+                              font-medium 
+                              text-xs 
+                              leading-tight 
+                              uppercase 
+                              rounded 
+                              shadow-md 
+                              hover:bg-hover-secondary  
+                              hover:shadow-lg
+                              focus:bg-hover-secondary 
+                              focus:shadow-lg 
+                              focus:outline-none 
+                              focus:ring-0 
+                              active:bg-grayed-out 
+                              active:shadow-lg 
+                              transition 
+                              duration-150 
+                              ease-in-out 
+                              ml-1 ">
+                Comment
+             </button>
          
         </div>
       </div>

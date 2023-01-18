@@ -45,22 +45,18 @@ const BarCreatePost = () => {
       </div>
       {/* --------------TABLET|DESKTOP VERSION---------------------- */}
       <div
+        style={{ backgroundColor: " rgb(33,45,66)" }}
         className={`
           
           bg-grayed-out
           cursor-pointer
           hidden 
           md:flex 
-          h-24
           items-center
           rounded-md
-      
           mt-[15px]
           md:w-full 
-          mb-4
-          `}
-        style={{ backgroundColor: " rgb(33,45,66)" }}
-      >
+          mb-4`}>
         <div className={`w-10 h-10 rounded-full mx-4 `}>
           <img
             src={userProfileImg}
@@ -96,8 +92,7 @@ const BarCreatePost = () => {
                           transition 
                           duration-150 
                           ease-in-out 
-                          ml-1"
-        />
+                          ml-1"/>
       </div>
     </>
   );

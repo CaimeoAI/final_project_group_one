@@ -1,7 +1,7 @@
 /* eslint-disable*/
 import { useState } from "react";
 import axios from "axios";
-import LoginImage from "../assets/login.jpg";
+import LoginImage from "../assets/login-resized.jpg";
 import toast, { Toaster } from "react-hot-toast";
 
 export const Login = (props) => {
@@ -43,7 +43,7 @@ export const Login = (props) => {
    };
 
   return (
-    <div className="lg:flex flex-row-reverse">
+    <div className="lg:flex flex-row-reverse overflow-hidden h-screen ">
       <Toaster
         toastOptions={{
           success: {
@@ -62,7 +62,7 @@ export const Login = (props) => {
           },
         }}
       />
-      <div className="flex flex-col text-center text-text-primary w-screen h-screen bg-primary lg:w-1/2 justify-center">
+      <div className="flex flex-col text-center text-text-primary  bg-primary lg:w-1/2 justify-center">
         <form
               onSubmit={handleSubmit}
               className="flex flex-col flex-nowrap md:flex  justify-center items-center">
@@ -122,9 +122,9 @@ export const Login = (props) => {
             Don't have an account? Register here.
           </button>
       </div>
-      <div className="hidden lg:block w-1/2">
+      <div className="hidden lg:block overflow-hidden w-1/2">
         <img
-          className="lg:w-full h-full bg-cover"
+          className="lg:w-full"
           src={LoginImage}
           alt="loginImage"
         />

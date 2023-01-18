@@ -19,17 +19,17 @@ const FilterBtn = () => {
   }, [filterBy]);
 
   return (
-    <div className="hidden md:flex flex-row  text-slate-400 font-bold items-center md:text-[0.8em] lg:text-[1em] max-h-[70px] ">
+    <div className="hidden md:flex flex-row  text-slate-400 font-bold items-center md:text-[0.8em] ">
       <div
         onClick={(e) => {
           bestPost();
           setActive("best");
         }}
-        className={`ml-2 lg:ml-6 cursor-pointer hover:bg-slate-700 px-3 py-1.5 rounded-full  hover:text-text-primary ${
-          active === "best" && "bg-slate-700"
+        className={`flex flex-row items-center ml-2 lg:ml-6 cursor-pointer hover:bg-slate-700 pl-2 py-2 pr-4 rounded-full  hover:text-text-primary ${
+          active === "best" && "bg-slate-700 text-text-primary "
         }`}
       >
-        <RocketOutlinedIcon />
+        <RocketOutlinedIcon  />
         <span className="ml-2">Best</span>
       </div>
       <div
@@ -37,8 +37,8 @@ const FilterBtn = () => {
           hotPosts();
           setActive("hot");
         }}
-        className={`ml-2 lg:ml-2 cursor-pointer hover:bg-slate-700 px-3 py-1.5 rounded-full  hover:text-text-primary ${
-          active === "hot" && "bg-slate-700"
+        className={`flex flex-row items-center ml-2  cursor-pointer hover:bg-slate-700 pl-2 py-2 pr-4 rounded-full  hover:text-text-primary ${
+          active === "hot" && "bg-slate-700  text-text-primary"
         }`}
       >
         <LocalFireDepartmentIcon />
@@ -49,8 +49,8 @@ const FilterBtn = () => {
           latestPosts();
           setActive("latest");
         }}
-        className={`ml-2 lg:ml-2 cursor-pointer hover:bg-slate-700 px-3 py-1.5 rounded-full  hover:text-text-primary ${
-          active === "latest" && "bg-slate-700"
+        className={`flex flex-row items-center ml-2  cursor-pointer hover:bg-slate-700 pl-2 py-2 pr-4 rounded-full  hover:text-text-primary ${
+          active === "latest" && "bg-slate-700  text-text-primary"
         }`}
       >
         <NewReleasesOutlinedIcon />
@@ -64,8 +64,8 @@ const FilterBtn = () => {
               setActive(field);
               setFilterBy(field);
             }}
-            className={`ml-2 cursor-pointer  hover:bg-slate-700 px-2.5 py-1.5 rounded-lg  hover:text-text-primary ${
-              active === field && "bg-slate-700"
+            className={`flex flex-row items-center cursor-pointer ml-1 hover:bg-slate-700 px-2.5 py-1.5 rounded-lg  hover:text-text-primary ${
+              active === field && "bg-slate-700  text-text-primary"
             }`}
           >
             <TagOutlinedIcon />

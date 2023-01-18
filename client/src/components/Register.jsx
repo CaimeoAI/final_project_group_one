@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { useContext, useState } from "react";
 import axios from "axios";
-import RegisterImage from "../assets/registration.jpg";
+import RegisterImage from "../assets/registration-resized.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import UploadAndDisplayImage from "./UploadAndDisplayImage";
 import { MainContext } from "../context/MainContext";
@@ -64,7 +64,7 @@ export const Register = (props) => {
   };
   
   return (
-    <div className="lg:flex flex-row">
+    <div className="lg:flex flex-row h-screen">
       <Toaster
         toastOptions={{
           success: {
@@ -83,7 +83,7 @@ export const Register = (props) => {
           },
         }}
       />
-      <div className="flex flex-col text-center text-text-primary w-screen h-screen bg-primary lg:w-1/2 justify-center relative">
+      <div className="flex flex-col text-center text-text-primary overflow-hidden h-screen bg-primary lg:w-1/2 justify-center ">
         <h1 className="pt-10 text-text-primary">REGISTRATION</h1>
 
         <form
@@ -224,9 +224,10 @@ export const Register = (props) => {
           Already have an account? Login here.
         </button>
       </div>
-      <div className="hidden lg:block w-1/2">
+
+      <div className="hidden lg:block overflow-hidden w-1/2">
         <img
-          className="lg:w-full h-full bg-cover bg-fixed"
+          className="lg:w-full"
           src={RegisterImage}
           alt="registrationImage"
         />

@@ -33,7 +33,7 @@ const Forum = () => {
         overflow-auto
         bg-primary
         text-grayed-out
-        p-4
+        p-5
         md:px-6
         lg:px-8
         flex
