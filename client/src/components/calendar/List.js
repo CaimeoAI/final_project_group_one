@@ -16,7 +16,7 @@ export default function List() {
   }, [])
 
   return (
-    <div className={`flex flex-col h-screen pt-10 ${width < 768 ? 'w-full' : 'md:w-30%'} md:pt-24 lg:w-[30%] text-center text-text-primary`}>
+    <div className={`flex flex-col h-screen pt-10 md:pr-2 ${width < 768 ? 'w-full' : 'md:w-30%'} md:pt-24 lg:w-[30%] text-center text-text-primary`}>
       Events Scheduled
       {currentEvents.map((event) => {
         const obj = { title: event.title, date: event.startStr };
