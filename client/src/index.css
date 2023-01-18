@@ -71,9 +71,6 @@
 
 .fc-scroller::-webkit-scrollbar-thumb {
   background: transparent;
-}
-
-.fc-scroller::-webkit-scrollbar-thumb {
   display: none;
 }
 
@@ -88,11 +85,14 @@
 .fade-in {
   transition: opacity 2s ease;
   color: white;
+  text-transform: capitalize;
 }
+
 .fade-out {
   opacity: 0;
   transition: opacity 2s ease;
   color: white;
+  text-transform: capitalize;
 }
 
 input[type="file"] {

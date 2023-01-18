@@ -126,9 +126,28 @@ const CreatePostModal = ({ getAllPost }) => {
               setShowPostFormModal(false);
               setTopic("Choose a field");
             }}
-            className={
-              "inline-block px-6 py-2.5 bg-accent-tertiary text-text-primary font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-hover-tertiary hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-slate-800 active:shadow-lg transition duration-150 ease-in-out"
-            }
+            className="inline-block 
+                                  px-6 
+                                  py-2.5
+                                  bg-accent-tertiary
+                                  text-text-primary 
+                                  font-medium  
+                                  text-xs 
+                                  leading-tight 
+                                  uppercase 
+                                  rounded 
+                                  shadow-md
+                                  hover:bg-hover-tertiary 
+                                  hover:shadow-lg 
+                                  focus:bg-slate-700 
+                                  focus:shadow-lg 
+                                  focus:outline-none 
+                                  focus:ring-0 
+                                  active:bg-slate-800 
+                                  active:shadow-lg 
+                                  transition 
+                                  duration-150 
+                                  ease-in-out"
           >
             Cancel
           </button>

@@ -49,6 +49,7 @@ export default function FullCalend() {
           end: objectModal.end, // '2022-12-29T10:30:00+01:00'
           allDay: objectModal.allDay, // boolean
         });
+
         setObjectModal({
           title: null,
           allDay: false,
@@ -64,7 +65,7 @@ export default function FullCalend() {
 
   const handleDateClick = (selected) => {
     setSelectedProp(selected);
-    handleOpen(); 
+    handleOpen();
   };
 
   const handleEventClick = (selected) => {
@@ -73,7 +74,7 @@ export default function FullCalend() {
   };
 
   return (
-    <div className=" h-[50%] p-2 md:h-[80%] md:w-[80%] md:pl-4 md:pt-4">
+    <div className=" h-[100%] w-[100%] p-2 md:h-[80%] md:pl-2 md:pt-4">
       {showElement ? (
         <Welcome text={"fade-in"} />
       ) : (

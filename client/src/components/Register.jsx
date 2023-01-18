@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import RegisterImage from "../assets/registration.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import UploadAndDisplayImage from "./UploadAndDisplayImage";
+import { MainContext } from "../context/MainContext";
 
 export const Register = (props) => {
+  const {convertBase64} = useContext(MainContext);
   const navigateTo = useNavigate();
   const [userDetails, setUserDetails] = useState({
     name: "",
@@ -16,33 +18,14 @@ export const Register = (props) => {
     passwordConfirm: "",
   });
   const fields = ["Webdev", "DigitalMarketing", "AWS", "Python"];
+  console.log()
 
   const updateUserDetails = (e) => {
     return setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
 
-
-  
-
-
-
-  const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-
-
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
-
   const updateUserImage = async (e) => {
+    
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
 
@@ -65,6 +48,9 @@ export const Register = (props) => {
       localStorage.setItem("userID", response.data.data.user._id);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("photo", response.data.data.user.photo);
+      localStorage.setItem("name", response.data.data.user.name);
+      localStorage.setItem("course", response.data.data.user.course)
+
       if (response.data.status === "success") {
         localStorage.setItem("isLogedIn", true);
         toast.success("You are successfully registered");
@@ -76,7 +62,7 @@ export const Register = (props) => {
       toast.error(error.response?.data?.message?.split(":")[2]);
     }
   };
-  console.log("userDetails", userDetails);
+  
   return (
     <div className="lg:flex flex-row">
       <Toaster
@@ -120,6 +106,7 @@ export const Register = (props) => {
             placeholder="name"
             id="name"
             name="name"
+            minLength="8"
             onChange={(e) => updateUserDetails(e)}
           />
           <input
@@ -190,9 +177,10 @@ export const Register = (props) => {
         bg-primary
         text-center"
             type="password"
-            placeholder="password"
+            placeholder="password(8 characters minimum)"
             id="password"
             name="password"
+            minLength='8'
             onChange={(e) => updateUserDetails(e)}
           />
           <input
@@ -211,6 +199,7 @@ export const Register = (props) => {
             placeholder="confirm password"
             id="passwordConfirm"
             name="passwordConfirm"
+            minLength='8'
             onChange={(e) => updateUserDetails(e)}
           />
           <button

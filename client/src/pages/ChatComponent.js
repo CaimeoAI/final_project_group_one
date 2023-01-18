@@ -1,10 +1,11 @@
-import ChatAddContact from "../components/Chat/ChatAddContact.js";
-import ChatSearch from "../components/Chat/ChatSearch.js";
-import ChatContacts from "../components/Chat/ChatContacts.js";
+import { useState, useEffect } from 'react'
+import JoinRoom from "../components/Chat/JoinRoom.js";
+import ChatContacts from "../components/Chat/RoomList.js";
 import ChatFeed from "../components/Chat/ChatFeed.js";
-import AddContactModal from "../components/Chat/AddContactModal.js";
+import JoinRoomModal from "../components/Chat/JoinRoomModal.js";
 
 export default function ChatComponent() {
+
     return (
         <div 
             className="
@@ -16,17 +17,16 @@ export default function ChatComponent() {
                 text-text-primary
                 h-screen
                 w-screen
-                
+                pb-16
                 lg:flex-row-reverse">            
                 
                 <div className="flex flex-col lg:mx-4 lg:mt-20 lg:mb-8 2xl:mt-4">
-                    <ChatAddContact/>
-                    <ChatSearch/>
+                    <JoinRoom/>
                     <ChatContacts/>
                 </div>
                 
                 <ChatFeed/>
-                <AddContactModal/>
+                <JoinRoomModal/>
         </div>
     )
 }

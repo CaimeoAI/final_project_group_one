@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const MainContext = createContext();
 
@@ -7,6 +8,7 @@ export default function MainContextProvider(props) {
 
   const [currentEvents, setCurrentEvents] = useState([]);
   const [showPostFormModal, setShowPostFormModal] = useState(false);
+  const [showChatAddContactModal, setShowChatAddContactModal] = useState(false);
 
   //Calendar States
   const [deleted, setDeleted] = useState(false);
@@ -23,9 +25,33 @@ export default function MainContextProvider(props) {
     end: undefined,
   }); // model object to create calendar event FullCalend.js
 
-  const [showChatAddContactModal, setShowChatAddContactModal] = useState(false);
-
   //* 02 - FUNCTIONS
+
+  const navigateTo = useNavigate();
+
+  const logOut = () => {
+    localStorage.removeItem("email");
+    localStorage.removeItem("userID");
+    localStorage.removeItem("token");
+    localStorage.removeItem("isLogedIn");
+    navigateTo("/login");
+    window.location.reload(false);
+  };
+
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
 
   return (
     <MainContext.Provider
@@ -52,6 +78,8 @@ export default function MainContextProvider(props) {
         setObjectModal,
         deleted,
         setDeleted,
+        logOut,
+        convertBase64,
       }}
     >
       {props.children}

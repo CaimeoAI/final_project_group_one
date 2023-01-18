@@ -111,7 +111,7 @@ export default function BasicModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className='bg-tertiary text-text-secondary' sx={style}>
+        <Box className="bg-tertiary text-text-secondary" sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Add Event
           </Typography>

@@ -22,16 +22,16 @@ const Comment = ({ comment }) => {
     <div>
       <div>
         <div className="flex flex-row text-right w-full justify-start items-center">
-          <div className={`w-7 h-7 rounded-full bg-gray-300 mr-2`}>
+          <div className={`w-7 h-7 rounded-full mr-2`}>
             <img
               src={comment?.author?.photo}
               alt="user profile pic"
               className="w-full h-full object-cover rounded-full"
             />
           </div>
-          <p className={`font-bold text-orange-300`}>{comment?.author?.name}</p>
+          <p className={`font-mono text-orange-300`}>{comment?.author?.name}</p>
           <BsDot />
-          <p className={`text-[10px] md:text-sm font-mono text-gray-400`}>
+          <p className={`text-[10px] md:text-sm font-mono text-grayed-out`}>
             {date},<span> {year}</span>
             <span> at </span>
             {hour}

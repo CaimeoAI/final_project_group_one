@@ -99,6 +99,7 @@
     "side-channel": "^1.0.4",
     "sift": "^16.0.1",
     "smart-buffer": "^4.2.0",
+    "socket.io": "^4.5.4",
     "socks": "^2.7.1",
     "sparse-bitfield": "^3.0.3",
     "statuses": "^2.0.1",

@@ -95,7 +95,7 @@ export const protect = catchAsync(async (req, res, next) => {
   ) {
     token = req.headers.authorization.split(" ")[1];
   }
-
+  //console.log(req.headers)
   if (!token) {
     return next(
       new AppError("You are not logged in! Please log in to get access.", 401)
@@ -109,6 +109,7 @@ export const protect = catchAsync(async (req, res, next) => {
   //3) Check if user still exists
 
   const currentUser = await User.findById(decoded.id);
+
   if (!currentUser) {
     return next(
       new AppError(
@@ -204,10 +205,12 @@ export const resetPassword = async (req, res, next) => {
 export const updatePassword = catchAsync(async (req, res, next) => {
   //1) Get user from collection
   const user = await User.findById(req.user.id).select("+password");
+
   //2) Check if POSTed current password is correct
   if (!(await user.correctPassword(req.body.passwordCurrent, user.password))) {
     return next(new AppError("Your current password is wrong.", 401));
   }
+
   //3)If so, update password
   user.password = req.body.password;
   user.passwordConfirm = req.body.passwordConfirm;
@@ -215,4 +218,9 @@ export const updatePassword = catchAsync(async (req, res, next) => {
   //4)Log user in, send JWT
   createSendToken(user, 200, res);
 });
+
+
+
+
+
 

@@ -41,6 +41,16 @@ const userSchema = mongoose.Schema({
       message: "Passwords are not the same!",
     },
   },
+  // // // // // // // events object add//
+  events: [
+    {
+      start: Date,
+      end: Date,
+      title: String,
+      allDay: Boolean,
+    },
+  ],
+  // // // // // // //
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,
@@ -49,6 +59,10 @@ const userSchema = mongoose.Schema({
     default: true,
     select: false,
   },
+  rooms: [{
+    type: String,
+    ref: "room",
+  }]
 });
 
 userSchema.pre("save", async function (next) {

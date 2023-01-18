@@ -4,7 +4,7 @@ import List from "../components/calendar/List.js";
 
 const Calendar = () => {
   return (
-    <div className="flex flex-col w-screen h-screen md:space-y-16 lg:flex-row bg-primary p-2">
+    <div className="flex flex-col w-screen h-screen lg:flex-row bg-primary">
       <FullCalend />
       <List />
     </div>

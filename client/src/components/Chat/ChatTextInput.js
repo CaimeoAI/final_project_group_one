@@ -1,23 +1,38 @@
 import { useState } from "react"
-import { useContacts } from "../../context/ContactProvider"
+import { useRooms } from "../../context/RoomProvider"
 
 export default function ChatTextInput() {
 
-  const [text, setText] = useState("")
-
-  const { sendMessage, selectedContact } = useContacts()
+  const { currentMessage, setCurrentMessage, sendMessage } = useRooms()
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    sendMessage(selectedContact.email, text)
-
-    setText("")
+    if (currentMessage !== "") {
+      sendMessage()
+      setCurrentMessage("")
+    }
   }
 
   return (
-    <div className="mt-auto w-full py-4 px-2 border-t-[1px] border-accent-primary">
+    <div className="mt-auto 
+                    w-full 
+                    py-4 
+                    px-2 
+                    border-t-[1px] 
+                    border-accent-primary">
+
       <form className="flex" onSubmit={handleSubmit}>
-        <input className="w-full bg-transparent font-bold outline-none text-accent-primary" type="text" onChange={(e) => setText(e.target.value)} value={text} placeholder="Enter text..."/>
+        <input className="w-full 
+                          bg-transparent 
+                          font-bold 
+                          outline-none 
+                          text-accent-primary"
+               type="text" 
+               onChange={(event) => setCurrentMessage(event.target.value)}
+
+               value={currentMessage} 
+               placeholder="Enter text..."/>
+
         <button type="submit" className="px-4 py-1 bg-accent-secondary hover:bg-hover-secondary rounded">SEND</button>
       </form>
         

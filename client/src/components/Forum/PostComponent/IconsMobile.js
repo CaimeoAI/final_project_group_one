@@ -1,4 +1,4 @@
-import { MdOutlineModeComment, MdOutlineBookmarkBorder } from "react-icons/md";
+import { MdOutlineBookmarkBorder } from "react-icons/md";
 import ModeCommentOutlinedIcon from '@mui/icons-material/ModeCommentOutlined';
 import { useForum } from "../../../context/ForumProvider.js";
 import { styles } from "../styles.js";
@@ -14,7 +14,7 @@ const IconsMobile = ({ post, comments }) => {
           flex
           flex-row
           justify-between
-         border-hover-primary
+          border-hover-primary
           md:hidden 
           border-t
           mt-2
@@ -43,10 +43,12 @@ const IconsMobile = ({ post, comments }) => {
         <div className={`flex flex-row items-center`}>
           <ModeCommentOutlinedIcon
            style = {{fontSize: '20px'}}
+
             className={`text-grayed-out hover:text-accent-secondary 
               w-[16px] h-[22px] ml-5`}
           />
           <p className="text-grayed-out hover:text-accent-secondary  font-mono ml-2 text-md">
+
             {comments}
           </p>
         </div>

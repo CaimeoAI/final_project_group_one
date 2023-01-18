@@ -19,15 +19,14 @@ const ListingPosts = ({ post }) => {
   return (
     <div
       className={`
-      w-full
-      flex 
-      flex-col
-      p-4
+         w-full
+         flex 
+        flex-col
+        p-4
       md:p-0
-      border
+      
       shadow-md
-      border-slate-700
-      hover:border-hover-primary
+     
       rounded-lg
       md:rounded-md
       hover:transition hover:duration-90 ease-in hover:ease-out
@@ -44,7 +43,7 @@ const ListingPosts = ({ post }) => {
         <div className="md:pl-4 md:pt-2">
           <div className="min-h-[100px]">
             <h1
-              className={`text-text-primary mb-2 font-bold cursor-pointer md:text-lg hover:text-slate-200`}
+              className={` text-grayed-out font-serif pt-1 pb-2 font-semibold cursor-pointer md:text-lg hover:text-hover-primary`}
             >
               {post.title}
             </h1>
@@ -53,7 +52,7 @@ const ListingPosts = ({ post }) => {
               className={`
             text-sm
             md:text-md
-            text-slate-300
+            text-text-primary
             overflow-hidden 
             mb-2
             md:mb-1 
@@ -66,7 +65,7 @@ const ListingPosts = ({ post }) => {
             </div>
           </div>
 
-          <div className="hidden md:flex flex-row md:w-full py-2 justify-between ">
+          <div className="hidden md:flex flex-row py-2 justify-between">
             <SaveCommBtnDesktop comments={post.comments.length} />
             <PostedBySection user={post?.author?.name} time={post.createdAt} />
           </div>
