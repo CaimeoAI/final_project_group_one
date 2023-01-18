@@ -30,7 +30,7 @@ const SidebarNav = () => {
     /* Sidebar Background Color */
 
     <div
-      className={`hidden md:flex flex-col justify-between bg-tertiary min-h-screen relative ${
+      className={`hidden md:flex flex-col justify-between bg-navbar min-h-screen relative ${
         open ? "lg:w-72" : "lg:w-16 pr-3"
       } duration-500 text-text-primary px-4 `}
     >
