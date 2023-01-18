@@ -19,6 +19,7 @@ import { tokenVerification } from "./middleware/tokenVerification.js";
 //* ROUTE IMPORTS
 import authRoute from "./routes/authRoute.js";
 import forumRoute from "./routes/forumRoute.js";
+import chatRoute from "./routes/chatRoute.js";
 
 //! MAIN CONFIGURATION
 
@@ -66,6 +67,8 @@ app.use(morgan("dev")); // Developer Information in Terminal showing each reques
 app.use("/auth", authRoute);
 // http://localhost:5000/academia
 app.use("/academia", tokenVerification, forumRoute);
+// http://localhost:5000/chat
+app.use("/chat", chatRoute);
 
 //? GLOBAL ERROR HANDLER
 // The Global Error Handler gets the error from the function that comes before and gives out a response containing the error message
@@ -115,5 +118,5 @@ io.on('connection', (socket) => {
 })
 
 server.listen(3001, () => {
-  console.log('http server listening on port 5001');
+  console.log('http server for SocketIO listening on port 3001');
 })

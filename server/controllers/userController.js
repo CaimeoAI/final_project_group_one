@@ -1,6 +1,7 @@
 import User from "../models/userModel.js";
 import catchAsync from "../utils/catchAsync.js";
 import AppError from "../utils/appError.js";
+import Message from "../models/messagesModel.js"
 
 //------------------- GET USER INFORMATION -------------
 export const getUser = catchAsync(async (req, res) => {
@@ -60,3 +61,65 @@ export const deleteMe = catchAsync(async (req, res, next) => {
 });
 
 //------------------- ADD USER ROOM -------------
+
+export const addRoom = async( req, res, next ) => {
+  try {
+    const { username, room } = req.body
+
+    const user = await User.findOneAndUpdate({name: username}, {$push: { rooms: room }}, {new: true})
+
+    res.status(200).json({user
+    })
+  } catch (error) {
+    next (error)
+  }
+}
+
+//------------------- GET ALL USER ROOMS -------------
+
+export const getAllRooms = async( req, res, next ) => {
+  try {
+    const { username } = req.params
+    const user = await User.findOne({name: username}).select('rooms')
+
+    res.status(200).json({user
+    })
+  } catch (error) {
+    next (error)
+  }
+}
+
+//------------------- ADD MESSAGE -------------
+
+export const addMessage = async( req, res, next ) => {
+
+    const { room, author, message, time } = req.body
+
+    try {
+      const newMessage = new Message({
+        room,
+        author,
+        message,
+        time
+      })
+
+      await newMessage.save()
+      res.status(200).json(newMessage)
+  } catch (error) {
+    next (error)
+  }
+}
+
+//------------------- GET ROOM MESSAGES -------------
+
+export const getRoomMessages = async( req, res, next ) => {
+  try {
+    const { room } = req.params
+    const messages = await Message.find({room: room})
+
+    res.status(200).json({messages
+    })
+  } catch (error) {
+    next (error)
+  }
+}

@@ -2,7 +2,7 @@
 import express from "express";
 
 //? CONTROLLER IMPORTS
-import {forgotPassword,login,protect,resetPassword,signup,updatePassword} from "../controllers/authController.js";
+import {forgotPassword,login,protect,resetPassword,signup,updatePassword, addEvent} from "../controllers/authController.js";
 import { updateMe, deleteMe, getUser } from "../controllers/userController.js";
 
 //* ROUTER
@@ -25,7 +25,6 @@ router
 router
   .route("/resetPassword/:token")
   .patch(resetPassword);
-
 
   //User Routers
 
@@ -50,8 +49,5 @@ router
 //--------ADD EVENT--------//
 router.route("/addEvent").patch(protect, addEvent);
 ///---------------//
-
-
-
 
 export default router;

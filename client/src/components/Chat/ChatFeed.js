@@ -18,10 +18,11 @@ export default function ChatFeed() {
             mt-4
             rounded-[25px]
             h-screen
-            max-h-[536px]
             grow
             p-2
             
+            md:max-h-[1100px]
+
             lg:max-h-[670px]
             lg:mx-8
             lg:my-auto
