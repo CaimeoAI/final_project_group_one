@@ -1,44 +1,57 @@
 # EduIO - Student Support Application
 
-##Imagem de capa
+## Table of Content
 
-##Badges
+- [Project Description](#project-description)
+- [Project Status](#project-status)
+- [Features and Application Demo](#features-and-application-demo)
+- [Project Access](#project-access)
+- [Used Technologies](#used-technologies)
+- [Contributors](#contributors)
+- [Project Developer Team](#project-developer-team)
+- [License](#license)
 
-#Índice
+## Project Description
 
-- [Título e Imagem de capa](#Título-e-Imagem-de-capa)
-- [Badges](#badges)
-- [Índice](#índice)
-- [Descrição do Projeto](#descrição-do-projeto)
-- [Status do Projeto](#status-do-Projeto)
-- [Funcionalidades e Demonstração da Aplicação](#funcionalidades-e-demonstração-da-aplicação)
-- [Acesso ao Projeto](#acesso-ao-projeto)
-- [Tecnologias utilizadas](#tecnologias-utilizadas)
-- [Pessoas Contribuidoras](#pessoas-contribuidoras)
-- [Pessoas Desenvolvedoras do Projeto](#pessoas-desenvolvedoras)
-- [Licença](#licença)
-- [Conclusão](#conclusão)
+---
 
-  ##Descrição do Projeto
-  Student Support Application
+A Support Platform that helps Technologie Students to have everything they need at the same time and in the same place, making their daily lives easier.
 
-  ##Status do Projeto
+## Project Status
 
-  ##Funcionalidades e Demonstração da Aplicação
+---
 
-  # :hammer: Funcionalidades do projeto
+Project continues in the development process with about 90% of the functionalities ready for deployment.
 
-- `Funcionalidade 1`: descrição da funcionalidade 1
-- `Funcionalidade 2`: descrição da funcionalidade 2
-- `Funcionalidade 2a`: descrição da funcionalidade 2a relacionada à funcionalidade 2
-- `Funcionalidade 3`: descrição da funcionalidade 3
+## :hammer: Features and Application Demo
 
-  ##Acesso ao Projeto
+---
 
-  ##Tecnologias utilizadas
+- `Calendar`: A powerful tool that helps students keep all their appointments up to date and gathered in one place.
+- `Academia`: The place where students can share knowledge and clarify doubts in a practical and quick way.
+- `Learning Support`: It brings together content from different platforms in order to offer students up-to-date information on the technology universe.
+- `Chat`: Chat with friends to exchange experiences, share knowledge and ask questions. A great opportunity to develop knowledge in partnership with other students.
 
-  ##Pessoas Contribuidoras
+## Project Access
 
-  ##Pessoas Desenvolvedoras do Projeto
+---
 
-  ##Licença
+## Applied Technologies
+
+---
+
+## Contributors
+
+---
+
+Ather Ahmad, Dilshod Rahmatov, Mansour Tumeh
+
+## Project Developer Team
+
+---
+
+Ana Kümmecke, Edson Bottura, Ilie Honciuc, Judielle Villa, Natalie Lazarev
+
+## License
+
+---
