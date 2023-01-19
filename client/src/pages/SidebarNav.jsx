@@ -5,7 +5,7 @@ import { RiSettings4Line } from "react-icons/ri";
 import { BsBook, BsCalendar3 } from "react-icons/bs";
 import { FiMessageSquare } from "react-icons/fi";
 import { SlGraduation } from "react-icons/sl";
-import { RiLogoutCircleRLine } from "react-icons/ri";
+import { MdLogout } from "react-icons/md";
 
 import { Link } from "react-router-dom";
 import { MainContext } from "../context/MainContext";
@@ -21,7 +21,7 @@ const SidebarNav = () => {
     { name: "Chat", link: "/chat", icon: FiMessageSquare },
     { name: "Setting", link: "/settings", icon: RiSettings4Line },
   ];
-  const logout = { name: "Logout", icon: RiLogoutCircleRLine };
+  const logout = { name: "Log out", icon: MdLogout };
   const userProfileImg = localStorage.getItem("photo");
   const userCourse = localStorage.getItem("course");
   const userName = localStorage.getItem("name")
