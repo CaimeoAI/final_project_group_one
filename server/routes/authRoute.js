@@ -12,18 +12,25 @@ import {
   updatePassword,
 } from "../controllers/authController.js";
 
-
 import { updateMe, deleteMe, getUser } from "../controllers/userController.js";
 
 //* ROUTER
 const router = express.Router();
 
 //Authorization Routers
-router.route("/signup").post(signup);
 
-router.route("/login").post(login);
+router
+  .route("/signup")
+  .post(signup);
 
-router.route("/forgotPassword").post(forgotPassword);
+router
+  .route("/login")
+  .post(login);
+
+router
+  .route("/forgotPassword")
+  .post(forgotPassword);
+
 
 router.route("/resetPassword/:token").patch(resetPassword);
 
