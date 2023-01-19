@@ -102,8 +102,6 @@ export function ForumProvider({ children }) {
   };
 
   const bestPost = () => {
-    console.log('best posts func')
-    console.log([...posts].sort((a, b) => b.likes.length - a.likes.length))
     setPosts([...posts].sort((a, b) => b.likes.length - a.likes.length));
   };
 

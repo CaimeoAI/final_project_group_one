@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400&display=swap");
 
 .fromEditor {
-  /* word-wrap: break-word;
-  overflow-y: scroll; */
   white-space: pre-wrap;
 }
 
@@ -52,7 +50,6 @@
   padding: 12px 12px;
   border-radius: 7px;
   margin-right: 12px;
-  overflow-x: scroll;
   white-space: pre-wrap;
   word-break: break-word;
 }
@@ -60,6 +57,24 @@
 .inAllPosts pre {
   white-space: pre-wrap;
   word-break: break-word;
+}
+.inAllPosts ul li {
+  list-style: square;
+  margin-left: 20px;
+  padding: 5px;
+  word-break: break-all;
+}
+.inAllPosts ol li {
+  list-style-type: decimal;
+  margin-left: 35px;
+  padding: 5px;
+  word-break: break-all;
+  
+}
+.inAllPosts p {
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: 5px 2px;
 }
 
 .ql-container {
