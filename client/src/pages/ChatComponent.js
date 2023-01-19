@@ -6,13 +6,6 @@ import JoinRoomModal from "../components/Chat/JoinRoomModal.js";
 
 export default function ChatComponent() {
 
-    const [selectedConversation, setSelectedConversation] = useState([])
-
-    // useEffect(() => {
-    //     console.log('Chatfeed rerendered');
-    //     setSelectedConversation(JSON.parse(localStorage.getItem('chat-app-conversations'))?.filter(e => e.id === JSON.parse(localStorage.getItem('chat-app-currentConversation')).email)[0]?.messages)
-    // }, [messageSent])
-
     return (
         <div 
             className="
@@ -24,7 +17,7 @@ export default function ChatComponent() {
                 text-text-primary
                 h-screen
                 w-screen
-                pb-20
+                pb-16
                 lg:flex-row-reverse">            
                 
                 <div className="flex flex-col lg:mx-4 lg:mt-20 lg:mb-8 2xl:mt-4">

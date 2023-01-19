@@ -1,18 +1,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;400&display=swap");
 
 .fromEditor {
-  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .fromEditor ul li {
   list-style: square;
-  margin-left: 25px;
+  margin-left: 15px;
+  padding: 3px;
+  word-break: break-all;
 }
 
 .fromEditor ol li {
   list-style-type: decimal;
-  margin-left: 25px;
+  margin-left: 15px;
+  padding: 3px;
+  word-break: break-all;
+  
 }
+
+.fromEditor ul li code{
+   word-break: break-all;
+}
+
+.fromEditor ol li code{
+  word-break: break-all;
+}
+
+
 
 .fromEditor blockquote {
   margin-left: 15px;
@@ -23,65 +38,83 @@
     rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
 }
 
+.fromEditor p {
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: 4px 0;
+}
+
 .fromEditor pre {
-  background: #1b2430;
+  background: #111827;
   color: #e7f6f2;
   padding: 12px 12px;
   border-radius: 7px;
   margin-right: 12px;
   white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .inAllPosts pre {
   white-space: pre-wrap;
+  word-break: break-word;
+}
+.inAllPosts ul li {
+  list-style: square;
+  margin-left: 20px;
+  padding: 5px;
+  word-break: break-all;
+}
+.inAllPosts ol li {
+  list-style-type: decimal;
+  margin-left: 35px;
+  padding: 5px;
+  word-break: break-all;
+  
+}
+.inAllPosts p {
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: 5px 2px;
 }
 
-/* .ql-snow.ql-toolbar {
-  border-top-left-radius: 0.3em;
-  border-top-right-radius: 0.3em;
-  
-} */
 .ql-container {
   border-bottom-left-radius: 0.5em;
   border-bottom-right-radius: 0.5em;
 }
 .ql-editor {
-  border: 0.5px solid #6b7280;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-top: none;
 }
 .ql-editor p {
   font-size: 16px;
-  color: #D9D9D9;
+  color: #d9d9d9;
 }
-
-/* #form-input {
-  border: 0.1px solid #6b7280;
-} */
 
 .ql-container.ql-snow {
-  border: 0.1px solid #6b7280;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-top: none;
+  margin-left: 0.3px;
+  margin-right: 0.3px;
 }
 .ql-snow.ql-toolbar {
-  border: 1px solid #6b7280;
+  border: 1px solid #4b5563;
   width: 99.8%;
   margin: 0 auto;
-  margin-top:2px;
-  /* border-bottom: none; */
+  margin-top: 2px;
   border-top-left-radius: 0.3em;
   border-top-right-radius: 0.3em;
-  background-color: #212D42;
-
+  background-color: #212d42;
 }
 
-.ql-snow.ql-toolbar button{
-  filter: invert(42%) sepia(100%) saturate(12%) hue-rotate(15deg) brightness(15%) contrast(15%);
+.ql-snow.ql-toolbar button {
+  filter: invert(42%) sepia(100%) saturate(12%) hue-rotate(15deg)
+    brightness(75%) contrast(55%);
 }
 
 .quill > .ql-container > .ql-editor.ql-blank::before {
   font-size: 13.5px;
   color: #6b7280;
-  /* font-family: "Roboto Mono", monospace; */
+  font-family: "Roboto Mono", monospace;
   font-style: normal;
 }
 

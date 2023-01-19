@@ -55,36 +55,34 @@ const CreatePostModal = ({ getAllPost }) => {
   return (
     <div
       className={"w-screen h-screen fixed top-0 left-0 z-20 flex"}
-      style={{ backgroundColor: "rgba(0,0,0,.89)" }}
+      style={{ backgroundColor: "rgba(0,0,0,.5)"}}
     >
       <div
         className="
                 shadow-2xl
-                bg-primary
-                w-3/4 
-                md:w-[62%]
-                lg:w-[52%]
+                bg-secondary
+                w-[90%]
+                md:w-[60%]
+                lg:w-[40%]
                 p-6
-                md:py-8
+                md:py-10
                 md:px-[35px]
-                lg:px-[47px]
+                lg:px-[30px]
                 text-sm 
                 self-center 
                 mx-auto 
                 rounded-md
                 "
       >
-        <div className={`w-full border-b border-slate-700 mb-4`}>
-          <h1 className="text-lg md:text-2xl pb-3 text-text-primary">
-            Create Post
+        <div className={`flex flex-col md:flex-row  md:w-[97%] justify-between md:items-center pl-1 mb-3 md:mb-0`}>
+          <h1 className="mb-4 md:mb-1 md:pl-4 lg:pl-[26px] font-semibold text-lg md:text-xl text-accent-primary">
+            Create a post
           </h1>
-        </div>
-        <div className="">
           <Dropdowns topic={topic} setTopic={setTopic} />
         </div>
 
         <div
-          className={`bg-secondary w-full flex flex-col items-center p-3 pb-20 md:pb-14 lg:py-5 lg:pb-10 rounded`}
+          className={`w-full flex flex-col items-center md:p-3 pb-10 md:pb-14 lg:py-3 lg:pb-10 rounded`}
         >
           <Input
             className={
@@ -100,11 +98,11 @@ const CreatePostModal = ({ getAllPost }) => {
             theme="snow"
             value={body}
             onChange={setBody}
-            className="w-[97%] h-[250px] md:h-[300px] lg:h-[250px] rounded mb-6 text-text-primary text-md"
+            className="w-[97%] h-[250px] md:h-[300px] lg:h-[250px] rounded  text-text-primary text-md"
           />
         </div>
 
-        <div className="text-right mt-6 md:border-t border-slate-700 pt-4">
+        <div className="text-right  pt-5 pr-1 md:pt-0 lg:pt-6 md:pr-6">
           <button
             disabled={val}
             onClick={() => {
@@ -121,12 +119,12 @@ const CreatePostModal = ({ getAllPost }) => {
             POST
           </button>
           <button
-            outline="true"
-            onClick={() => {
-              setShowPostFormModal(false);
-              setTopic("Choose a field");
-            }}
-            className="inline-block 
+                    onClick={() => {
+                      setShowPostFormModal(false);
+                      setTopic("Choose a field");
+                    }}
+                    outline="true"
+                   className="inline-block 
                                   px-6 
                                   py-2.5
                                   bg-accent-tertiary
@@ -147,8 +145,7 @@ const CreatePostModal = ({ getAllPost }) => {
                                   active:shadow-lg 
                                   transition 
                                   duration-150 
-                                  ease-in-out"
-          >
+                                  ease-in-out">
             Cancel
           </button>
         </div>

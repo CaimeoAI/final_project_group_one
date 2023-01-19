@@ -13,6 +13,7 @@ module.exports = {
     // },
     colors: {
       transparent: 'transparent',
+      'navbar': '#334155',
       'text-primary': '#D9D9D9',
       'text-secondary': '#0f172a',
       'primary': '#152238', // primary background color

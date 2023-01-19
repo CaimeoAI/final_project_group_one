@@ -22,7 +22,7 @@ const MobileNavBar = () => {
       bottom-0
       left-0
       rigt-0
-      bg-tertiary
+      bg-navbar
       w-full
       md:hidden
       h-16

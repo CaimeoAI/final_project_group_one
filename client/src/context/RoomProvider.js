@@ -1,9 +1,10 @@
 import { createContext, useContext, useState, useEffect } from "react"
 import io from 'socket.io-client'
+import axios from "axios";
 
 const RoomContext = createContext()
 
- export const useRooms = () => {
+export const useRooms = () => {
      return useContext(RoomContext)
 }
 
@@ -19,9 +20,47 @@ export function RoomsProvider({ children }) {
     const [currentMessage, setCurrentMessage] = useState('')
     const [messageList, setMessageList] = useState([])
 
+    const getLocalStorageData = (data) => {
+        return data === "token"
+          ? "Bearer " + localStorage.getItem(data)
+          : localStorage.getItem(data);
+    }
+
     const joinRoom = () => {
         if (room !== '') {
             socket.emit('join_room', room)
+            addRoomToDatabase()
+        }
+    }
+
+    const addMessageToDatabase = async(room, author, message, time) => {
+        const token = getLocalStorageData("token")
+        const data = { room, author, message, time }
+        const URL = `${process.env.REACT_APP_BE_URL}/chat/rooms/message`
+        const configuration = {
+          headers: {
+            authorization: token,
+          },
+        }
+        try {
+          await axios.post(URL, data, configuration);
+        } catch (error) {
+          console.log(error);
+        }
+    }
+
+    const getAllRoomMessages = async() => {
+        const URL = `${process.env.REACT_APP_BE_URL}/chat/rooms/messages/${room}`
+        const configuration = {
+            headers: {
+              authorization: getLocalStorageData("token"),
+            },
+          }
+        try {
+            const result = await axios.get(URL, configuration)
+            setMessageList(result.data.messages);
+        } catch (error) {
+            console.log(error);
         }
     }
 
@@ -34,6 +73,7 @@ export function RoomsProvider({ children }) {
                 time: new Date(Date.now()).getHours() + ':' + new Date(Date.now()).getMinutes()
             }
             await socket.emit('send_message', messageData)
+            addMessageToDatabase(messageData.room, messageData.author, messageData.message, messageData.time)
             setMessageList((list) => [...list, messageData])
         }
     }
@@ -42,8 +82,44 @@ export function RoomsProvider({ children }) {
         socket.on('receive_message', (data) => {  
             setMessageList((list) => [...list, data])
         })
+        getAllRooms()
     },[socket])
 
+    useEffect(() => {
+        getAllRoomMessages();
+    }, [currentRoom])
+
+    const getAllRooms = async() => {
+        const URL = `${process.env.REACT_APP_BE_URL}/chat/rooms/${username}`
+        const configuration = {
+            headers: {
+              authorization: getLocalStorageData("token"),
+            },
+          }
+        try {
+            const result = await axios.get(URL, configuration)
+            setRoomList(result.data.user.rooms);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const addRoomToDatabase = async () => {
+        const token = getLocalStorageData("token")
+        const data = { username, room }
+        const URL = `${process.env.REACT_APP_BE_URL}/chat/rooms`
+        const configuration = {
+          headers: {
+            authorization: token,
+          },
+        }
+        try {
+          const res = await axios.post(URL, data, configuration);
+          setRoomList(res.data.user.rooms);
+        } catch (error) {
+          console.log(error);
+        }
+    }
 
     return (
         <RoomContext.Provider value={{
@@ -61,7 +137,10 @@ export function RoomsProvider({ children }) {
             sendMessage,
             messageList, 
             setMessageList,
-            socket
+            socket,
+            addRoomToDatabase,
+            getAllRooms,
+            getAllRoomMessages
         }}>
             { children }
         </RoomContext.Provider>

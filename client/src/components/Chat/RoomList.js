@@ -4,7 +4,7 @@ import { useRooms } from '../../context/RoomProvider'
 export default function ChatContacts() {
 
   const { roomList, setRoom, setCurrentRoom, socket } = useRooms()
-  
+
   const selectRoomHandler = async (room) => {
     setRoom(room)
     setCurrentRoom(room)
