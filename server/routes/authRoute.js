@@ -2,7 +2,7 @@
 import express from "express";
 
 //? CONTROLLER IMPORTS
-import {forgotPassword,login,protect,resetPassword,signup,updatePassword} from "../controllers/authController.js";
+import { forgotPassword, login, protect, resetPassword, signup, updatePassword, addEvent } from "../controllers/authController.js";
 import { updateMe, deleteMe, getUser } from "../controllers/userController.js";
 
 //* ROUTER
@@ -10,15 +10,15 @@ const router = express.Router();
 
 //Authorization Routers
 router
-   .route("/signup")
-   .post(signup);
- 
+  .route("/signup")
+  .post(signup);
+
 router
-   .route("/login")
-   .post(login);
+  .route("/login")
+  .post(login);
 
 
-router 
+router
   .route("/forgotPassword")
   .post(forgotPassword);
 
@@ -27,7 +27,7 @@ router
   .patch(resetPassword);
 
 
-  //User Routers
+//User Routers
 
 router
   .route('/user')

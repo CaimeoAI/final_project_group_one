@@ -1,6 +1,7 @@
 //! MODEL IMPORT
 
-import classesModel from "../models/classesModel";
+import classesModel from "../models/classesModel.js";
+import UserModel from "../models/userModel.js";
 
 //* CLASSES CONTROLLER FUNCTIONS
 
@@ -35,7 +36,7 @@ export const getClass = async (req, res) => {
       error: error.message,
     });
   }
-}   
+}
 
 
 //-------------------- GET ALL CLASSES --------------------
@@ -49,6 +50,8 @@ export const getListOfClasses = async (req, res) => {
     });
   }
 }
+
+
 
 //-------------------- GET CLASSES BY FIELD--------------------
 export const getClassesByField = async (req, res) => {
@@ -67,9 +70,10 @@ export const getClassesByField = async (req, res) => {
 export const getClassesByType = async (req, res) => {
   const { type } = req.params;
   try {
+    const user = await UserModel.findById(req.id, { course: 1 });
+    console.log(user.course);
     const classes = await classesModel
-      .find({ type: type })
-      .populate("students", "name email");
+      .find()
     res.status(201).json(classes);
   } catch (error) {
     res.status(500).json({

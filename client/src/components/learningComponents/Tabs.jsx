@@ -5,6 +5,9 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Item from "./Item";
 import Search from "./Search";
+import Resources from "./Resources";
+import QuizCard from "./QuizCard";
+
 /* import { fontSize, margin } from "@mui/system"; */
 
 function TabPanel(props) {
@@ -84,6 +87,7 @@ export default function BasicTabs() {
       {/* Resources */}
       <TabPanel value={value} index={1}>
         <strong>Resources component here</strong>
+      <Resources />
         <br />
         Contains all the resources available based on your module Lorem ipsum
         dolor sit amet consectetur adipisicing elit. Nesciunt, quod
@@ -100,25 +104,12 @@ export default function BasicTabs() {
         <hr />
       </TabPanel>
 
-      {/* Quizzes */}
-      <TabPanel value={value} index={2}>
-        <p className="text-4xl py-8">Quizzes component here</p>
-        <br />
-        Contains all the quizzes available in order to test your level
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad
-          aspernatur recusandae voluptas libero ex voluptates nemo illum
-          tenetur, obcaecati quidem mollitia. Animi rerum dolore quasi sit
-          aliquid beatae cumque accusamus iste repellendus dolorum, quod, vel
-          veritatis. Recusandae hic nemo eligendi! Iste autem repellendus esse
-          hic dignissimos magnam earum aspernatur temporibus reprehenderit
-          nostrum. Error doloremque vitae esse iusto labore sint! Esse explicabo
-          laborum enim suscipit! Corrupti dolor inventore ipsa sit similique.{" "}
-        </p>
-        <button className="my-6 px-6 py-2  bg-accent-secondary  text-text-primary hover:bg-hover-primary">
-          Start the Quizz
-        </button>
-        <hr />
+      
+      <TabPanel value={value} index={4}>
+        <QuizCard />
+        <QuizCard />
+        <QuizCard />
+        <QuizCard />
       </TabPanel>
 
       <TabPanel value={value} index={2}>
@@ -139,13 +130,7 @@ export default function BasicTabs() {
           Start the Quizz
         </button>
       </TabPanel>
-      {/* <TabPanel value={value} index={2}>
-        <strong>
-          Quizzes component here
-        </strong>
-        <br />
-        Contains all the quizzes available in order to test your level 
-      </TabPanel> */}
+      
     </Box>
   );
 }

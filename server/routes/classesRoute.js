@@ -1,14 +1,20 @@
 import express from "express";
 
 import {
+    getClassesByType,
+    getListOfClasses,
     createClass,
     getClass,
-    getListOfClasses
-} from "../controllers/classesControllers.js";
+
+} from "../controllers/classesController.js"
 
 const router = express.Router();
-router.route("/classes").post(createClass).get(getListOfClasses);
+router.route("/newclass").post(createClass).get(getListOfClasses);
 
 router.route("/classes/:id").post(createClass).get(getClass);
+/* 
+router.route("/classes/field/:field").get(getClassesByField); */
+
+router.route("/type").get(getClassesByType);
 
 export default router;
