@@ -32,18 +32,17 @@ export default function ResponsiveGrid() {
     <div>
       <h1 className=" text-4xl py-8">Your Learning Path</h1>
 
-      <div>
+      <div className="mb-12">
         {loading && <p>Loading...</p>}
         {error && <p>{error.message}</p>}
         {courses &&
           courses.map((courses) => (
-            <div key={courses.type}>
+            <div className="mb-12" key={courses.type}>
               <h1 className=" text-2xl text-orange-300 ">{courses.title}</h1>
               <p>{courses.description}</p>
-              <button className="my-6 bg-accent-secondary  text-text-primary mt-12 px-6 py-2  hover:bg-active">
+              <button className="my-6 bg-accent-secondary  text-text-primary mt-8 px-6 py-2  hover:bg-active">
                 Start course
               </button>
-              
             </div>
           ))}
       </div>

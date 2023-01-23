@@ -7,7 +7,7 @@ export default function Resources() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("https://kontests.net/api/v1/all")
+    fetch("https://web-dev-resources/api")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -42,7 +42,7 @@ export default function Resources() {
             </a>
             <p>{resource.start_time}</p>
             <p>{resource.end_time}</p>
-            <p>duration:{resource.duration}</p>
+            <p className="mb-2">duration:{resource.duration}</p>
           </div>
         ))}
     </div>
