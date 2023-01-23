@@ -5,8 +5,8 @@ import rateLimit from "express-rate-limit"; //REQUEST RATE LIMIT
 import helmet from "helmet"; //ADITIONAL SECURE MEASURES
 import mongoSanitize from "express-mongo-sanitize";
 import xss from "xss-clean";
-import http from "http" // CONNECTION REQUIREMENT FOR SOCKET IO
-import { Server } from "socket.io"
+import http from "http"; // CONNECTION REQUIREMENT FOR SOCKET IO
+import { Server } from "socket.io";
 
 //? MIDDLEWARE IMPORTS
 import cors from "cors"; // TRANSMITTING HTTP HEADERS
@@ -20,6 +20,7 @@ import { tokenVerification } from "./middleware/tokenVerification.js";
 import authRoute from "./routes/authRoute.js";
 import forumRoute from "./routes/forumRoute.js";
 import chatRoute from "./routes/chatRoute.js";
+import eventRoute from "./routes/eventRoute.js";
 
 //! MAIN CONFIGURATION
 
@@ -27,14 +28,14 @@ dotenv.config();
 
 const app = express();
 
-const server = http.createServer(app)
+const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:3000',
-    methods: ['GET', 'POST'],
-  }
-})
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
+});
 
 //? MIDDLEWARE CONFIGURATION
 //Set security HTTP headers
@@ -60,7 +61,6 @@ app.use(xss()); // clean all malicious code
 app.use(cors());
 app.use(morgan("dev")); // Developer Information in Terminal showing each request to the server
 
-
 //* ROUTES
 
 // http://localhost:5000/auth
@@ -69,6 +69,8 @@ app.use("/auth", authRoute);
 app.use("/academia", tokenVerification, forumRoute);
 // http://localhost:5000/chat
 app.use("/chat", chatRoute);
+// http://localhost:5000/calendar
+app.use("/calendar", eventRoute);
 
 //? GLOBAL ERROR HANDLER
 // The Global Error Handler gets the error from the function that comes before and gives out a response containing the error message
@@ -83,7 +85,9 @@ app.use((error, req, res, next) => {
 });
 
 //! DATABASE CONNECTION
-console.log(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`);
+console.log(
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`
+);
 
 mongoose
   .connect(
@@ -98,25 +102,24 @@ mongoose
   })
   .catch((e) => console.log(e));
 
+io.on("connection", (socket) => {
+  console.log("User connected on socket " + socket.id);
 
-io.on('connection', (socket) => {
-  console.log('User connected on socket ' + socket.id)
+  socket.on("join_room", (data) => {
+    socket.join(data);
+    console.log("User with ID:" + socket.id + " joined room " + data);
+  });
 
-  socket.on('join_room', (data) => {
-    socket.join(data)
-    console.log('User with ID:' + socket.id + ' joined room ' + data);
-  })
+  socket.on("send_message", (data) => {
+    console.log(data);
+    socket.to(data.room).emit("receive_message", data);
+  });
 
-  socket.on('send_message', (data) => {
-    console.log(data)
-    socket.to(data.room).emit('receive_message', data)
-  })
+  socket.on("disconnect", () => {
+    console.log("User disconnected from socket " + socket.id);
+  });
+});
 
-  socket.on('disconnect', () => {
-    console.log('User disconnected from socket ' + socket.id);
-  })
-})
-
-server.listen(3001, () => {
-  console.log('http server for SocketIO listening on port 3001');
-})
+server.listen(5001, () => {
+  console.log("http server for SocketIO listening on port 5001");
+});

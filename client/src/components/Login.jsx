@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import LoginImage from "../assets/login-resized.jpg";
 import toast, { Toaster } from "react-hot-toast";
+import {useNavigate} from "react-router-dom"
 
 export const Login = (props) => {
   const [userData, setUserData] = useState({
@@ -10,6 +11,7 @@ export const Login = (props) => {
     password: "",
   });
 
+  const navigateTo = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -17,7 +19,8 @@ export const Login = (props) => {
       axios
         .post(`${process.env.REACT_APP_BE_URL}/auth/login`, {
           email: e.target.email.value,
-          password: e.target.password.value,})
+          password: e.target.password.value,
+        })
         .then((res) => {
           console.log("LOGIN response from backend", res);
           localStorage.setItem("username", res.data.data.user.name);
@@ -29,18 +32,17 @@ export const Login = (props) => {
           localStorage.setItem("course", res.data.data.user.course);
 
           if (res.data.status === "success") {
-                localStorage.setItem("isLogedIn", true);
-                toast.success("Logged in successfully!");
-                window.setTimeout(() => {
-                  location.assign("/");
-                });
-            }
-          })
+            localStorage.setItem("isLogedIn", true);
+            toast.success("Logged in successfully!");
+            navigateTo("/");
+            window.location.reload(false);
+          }
+        })
         .catch((error) => {
           toast.error(error.response.data.message);
         });
-       }
-   };
+    }
+  };
 
   return (
     <div className="lg:flex flex-row-reverse overflow-hidden h-screen ">
@@ -64,14 +66,15 @@ export const Login = (props) => {
       />
       <div className="flex flex-col text-center text-text-primary  bg-primary lg:w-1/2 justify-center">
         <form
-              onSubmit={handleSubmit}
-              className="flex flex-col flex-nowrap md:flex  justify-center items-center">
+          onSubmit={handleSubmit}
+          className="flex flex-col flex-nowrap md:flex  justify-center items-center"
+        >
           <input
-              type="email"
-              placeholder="email address"
-              id="email"
-              name="email"
-              className="
+            type="email"
+            placeholder="email address"
+            id="email"
+            name="email"
+            className="
                       mt-4
                       w-72
                       h-12
@@ -81,13 +84,14 @@ export const Login = (props) => {
                       border-2 
                       border-secondary
                       bg-primary
-                      text-center"/>
+                      text-center"
+          />
           <input
-              type="password"
-              placeholder="password"
-              id="password"
-              name="password"
-              className="
+            type="password"
+            placeholder="password"
+            id="password"
+            name="password"
+            className="
                       mt-4
                       w-72
                       h-12
@@ -97,10 +101,11 @@ export const Login = (props) => {
                       border-2 
                       border-secondary
                       bg-primary
-                      text-center"/>
+                      text-center"
+          />
           <button
-              type="submit"
-              className="
+            type="submit"
+            className="
                       mt-4
                       w-72
                       h-12
@@ -108,26 +113,23 @@ export const Login = (props) => {
                       rounded-full
                       text-text-primary
                       bg-accent-secondary
-                      hover:bg-hover-secondary">
+                      hover:bg-hover-secondary"
+          >
             LOGIN
           </button>
         </form>
-          <button className="mt-4 underline text-text-primary">
-            Forgot your password?{" "}
-          </button>
-          <button
-            className="mt-10 underline text-text-primary"
-            onClick={() => props.onFormSwitch("register")}
-          >
-            Don't have an account? Register here.
-          </button>
+        <button className="mt-4 underline text-text-primary">
+          Forgot your password?{" "}
+        </button>
+        <button
+          className="mt-10 underline text-text-primary"
+          onClick={() => props.onFormSwitch("register")}
+        >
+          Don't have an account? Register here.
+        </button>
       </div>
       <div className="hidden lg:block overflow-hidden w-1/2">
-        <img
-          className="lg:w-full"
-          src={LoginImage}
-          alt="loginImage"
-        />
+        <img className="lg:w-full" src={LoginImage} alt="loginImage" />
       </div>
     </div>
   );

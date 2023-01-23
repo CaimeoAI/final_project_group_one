@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const MainContext = createContext();
 
@@ -27,10 +28,30 @@ export default function MainContextProvider(props) {
 
   //* 02 - FUNCTIONS
 
+  const getAllEvents = async () => {
+    const token = "Bearer " + localStorage.getItem("token");
+    try {
+      const URL = `${process.env.REACT_APP_BE_URL}/calendar/events`;
+      const configuration = {
+        headers: {
+          authorization: token,
+        },
+      };
+      const result = await axios.get(URL, configuration);
+
+      setCurrentEvents(result.data.data.events);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const navigateTo = useNavigate();
 
   const logOut = () => {
-    localStorage.clear()
+    localStorage.removeItem("email");
+    localStorage.removeItem("userID");
+    localStorage.removeItem("token");
+    localStorage.removeItem("isLogedIn");
     navigateTo("/login");
     window.location.reload(false);
   };
@@ -55,9 +76,9 @@ export default function MainContextProvider(props) {
       value={{
         showPostFormModal,
         setShowPostFormModal,
-        currentEvents,
         showChatAddContactModal,
         setShowChatAddContactModal,
+        currentEvents,
         setCurrentEvents,
         open,
         setOpen,
@@ -77,6 +98,7 @@ export default function MainContextProvider(props) {
         setDeleted,
         logOut,
         convertBase64,
+        getAllEvents,
       }}
     >
       {props.children}
