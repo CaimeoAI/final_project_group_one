@@ -13,19 +13,13 @@
 
 ## Project Description
 
----
-
 A Support Platform that helps Technologie Students to have everything they need at the same time and in the same place, making their daily lives easier.
 
 ## Project Status
 
----
-
 Project continues in the development process with about 90% of the functionalities ready for deployment.
 
 ## :hammer: Features and Application Demo
-
----
 
 - `Calendar`: A powerful tool that helps students keep all their appointments up to date and gathered in one place.
 - `Academia`: The place where students can share knowledge and clarify doubts in a practical and quick way.
@@ -34,24 +28,19 @@ Project continues in the development process with about 90% of the functionaliti
 
 ## Project Access
 
----
-
 ## Applied Technologies
 
----
+- Planning & Control: Mural, Zenhub
+- Conception & Design: Excalidraw, Figma
+- Frontend: HTML5, CSS3, JavaScript, React, Tailwind, Socket.io
+- Backend: Node JS, Express JS, MongoDB
 
 ## Contributors
 
----
-
-Ather Ahmad, Dilshod Rahmatov, Mansour Tumeh
+Ather Ahmad, Dilshod Rahmatov, Mansour Tumeh, Joel Peltonen
 
 ## Project Developer Team
-
----
 
 Ana Kümmecke, Edson Bottura, Ilie Honciuc, Judielle Villa, Natalie Lazarev
 
 ## License
-
----
