@@ -14,13 +14,15 @@ export default function ChatContacts() {
   return (
     <div 
         className="
-            mt-6 
-            p-2 
-            w-full
+            mt-2
+            md:mt-6
+            md:w-full
+            md:mx-auto
+
+            p-2
             rounded-[25px]
             bg-secondary
-            lg:h-screen
-            lg:w-[224px]">
+            lg:h-screen">
 
        <h2 className="font-bold text-accent-primary">Your Rooms</h2>
 

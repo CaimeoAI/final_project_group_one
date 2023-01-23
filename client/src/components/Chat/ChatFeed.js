@@ -15,28 +15,20 @@ export default function ChatFeed() {
             bg-secondary
             flex
             flex-col
-            mt-4
+            my-2
+            mb-14
             rounded-[25px]
-            h-screen
             grow
-            p-2
+            overflow-y-scroll
             
-            md:max-h-[1100px]
-
-            lg:max-h-[670px]
-            lg:mx-8
-            lg:my-auto
-            lg:p-6
-            
-            xl:max-h-[820px]
-            
-            2xl:max-h-[890px]">
+            md:p-2
+            md:m-4">
         
         <RoomName/>
         
         <div className="overflow-y-scroll">
 
-            <div className="h-full flex flex-col px-4">
+            <div className="h-full flex flex-col md:px-4">
 
                 <ChatMessage/>
 

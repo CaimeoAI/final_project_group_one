@@ -13,14 +13,15 @@ export default function ChatComponent() {
                 flex
                 flex-col
                 p-4
+
                 text-center 
                 text-text-primary
                 h-screen
                 w-screen
-                pb-16
-                lg:flex-row-reverse">            
+                lg:flex-row-reverse
+                overflow-hidden">            
                 
-                <div className="flex flex-col lg:mx-4 lg:mt-20 lg:mb-8 2xl:mt-4">
+                <div className="flex flex-col lg:mx-2 md:m-4">
                     <JoinRoom/>
                     <ChatContacts/>
                 </div>

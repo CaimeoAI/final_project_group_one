@@ -19,7 +19,7 @@ export default function ChatTextInput() {
                     py-4 
                     px-2 
                     border-t-[1px] 
-                    border-accent-primary">
+                    border-grayed-out">
 
       <form className="flex" onSubmit={handleSubmit}>
         <input className="w-full 
