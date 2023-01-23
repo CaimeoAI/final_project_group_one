@@ -1,8 +1,11 @@
-import * as React from 'react';
-/* import { experimentalStyled as styled } from '@mui/material/styles'; */
+
 import Box from '@mui/material/Box';
-/* import Paper from '@mui/material/Paper'; */
+
 import Grid from '@mui/material/Unstable_Grid2';
+import { useState, useEffect} from 'react';
+import axios from 'axios';
+
+
 
 
 
@@ -15,7 +18,36 @@ import Grid from '@mui/material/Unstable_Grid2';
 })); */
 
 export default function ResponsiveGrid() {
+  const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const token = localStorage.getItem('token');
+
+  useEffect( () => {
+     axios.get(`${process.env.REACT_APP_BE_URL}/classes/type`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+
+      }
+     })
+     .then((response) => {
+        console.log('response', response);
+        setCourses(response.data);
+        setLoading(false);
+     })
+     .catch((error) => {
+        console.log('error', error);
+        setError(error);
+        setLoading(false);
+     }
+      )
+  }, [])
+
   return (
+
+
+
+     
     <Box sx={{ flexGrow: 1 }} className=" " >
       <h1 className=' text-4xl py-8'>Frontend</h1>
       {/* FRONTEND Grid */}

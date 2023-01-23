@@ -19,8 +19,10 @@ import { tokenVerification } from "./middleware/tokenVerification.js";
 //* ROUTE IMPORTS
 import authRoute from "./routes/authRoute.js";
 import forumRoute from "./routes/forumRoute.js";
+import classesRoute from "./routes/classesRoute.js";
 import chatRoute from "./routes/chatRoute.js";
 import eventRoute from "./routes/eventRoute.js";
+
 
 //! MAIN CONFIGURATION
 
@@ -67,10 +69,15 @@ app.use(morgan("dev")); // Developer Information in Terminal showing each reques
 app.use("/auth", authRoute);
 // http://localhost:5000/academia
 app.use("/academia", tokenVerification, forumRoute);
+
+// http://localhost:5000/classes
+app.use("/classes", tokenVerification, classesRoute );
+
 // http://localhost:5000/chat
 app.use("/chat", chatRoute);
 // http://localhost:5000/calendar
 app.use("/calendar", eventRoute);
+
 
 //? GLOBAL ERROR HANDLER
 // The Global Error Handler gets the error from the function that comes before and gives out a response containing the error message
