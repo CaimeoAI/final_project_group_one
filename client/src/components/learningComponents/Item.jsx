@@ -38,7 +38,9 @@ export default function ResponsiveGrid() {
         {courses &&
           courses.map((courses) => (
             <div className="mb-12" key={courses.type}>
-              <h1 className=" text-2xl text-orange-300 ">{courses.title}</h1>
+              <h1 className=" text-xl text-orange-300 mb-3 ">
+                {courses.title}
+              </h1>
               <p>{courses.description}</p>
               <button className="my-6 bg-accent-secondary  text-text-primary mt-8 px-6 py-2  hover:bg-active">
                 Start course
