@@ -127,6 +127,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(5001, () => {
-  console.log("http server for SocketIO listening on port 5001");
+server.listen(3001, () => {
+  console.log("http server for SocketIO listening on port 3001");
 });
