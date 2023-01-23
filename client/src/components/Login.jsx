@@ -2,6 +2,7 @@
 import { useState } from "react";
 import axios from "axios";
 import LoginImage from "../assets/login-resized.jpg";
+import Logo from "../assets/logo.png";
 import toast, { Toaster } from "react-hot-toast";
 import {useNavigate} from "react-router-dom"
 
@@ -65,6 +66,11 @@ export const Login = (props) => {
         }}
       />
       <div className="flex flex-col text-center text-text-primary  bg-primary lg:w-1/2 justify-center">
+      <img
+          className="mx-auto w-[50%]"
+          src={Logo}
+          alt="logo"
+        />
         <form
           onSubmit={handleSubmit}
           className="flex flex-col flex-nowrap md:flex  justify-center items-center"

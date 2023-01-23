@@ -92,7 +92,7 @@ const SeePost = () => {
               theme="snow"
               value={content}
               onChange={setContent}
-              className="h-[250px] md:h-[300px] lg:h-[400px] pb-[42px] md:pb-11 bg-slate-500"
+              className="h-[250px] md:h-[300px] lg:h-[400px] pb-[42px] md:pb-11 bg-slate-500" 
             />
           </div>
 
