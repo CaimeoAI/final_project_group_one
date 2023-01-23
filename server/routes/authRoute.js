@@ -34,20 +34,14 @@ router
 
 router.route("/resetPassword/:token").patch(resetPassword);
 
-
 //User Routers
 
 router.route("/user").get(protect, getUser);
 
-  //User Routers
-
-
 router.route("/updateMe").patch(protect, updateMe);
-
 
 router.route("/updateMyPassword").patch(protect, updatePassword);
 
 router.route("/deleteMe").delete(protect, deleteMe);
-
 
 export default router;

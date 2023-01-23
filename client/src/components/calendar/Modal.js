@@ -12,6 +12,8 @@ import Stack from "@mui/material/Stack";
 import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { MainContext } from "../../context/MainContext";
+import axios from "axios";
+import { useForum } from "../../context/ForumProvider";
 
 const style = {
   position: "absolute",
@@ -27,6 +29,7 @@ const style = {
 };
 
 export default function BasicModal() {
+  const { getLocalStorageData } = useForum();
   const [checked, setChecked] = useState(false);
 
   const {
@@ -44,56 +47,11 @@ export default function BasicModal() {
   } = useContext(MainContext);
 
   const handleClose = () => {
-    setAllDay(objectModal.allDay);
+    setAllDay(checked);
     setStart(dayjs(objectModal.start));
     setEnd(dayjs(objectModal.end));
     setTitle(objectModal.title);
-    setOpen(false);
-  };
-
-  const handleChange = (event) => {
-    setObjectModal((currentValue) => ({
-      ...currentValue,
-      allDay: event.target.checked,
-    }));
-
-    setChecked(event.target.checked);
-
-    setObjectModal((currentValue) => ({
-      ...currentValue,
-      start: selectedProp.startStr,
-      end: selectedProp.startStr,
-    }));
-  };
-
-  const formatHour = (time) => {
-    if (time < 10) {
-      return `0${time}`;
-    } else {
-      return time;
-    }
-  };
-
-  const handleChangeTimeStart = (newValue) => {
-    setStart(newValue);
-
-    setObjectModal((currentValue) => ({
-      ...currentValue,
-      start: `${selectedProp.startStr}T${formatHour(newValue.$H)}:${formatHour(
-        newValue.$m
-      )}:00+01:00`, // '2022-12-29T10:30:00+01:00'
-    }));
-  };
-
-  const handleChangeTimeEnd = (newValue) => {
-    setEnd(newValue);
-
-    setObjectModal((currentValue) => ({
-      ...currentValue,
-      end: `${selectedProp.startStr}T${formatHour(newValue.$H)}:${formatHour(
-        newValue.$m
-      )}:00+01:00`, // '2022-12-29T10:30:00+01:00'
-    }));
+    addEvent();
   };
 
   const handleTitle = (event) => {
@@ -103,11 +61,72 @@ export default function BasicModal() {
     }));
   };
 
+  // checkbox
+  const handleChange = (event) => {
+    setObjectModal((currentValue) => ({
+      ...currentValue,
+      allDay: event.target.checked,
+    }));
+    setChecked(event.target.checked);
+    setObjectModal((currentValue) => ({
+      ...currentValue,
+      start: selectedProp.startStr,
+      end: selectedProp.startStr,
+    }));
+  };
+
+  // time picker
+  const formatHour = (time) => {
+    if (time < 10) {
+      return `0${time}`;
+    } else {
+      return time;
+    }
+  };
+
+  // time picker set start time
+  const handleChangeTimeStart = (newValue) => {
+    setStart(newValue);
+    setObjectModal((currentValue) => ({
+      ...currentValue,
+      start: `${selectedProp.startStr}T${formatHour(newValue.$H)}:${formatHour(
+        newValue.$m
+      )}:00+01:00`, // '2022-12-29T10:30:00+01:00'
+    }));
+  };
+
+  // time picker set end time
+  const handleChangeTimeEnd = (newValue) => {
+    setEnd(newValue);
+    setObjectModal((currentValue) => ({
+      ...currentValue,
+      end: `${selectedProp.startStr}T${formatHour(newValue.$H)}:${formatHour(
+        newValue.$m
+      )}:00+01:00`, // '2022-12-29T10:30:00+01:00'
+    }));
+  };
+
+  const addEvent = async () => {
+    const token = getLocalStorageData("token");
+    const URL = `${process.env.REACT_APP_BE_URL}/calendar/addEvent`;
+    const configuration = {
+      headers: {
+        authorization: token,
+      },
+    };
+    try {
+      await axios.post(URL, objectModal, configuration);
+    } catch (error) {
+      console.log(error);
+    }
+    setOpen(false);
+  };
+
   return (
     <div>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={() => setOpen(false)}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -126,11 +145,12 @@ export default function BasicModal() {
               label="Title"
               color="grey"
               id="fullWidth"
+              name="title"
               onChange={(event) => handleTitle(event.target.value)}
             />
           </Box>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Allday
+            All day
           </Typography>
           <Checkbox
             sx={{ mb: 2 }}
@@ -168,7 +188,9 @@ export default function BasicModal() {
               float: "right",
             }}
             variant="contained"
-            onClick={handleClose}
+            onClick={() => {
+              handleClose();
+            }}
             endIcon={<SendIcon />}
           >
             Send

@@ -11,7 +11,6 @@ import Welcome from "./Welcome";
 
 export default function FullCalend() {
   const {
-    setCurrentEvents,
     open,
     setOpen,
     title,
@@ -24,6 +23,9 @@ export default function FullCalend() {
     setObjectModal,
     deleted,
     setDeleted,
+    getAllEvents,
+    currentEvents,
+    setCurrentEvents,
   } = useContext(MainContext);
 
   const handleOpen = () => setOpen(true);
@@ -34,27 +36,20 @@ export default function FullCalend() {
       setShowElement(false);
     }, 20000); // 20 seconds
 
+    getAllEvents();
+
     if (selectedProp) {
-      const calendarApi = selectedProp.view.calendar;
-      calendarApi.unselect();
-
-      // ObjectModal is the object created in modal module and received by FullCalend.js
-      // In this part the calendar event is created when data is submited from modal
-
       if (objectModal) {
-        calendarApi.addEvent({
-          id: `${objectModal.title}`,
-          title: objectModal.title, // String
-          start: objectModal.start, // '2022-12-29T10:30:00+01:00'
-          end: objectModal.end, // '2022-12-29T10:30:00+01:00'
-          allDay: objectModal.allDay, // boolean
-        });
+        setCurrentEvents((currentEventsArray) => [
+          ...currentEventsArray,
+          objectModal,
+        ]);
 
         setObjectModal({
           title: null,
           allDay: false,
-          start: undefined,
-          end: undefined,
+          start: null,
+          end: null,
         });
         setTitle(null);
         setEnd(null);
@@ -74,7 +69,7 @@ export default function FullCalend() {
   };
 
   return (
-    <div className=" h-[100%] w-[100%] p-2 md:h-[80%] md:pl-2 md:pt-4">
+    <div className=" h-[100%] w-[100%] p-2 md:h-[80%] md:pl-4 md:pt-4">
       {showElement ? (
         <Welcome text={"fade-in"} />
       ) : (
@@ -95,8 +90,8 @@ export default function FullCalend() {
         dayMaxEvents={true}
         select={handleDateClick}
         eventClick={handleEventClick}
-        eventsSet={(events) => setCurrentEvents(events)}
-      />{" "}
+        events={currentEvents}
+      />
       {open && <Modal />}
       {deleted && <ModalDeleted />}
     </div>
