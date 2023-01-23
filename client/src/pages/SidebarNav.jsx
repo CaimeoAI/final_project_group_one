@@ -16,7 +16,7 @@ const SidebarNav = () => {
 
   const menus = [
     { name: "Calendar", link: "/", icon: BsCalendar3 },
-    { name: "Learning Support", link: "/learningsupport", icon: BsBook },
+    { name: "Learning ", link: "/learningsupport", icon: BsBook },
     { name: "Academia", link: "/academia", icon: SlGraduation },
     { name: "Chat", link: "/chat", icon: FiMessageSquare },
     { name: "Setting", link: "/settings", icon: RiSettings4Line },
@@ -24,7 +24,7 @@ const SidebarNav = () => {
   const logout = { name: "Log out", icon: MdLogout };
   const userProfileImg = localStorage.getItem("photo");
   const userCourse = localStorage.getItem("course");
-  const userName = localStorage.getItem("name")
+  const userName = localStorage.getItem("name");
 
   return (
     /* Sidebar Background Color */
@@ -55,9 +55,13 @@ const SidebarNav = () => {
             className={`w-full h-full rounded-full object-cover`}
           />
         </div>
-        <h2 className={`${
+        <h2
+          className={`${
             !open && "opacity-0"
-          } text-text-primary font-bold mt-3 text-center md:hidden lg:block`}>{userName}</h2>
+          } text-text-primary font-bold mt-3 text-center md:hidden lg:block`}
+        >
+          {userName}
+        </h2>
         <h2
           className={`${
             !open && "opacity-0"
@@ -65,7 +69,6 @@ const SidebarNav = () => {
         >
           Course: {userCourse}
         </h2>
-
       </div>
 
       <div className="md:mt-8 h-[85%]  flex flex-col  gap-4  relative  ">
