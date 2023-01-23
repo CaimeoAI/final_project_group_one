@@ -31,7 +31,8 @@ export default function ResponsiveGrid() {
   return (
     <div>
       <h1 className=" text-4xl py-8">Your Learning Path</h1>
-      <div className="bg-red-500">
+
+      <div>
         {loading && <p>Loading...</p>}
         {error && <p>{error.message}</p>}
         {courses &&
@@ -42,6 +43,7 @@ export default function ResponsiveGrid() {
               <button className="my-6 bg-accent-secondary  text-text-primary mt-12 px-6 py-2  hover:bg-active">
                 Start course
               </button>
+              
             </div>
           ))}
       </div>

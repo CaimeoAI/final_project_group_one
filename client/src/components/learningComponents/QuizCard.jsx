@@ -37,7 +37,7 @@ export default function QuizCard() {
             <Item/>
             <h1>{resource.name}</h1>
             <button target="_blank" rel="noreferrer" href={resource.url}>
-              Star the quizz
+              Start the quizz
             </button>
             <p>{resource.start_time}</p>
             <p>{resource.end_time}</p>
