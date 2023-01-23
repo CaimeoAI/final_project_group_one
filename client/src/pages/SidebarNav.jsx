@@ -93,7 +93,7 @@ const SidebarNav = () => {
             <h2
               className={`${
                 open && "lg:hidden"
-              } absolute left-48 bg-accent-primary font-semibold whitespace-pre text-text-secondary rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
+              } z-10 absolute left-48 bg-accent-primary font-semibold whitespace-pre text-text-secondary rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit  `}
             >
               {menu?.name}
             </h2>
@@ -114,7 +114,7 @@ const SidebarNav = () => {
               transitionDelay: `${5 + 3}00ms`,
             }}
             className={`md:hidden lg:block whitespace-pre duration-500 ${
-              !open && "opacity-0 translate-x-28 overflow-hidden"
+              !open && "opacity-0 translate-x-28 overflow-hidden z-10"
             }`}
           >
             {logout.name}

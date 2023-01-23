@@ -6,7 +6,7 @@ export default function ChatGroupSelector() {
 
   return (
     <div className="p-4 text-left text-xl font-bold lg:text-2xl text-accent-primary">
-        {currentRoom}
+        <p className="border-[2px] rounded border-hover-primary inline-block p-2">{currentRoom}</p>
     </div>
   )
 }

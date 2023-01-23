@@ -26,7 +26,7 @@ const MobileNavBar = () => {
       w-full
       md:hidden
       h-16
-      
+      z-10
       "
     >
       <div className=" flex flex-row justify-around p-3">

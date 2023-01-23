@@ -12,7 +12,7 @@ const socket = io.connect('http://localhost:3001')
 
 export function RoomsProvider({ children }) {
 
-    const [username, setUserName] = useState(localStorage.getItem('username'))
+    const [username, setUserName] = useState(localStorage.getItem('name'))
     const [room, setRoom] = useState('')
     const [currentRoom, setCurrentRoom] = useState('')
     const [roomList, setRoomList] = useState([])
