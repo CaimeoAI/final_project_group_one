@@ -75,6 +75,7 @@ app.use("/classes", tokenVerification, classesRoute );
 
 // http://localhost:5000/chat
 app.use("/chat", chatRoute);
+
 // http://localhost:5000/calendar
 app.use("/calendar", eventRoute);
 
@@ -127,6 +128,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(5001, () => {
-  console.log("http server for SocketIO listening on port 5001");
+server.listen(3001, () => {
+  console.log("http server for SocketIO listening on port 3001");
 });

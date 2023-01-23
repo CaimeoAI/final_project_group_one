@@ -87,6 +87,7 @@ export const login = catchAsync(async (req, res, next) => {
 //------------------- PROTECT ROUTES -------------
 
 export const protect = catchAsync(async (req, res, next) => {
+  // console.log(req)
   //1) Getting token and check if it's there
   let token;
   if (
@@ -101,13 +102,11 @@ export const protect = catchAsync(async (req, res, next) => {
       new AppError("You are not logged in! Please log in to get access.", 401)
     );
   }
-
+  
   //2) Verification token
-
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-
+  
   //3) Check if user still exists
-
   const currentUser = await User.findById(decoded.id);
 
   if (!currentUser) {

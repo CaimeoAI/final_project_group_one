@@ -11,6 +11,7 @@ import Welcome from "./Welcome";
 
 export default function FullCalend() {
   const {
+    /* setCurrentEvents, */
     open,
     setOpen,
     title,
@@ -25,7 +26,7 @@ export default function FullCalend() {
     setDeleted,
     getAllEvents,
     currentEvents,
-    setCurrentEvents,
+    setCurrentEvents
   } = useContext(MainContext);
 
   const handleOpen = () => setOpen(true);
@@ -39,11 +40,21 @@ export default function FullCalend() {
     getAllEvents();
 
     if (selectedProp) {
+      // const calendarApi = selectedProp.view.calendar;
+      // calendarApi.unselect();
+
       if (objectModal) {
-        setCurrentEvents((currentEventsArray) => [
-          ...currentEventsArray,
-          objectModal,
+        // calendarApi.addEvent({
+        //   id: `${objectModal.title}`,
+        //   title: objectModal.title, // String
+        //   start: objectModal.start, // '2022-12-29T10:30:00+01:00'
+        //   end: objectModal.end, // '2022-12-29T10:30:00+01:00'
+        //   allDay: objectModal.allDay, // boolean
+        // });
+        setCurrentEvents(currentEventsArray => [...currentEventsArray,
+          objectModal
         ]);
+
 
         setObjectModal({
           title: null,
@@ -56,7 +67,9 @@ export default function FullCalend() {
         setStart(null);
       }
     }
+    // updateEvents();
   }, [title, showElement]);
+
 
   const handleDateClick = (selected) => {
     setSelectedProp(selected);
@@ -90,7 +103,8 @@ export default function FullCalend() {
         dayMaxEvents={true}
         select={handleDateClick}
         eventClick={handleEventClick}
-        events={currentEvents}
+        // eventsAdd={(currentEvents) => setCurrentEvents(currentEvents)}
+        events={currentEvents} // render the currentEvvent array back to calendar after login
       />
       {open && <Modal />}
       {deleted && <ModalDeleted />}
