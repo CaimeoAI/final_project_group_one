@@ -75,6 +75,7 @@ app.use("/classes", tokenVerification, classesRoute );
 
 // http://localhost:5000/chat
 app.use("/chat", chatRoute);
+
 // http://localhost:5000/calendar
 app.use("/calendar", eventRoute);
 

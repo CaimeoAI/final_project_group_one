@@ -21,7 +21,7 @@ export default function ModalDeleted() {
     const header = {
       headers: {
         authorization: token,
-        id: selectedProp.event._def.extendedProps._id,
+        id: selectedProp.event._def.extendedProps._id
       },
     };
     try {

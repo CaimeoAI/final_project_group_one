@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import mongoose from "mongoose";
+import mongoose, {Schema} from "mongoose";
 import validator from "validator";
 import bcrypt from "bcrypt";
 
@@ -41,16 +41,8 @@ const userSchema = mongoose.Schema({
       message: "Passwords are not the same!",
     },
   },
-  // // // // // // // events object add//
-  events: [
-    {
-      start: Date,
-      end: Date,
-      title: String,
-      allDay: Boolean,
-    },
-  ],
-  // // // // // // //
+  events: [{ type: Schema.Types.ObjectId, ref: "Event" }],
+
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,
@@ -59,10 +51,12 @@ const userSchema = mongoose.Schema({
     default: true,
     select: false,
   },
-  rooms: [{
-    type: String,
-    ref: "room",
-  }]
+  rooms: [
+    {
+      type: String,
+      ref: "room",
+    },
+  ],
 });
 
 userSchema.pre("save", async function (next) {

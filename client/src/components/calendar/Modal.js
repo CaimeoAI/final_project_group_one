@@ -44,6 +44,9 @@ export default function BasicModal() {
     setAllDay,
     objectModal,
     setObjectModal,
+    // currentEvents,
+    // setCurrentEvents
+    // getAllEvents,
   } = useContext(MainContext);
 
   const handleClose = () => {
@@ -60,8 +63,7 @@ export default function BasicModal() {
       title: event,
     }));
   };
-
-  // checkbox
+  // check box
   const handleChange = (event) => {
     setObjectModal((currentValue) => ({
       ...currentValue,
@@ -74,7 +76,6 @@ export default function BasicModal() {
       end: selectedProp.startStr,
     }));
   };
-
   // time picker
   const formatHour = (time) => {
     if (time < 10) {
@@ -87,6 +88,7 @@ export default function BasicModal() {
   // time picker set start time
   const handleChangeTimeStart = (newValue) => {
     setStart(newValue);
+
     setObjectModal((currentValue) => ({
       ...currentValue,
       start: `${selectedProp.startStr}T${formatHour(newValue.$H)}:${formatHour(
@@ -107,6 +109,7 @@ export default function BasicModal() {
   };
 
   const addEvent = async () => {
+    
     const token = getLocalStorageData("token");
     const URL = `${process.env.REACT_APP_BE_URL}/calendar/addEvent`;
     const configuration = {
@@ -116,6 +119,7 @@ export default function BasicModal() {
     };
     try {
       await axios.post(URL, objectModal, configuration);
+      
     } catch (error) {
       console.log(error);
     }
@@ -126,7 +130,7 @@ export default function BasicModal() {
     <div>
       <Modal
         open={open}
-        onClose={() => setOpen(false)}
+        onClose={()=> setOpen(false)}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -150,7 +154,7 @@ export default function BasicModal() {
             />
           </Box>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            All day
+            Allday
           </Typography>
           <Checkbox
             sx={{ mb: 2 }}
