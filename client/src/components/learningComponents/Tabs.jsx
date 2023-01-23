@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import Item from "./Item";
 import Search from "./Search";
 import Resources from "./Resources";
-import QuizCard from "./QuizCard";
+import Quizzes from "./Quizzes";
 
 /* import { fontSize, margin } from "@mui/system"; */
 
@@ -37,18 +37,15 @@ function a11yProps(index) {
     style: {
       fontSize: "1,5rem",
       fontWeight: "lighter",
-      
     },
-    
-    sx:{
+
+    sx: {
       color: "rgba(85, 255, 111, 0.5)",
       Selected: "white",
       "&.Mui-selected": {
         color: "white",
-        
-      }
-      
-    }
+      },
+    },
   };
 }
 
@@ -67,14 +64,13 @@ export default function BasicTabs() {
         <Tabs
           value={value}
           onChange={handleChange}
-          TabIndicatorProps={{sx: {backgroundColor: "white"}}}
+          TabIndicatorProps={{ sx: { backgroundColor: "white" } }}
           sx={{ color: "red" }}
           aria-label="basic tabs example"
-          
         >
           <Tab label="Classes" {...a11yProps(0)} />
           <Tab label="Resources" {...a11yProps(1)} />
-          <Tab label="Quizzes" {...a11yProps(2)} />
+          <Tab label="Quizzes & Challenges" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <Search />
@@ -87,7 +83,7 @@ export default function BasicTabs() {
       {/* Resources */}
       <TabPanel value={value} index={1}>
         <strong>Resources component here</strong>
-      <Resources />
+        <Resources />
         <br />
         Contains all the resources available based on your module Lorem ipsum
         dolor sit amet consectetur adipisicing elit. Nesciunt, quod
@@ -104,15 +100,10 @@ export default function BasicTabs() {
         <hr />
       </TabPanel>
 
-      
-      <TabPanel value={value} index={4}>
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
-      </TabPanel>
+      <TabPanel value={value} index={4}></TabPanel>
 
       <TabPanel value={value} index={2}>
+        <Quizzes />
         <strong>Quizzes component here</strong>
         <br />
         Contains all the quizzes available in order to test your level
@@ -130,7 +121,6 @@ export default function BasicTabs() {
           Start the Quizz
         </button>
       </TabPanel>
-      
     </Box>
   );
 }
