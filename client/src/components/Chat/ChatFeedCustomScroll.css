@@ -2,13 +2,13 @@
 	*::-webkit-scrollbar-track
 	{
 		border-radius: 10px;
-		background-color: #212D42;
+		background-color: transparent transparent;
 	}
 
 	*::-webkit-scrollbar
 	{
 		width: 8px;
-		background-color: #212D42;
+		background-color: transparent transparent;
 	}
 
 	*::-webkit-scrollbar-thumb

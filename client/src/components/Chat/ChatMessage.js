@@ -23,9 +23,9 @@ export default function ChatMessage() {
                         <p className="bg-accent-secondary text-text-primary p-3 px-6 w-fit mt-1 mx-2 rounded-[25px] text-left">{message.message}</p>}
 
                     {message.author === localStorage.getItem('username')?
-                        <p className="mx-4 text-xs text-right text-grayed-out">{message.time}</p>
+                        <p className="mt-1 mx-4 text-xs text-right text-grayed-out">{message.time}</p>
                         :
-                        <p className="mx-4 text-xs text-left text-grayed-out">{message.time}</p>
+                        <p className="mt-1 mx-4 text-xs text-left text-grayed-out">{message.time}</p>
                     }
                 </div>)}
         </>
