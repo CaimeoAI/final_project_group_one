@@ -182,7 +182,30 @@ const AccountInfo = () => {
         </div>
 
         <div className="w-full  px-10 md:px-20 lg:px-10">
-          <button className="w-full inline-block mx-2 px-6 py-3 bg-accent-secondary text-text-primary font-medium text-base leading-tight uppercase rounded shadow-md hover:bg-accent-secondary hover:shadow-lg focus:bg-hover-secondary focus:shadow-lg focus:outline-none focus:ring-0 active:bg-grayed-out active:shadow-lg transition duration-150 ease-in-out ml-1">
+          <button className="w-full
+                      mx-2 
+                      px-6 
+                      py-2.5 
+                      bg-accent-secondary
+                      text-text-primary
+                      font-medium 
+                      text-xs 
+                      leading-tight 
+                      uppercase 
+                      rounded 
+                      shadow-md 
+                      hover:bg-hover-secondary 
+                      hover:shadow-lg 
+                      focus:bg-hover-secondary 
+                      focus:shadow-lg 
+                      focus:outline-none 
+                      focus:ring-0 
+                      active:bg-active 
+                      active:shadow-lg 
+                      transition 
+                      duration-150 
+                      ease-in-out 
+                      ml-1">
             Update Now
           </button>
         </div>

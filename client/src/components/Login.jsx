@@ -4,7 +4,7 @@ import axios from "axios";
 import LoginImage from "../assets/login-resized.jpg";
 import Logo from "../assets/logo.png";
 import toast, { Toaster } from "react-hot-toast";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 export const Login = (props) => {
   const [userData, setUserData] = useState({
@@ -46,7 +46,7 @@ export const Login = (props) => {
   };
 
   return (
-    <div className="lg:flex flex-row-reverse overflow-hidden h-screen ">
+    <div className="flex flex-row-reverse overflow-hidden h-screen w-screen">
       <Toaster
         toastOptions={{
           success: {
@@ -65,15 +65,16 @@ export const Login = (props) => {
           },
         }}
       />
-      <div className="flex flex-col text-center text-text-primary  bg-primary lg:w-1/2 justify-center">
-      <img
-          className="mx-auto w-[50%] animate-pulse"
-          src={Logo}
-          alt="logo"
-        />
+
+      <div className="flex flex-col text-center text-text-primary  bg-primary  w-screen lg:w-1/2 justify-center">
+        <img 
+            className="mx-auto w-[50%] animate-pulse" 
+            src={Logo} 
+            alt="logo" />
+
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col flex-nowrap md:flex  justify-center items-center"
+          className="flex flex-col flex-nowrap md:flex  justify-center items-center "
         >
           <input
             type="email"
@@ -128,14 +129,26 @@ export const Login = (props) => {
           Forgot your password?{" "}
         </button>
         <button
-          className="mt-10 underline text-text-primary"
+          className="mt-10 text-text-primary"
           onClick={() => props.onFormSwitch("register")}
         >
-          Don't have an account? Register here.
+          Don't have an account?
+          <span
+            className="hover:text-accent-secondary 
+                         ml-1
+                         cursor-pointer
+                         hover:underline
+                         hover:font-semibold
+                         hover:decoration-accent-secondary 
+                         transition 
+                         duration-250 
+                         ease-in-out">
+            Register here.
+          </span>
         </button>
       </div>
-      <div className="hidden lg:block overflow-hidden w-1/2">
-        <img className="lg:w-full" src={LoginImage} alt="loginImage" />
+      <div className="hidden lg:block overflow-hidden w-1/2 h-screen">
+        <img className="lg:w-full lg:h-full" src={LoginImage} alt="loginImage" />
       </div>
     </div>
   );

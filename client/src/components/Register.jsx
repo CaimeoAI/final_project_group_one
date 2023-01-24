@@ -7,7 +7,7 @@ import UploadAndDisplayImage from "./UploadAndDisplayImage";
 import { MainContext } from "../context/MainContext";
 
 export const Register = (props) => {
-  const {convertBase64} = useContext(MainContext);
+  const { convertBase64 } = useContext(MainContext);
   const navigateTo = useNavigate();
   const [userDetails, setUserDetails] = useState({
     name: "",
@@ -18,14 +18,13 @@ export const Register = (props) => {
     passwordConfirm: "",
   });
   const fields = ["Webdev", "DigitalMarketing", "AWS", "Python"];
-  console.log()
+  console.log();
 
   const updateUserDetails = (e) => {
     return setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
   };
 
   const updateUserImage = async (e) => {
-    
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
 
@@ -49,7 +48,7 @@ export const Register = (props) => {
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("photo", response.data.data.user.photo);
       localStorage.setItem("name", response.data.data.user.name);
-      localStorage.setItem("course", response.data.data.user.course)
+      localStorage.setItem("course", response.data.data.user.course);
 
       if (response.data.status === "success") {
         localStorage.setItem("isLogedIn", true);
@@ -62,9 +61,9 @@ export const Register = (props) => {
       toast.error(error.response?.data?.message?.split(":")[2]);
     }
   };
-  
+
   return (
-    <div className="lg:flex flex-row h-screen">
+    <div className="lg:flex flex-row h-screen w-screen">
       <Toaster
         toastOptions={{
           success: {
@@ -180,7 +179,7 @@ export const Register = (props) => {
             placeholder="password"
             id="password"
             name="password"
-            minLength='8'
+            minLength="8"
             onChange={(e) => updateUserDetails(e)}
           />
           <input
@@ -199,7 +198,7 @@ export const Register = (props) => {
             placeholder="confirm password"
             id="passwordConfirm"
             name="passwordConfirm"
-            minLength='8'
+            minLength="8"
             onChange={(e) => updateUserDetails(e)}
           />
           <p className="text-xs mt-1 text-grayed-out">*Password has to be atleast 8 characters</p>
@@ -219,16 +218,28 @@ export const Register = (props) => {
           </button>
         </form>
         <button
-          className="mt-10 underline text-text-primary"
+          className="mt-10  text-text-primary"
           onClick={() => props.onFormSwitch("login")}
         >
-          Already have an account? Login here.
+          Already have an account?
+          <span
+            className="hover:text-accent-secondary 
+                         ml-1
+                         cursor-pointer
+                         hover:underline
+                         hover:font-semibold
+                         transition-transform
+                         hover:-translate-y-4
+                       
+                          ">
+             Login here.
+          </span>
         </button>
       </div>
 
-      <div className="hidden lg:block overflow-hidden w-1/2">
+      <div className="hidden lg:block overflow-hidden w-1/2 h-screen">
         <img
-          className="lg:w-full"
+          className="lg:w-full lg:h-full"
           src={RegisterImage}
           alt="registrationImage"
         />
