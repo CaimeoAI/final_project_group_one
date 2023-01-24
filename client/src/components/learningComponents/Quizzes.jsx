@@ -24,13 +24,13 @@ export default function Quizzes() {
   if (error) return <p>Error!</p>;
 
   return (
-    <div>
+    <div className="flex flex-wrap ">
       {loading && <p>Loading...</p>}
       {error && <p>{error.message}</p>}
       {resources &&
         resources.map((resource) => (
-          <div key={resource.id} className="mb-12">
-            <h1 className=" text-xl text-orange-300 mb-4 ">{resource.name}</h1>
+          <div key={resource.id} className="w-full md:w-[25%] m-4 p-4 border-[1px] border-grayed-out flex flex-col shadow-text-secondary shadow-lg">
+            <h1 className=" text-xl text-orange-300 mb-4">{resource.name}</h1>
             <div className="mt-6 mb-3 text-green-400">
               <p className=" text-red-300">Duration: </p>
               {Math.floor(resource.duration / 3600)} minutes
@@ -43,12 +43,10 @@ export default function Quizzes() {
               target="_blank"
               rel="noreferrer"
               href={resource.url}
-              className="my-6 bg-accent-secondary  text-text-primary mt-8 px-6 py-2  hover:bg-active"
+              className="my-6 bg-accent-secondary w-[68%] text-text-primary mt-auto px-6 py-2 hover:bg-active md:w-[55%] shadow-text-secondary shadow-md"
             >
               Take the challenge
             </a>
-
-            <hr className="mt-6" />
           </div>
         ))}
     </div>
