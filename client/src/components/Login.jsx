@@ -67,7 +67,7 @@ export const Login = (props) => {
       />
       <div className="flex flex-col text-center text-text-primary  bg-primary lg:w-1/2 justify-center">
       <img
-          className="mx-auto w-[50%]"
+          className="mx-auto w-[50%] animate-pulse"
           src={Logo}
           alt="logo"
         />
