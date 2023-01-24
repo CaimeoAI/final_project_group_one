@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const MainContext = createContext();
@@ -19,7 +19,7 @@ export default function MainContextProvider(props) {
   const [end, setEnd] = useState(null); // reference state for <TimePicker> Mui element in Modal.js
   const [allDay, setAllDay] = useState(false); //
   // Object parameter generated in select prop inside <FullCalend>, used to controll event date in Modal.js
-  const [selectedProp, setSelectedProp] = useState(null); 
+  const [selectedProp, setSelectedProp] = useState(null);
   const [objectModal, setObjectModal] = useState({
     title: null,
     allDay: false,
@@ -29,21 +29,26 @@ export default function MainContextProvider(props) {
 
   //* 02 - FUNCTIONS
 
-  const getAllEvents = async() => {
-    const token = "Bearer " + localStorage.getItem("token")
+  const getAllEvents = async () => {
+    const token = "Bearer " + localStorage.getItem("token");
     try {
       const URL = `${process.env.REACT_APP_BE_URL}/calendar/events`;
-    const configuration = {
-      headers: {
-        authorization: token,
-      },
-    };
-      const result = await axios.get(URL, configuration)
-      setCurrentEvents(result.data.data.events)
+      const configuration = {
+        headers: {
+          authorization: token,
+        },
+      };
+      const result = await axios.get(URL, configuration);
+
+      setCurrentEvents(result.data.data.events);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
+
+  useEffect(() => {
+    getAllEvents();
+  }, []);
 
   const navigateTo = useNavigate();
 
@@ -98,7 +103,7 @@ export default function MainContextProvider(props) {
         setDeleted,
         logOut,
         convertBase64,
-        getAllEvents
+        getAllEvents,
       }}
     >
       {props.children}

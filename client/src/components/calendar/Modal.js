@@ -33,6 +33,7 @@ export default function BasicModal() {
   const [checked, setChecked] = useState(false);
 
   const {
+    setCurrentEvents,
     selectedProp,
     open,
     setOpen,
@@ -44,9 +45,7 @@ export default function BasicModal() {
     setAllDay,
     objectModal,
     setObjectModal,
-    // currentEvents,
-    // setCurrentEvents
-    // getAllEvents,
+    getAllEvents,
   } = useContext(MainContext);
 
   const handleClose = () => {
@@ -54,7 +53,9 @@ export default function BasicModal() {
     setStart(dayjs(objectModal.start));
     setEnd(dayjs(objectModal.end));
     setTitle(objectModal.title);
-    addEvent();
+    if (open) {
+      addEvent();
+    }
   };
 
   const handleTitle = (event) => {
@@ -109,19 +110,24 @@ export default function BasicModal() {
   };
 
   const addEvent = async () => {
-    
-    const token = getLocalStorageData("token");
-    const URL = `${process.env.REACT_APP_BE_URL}/calendar/addEvent`;
-    const configuration = {
-      headers: {
-        authorization: token,
-      },
-    };
-    try {
-      await axios.post(URL, objectModal, configuration);
-      
-    } catch (error) {
-      console.log(error);
+    if (selectedProp) {
+      const token = getLocalStorageData("token");
+      const URL = `${process.env.REACT_APP_BE_URL}/calendar/addEvent`;
+      const configuration = {
+        headers: {
+          authorization: token,
+        },
+      };
+      try {
+        await axios.post(URL, objectModal, configuration);
+        setCurrentEvents((currentEventsArray) => [
+          ...currentEventsArray,
+          objectModal,
+        ]);
+        getAllEvents();
+      } catch (error) {
+        console.log(error);
+      }
     }
     setOpen(false);
   };
@@ -130,7 +136,7 @@ export default function BasicModal() {
     <div>
       <Modal
         open={open}
-        onClose={()=> setOpen(false)}
+        onClose={() => setOpen(false)}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
