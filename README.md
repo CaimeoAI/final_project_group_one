@@ -13,7 +13,7 @@
 
 ## Project Description
 
-A Support Platform that helps Technologie Students to have everything they need at the same time and in the same place, making their daily lives easier.
+A Support Platform that helps Students to have everything they need at the same time and in the same place, making their daily lives easier.
 
 ## Project Status
 
