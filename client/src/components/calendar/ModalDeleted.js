@@ -8,7 +8,7 @@ import axios from "axios";
 import { useForum } from "../../context/ForumProvider";
 
 export default function ModalDeleted() {
-  const { deleted, setDeleted, selectedProp } = useContext(MainContext);
+  const { deleted, setDeleted, selectedProp,getAllEvents } = useContext(MainContext);
   const { getLocalStorageData } = useForum();
 
   const handleClose = async () => {
@@ -33,6 +33,7 @@ export default function ModalDeleted() {
     } catch (error) {
       console.error(error);
     }
+    getAllEvents()
     setDeleted(false);
   };
 
