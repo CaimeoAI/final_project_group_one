@@ -11,22 +11,13 @@ import Welcome from "./Welcome";
 
 export default function FullCalend() {
   const {
-    /* setCurrentEvents, */
     open,
     setOpen,
-    title,
-    setTitle,
-    setStart,
-    setEnd,
-    selectedProp,
     setSelectedProp,
-    objectModal,
-    setObjectModal,
     deleted,
     setDeleted,
     getAllEvents,
     currentEvents,
-    setCurrentEvents
   } = useContext(MainContext);
 
   const handleOpen = () => setOpen(true);
@@ -38,38 +29,7 @@ export default function FullCalend() {
     }, 20000); // 20 seconds
 
     getAllEvents();
-
-    if (selectedProp) {
-      // const calendarApi = selectedProp.view.calendar;
-      // calendarApi.unselect();
-
-      if (objectModal) {
-        // calendarApi.addEvent({
-        //   id: `${objectModal.title}`,
-        //   title: objectModal.title, // String
-        //   start: objectModal.start, // '2022-12-29T10:30:00+01:00'
-        //   end: objectModal.end, // '2022-12-29T10:30:00+01:00'
-        //   allDay: objectModal.allDay, // boolean
-        // });
-        setCurrentEvents(currentEventsArray => [...currentEventsArray,
-          objectModal
-        ]);
-
-
-        setObjectModal({
-          title: null,
-          allDay: false,
-          start: null,
-          end: null,
-        });
-        setTitle(null);
-        setEnd(null);
-        setStart(null);
-      }
-    }
-    // updateEvents();
-  }, [title, showElement]);
-
+  }, []);
 
   const handleDateClick = (selected) => {
     setSelectedProp(selected);
@@ -82,7 +42,7 @@ export default function FullCalend() {
   };
 
   return (
-    <div className=" h-[100%] w-[100%] p-2 md:h-[80%] md:pl-4 md:pt-4">
+    <div className=" h-[100%] w-[100%] p-2 md:h-[80%]  md:pr-4 md:pt-4">
       {showElement ? (
         <Welcome text={"fade-in"} />
       ) : (
@@ -103,8 +63,7 @@ export default function FullCalend() {
         dayMaxEvents={true}
         select={handleDateClick}
         eventClick={handleEventClick}
-        // eventsAdd={(currentEvents) => setCurrentEvents(currentEvents)}
-        events={currentEvents} // render the currentEvvent array back to calendar after login
+        events={currentEvents}
       />
       {open && <Modal />}
       {deleted && <ModalDeleted />}
