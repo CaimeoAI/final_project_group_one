@@ -40,25 +40,26 @@ const IconsMobile = ({ post, comments }) => {
           />
         </div>
 
-        <div className={`flex flex-row items-center`}>
+        <div className={`flex flex-row items-center ml-3`}>
           <ModeCommentOutlinedIcon
            style = {{fontSize: '20px'}}
 
-            className={`text-grayed-out hover:text-accent-secondary 
-              w-[16px] h-[22px] ml-5`}
+            className={`text-grayed-out hover:fill-hover-primary hover:text-hover-primary
+              w-[16px] h-[22px] ml-5 cursor-pointer`}
           />
-          <p className="text-grayed-out hover:text-accent-secondary  font-mono ml-2 text-md">
+          <p className="text-grayed-out font-mono ml-2 text-md">
 
-            {comments}
+            {comments} 
+            <span className="ml-2">Comments</span>
           </p>
         </div>
       </div>
 
-      <MdOutlineBookmarkBorder
+      {/* <MdOutlineBookmarkBorder
         className={`${styles.icons} 
               ${styles.hoverIcons} 
               w-[20px] h-[32px] `}
-      />
+      /> */}
     </div>
   );
 };

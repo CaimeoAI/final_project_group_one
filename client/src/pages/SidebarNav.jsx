@@ -34,7 +34,17 @@ const SidebarNav = () => {
         open ? "lg:w-72" : "lg:w-16 pr-3"
       } duration-500 text-text-primary px-4 `}
     >
-      <div className="md:hidden py-3 lg:flex justify-end text-text-primary">
+      <div
+        className="md:hidden 
+                      py-3 
+                      lg:flex 
+                      justify-end 
+                      text-text-primary
+                      hover:text-grayed-out  
+                      transition 
+                      duration-150 
+                      ease-in-out "
+      >
         <HiMenuAlt3
           size={26}
           className="cursor-pointer"
@@ -42,17 +52,17 @@ const SidebarNav = () => {
         />
       </div>
 
-      <div className="h-56 flex flex-col items-center justify-center">
+      <div className="h-56 flex flex-col items-center justify-center mt-3">
         <div
           className={`${
-            open && "lg:w-24 lg:h-24 mx-auto"
-          } w-10 h-10 rounded-full md:mt-10 lg:mt-5`}
+            open && "lg:w-24 lg:h-24 lg:transition-all "
+          } w-10 h-10 rounded-full md:mt-10 lg:mt-5 transition-al flex items-center justify-center`}
         >
           <img
             crossOrigin="anonymous"
             src={userProfileImg}
             alt=""
-            className={`w-full h-full rounded-full object-cover`}
+            className={`w-full h-full rounded-full object-cover transitation-all duration-200`}
           />
         </div>
         <h2
@@ -65,7 +75,7 @@ const SidebarNav = () => {
         <h2
           className={`${
             !open && "opacity-0"
-          } text-accent-secondary font-bold mt-3 text-center md:hidden lg:block`}
+          } text-accent-secondary font-bold mt-3 text-center md:hidden lg:block `}
         >
           Course: {userCourse}
         </h2>

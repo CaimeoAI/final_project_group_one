@@ -37,7 +37,7 @@ const Comment = ({ comment }) => {
             {hour}
           </p>
         </div>
-        <div className={`ml-9 py-6`}>
+        <div className={`ml-9 p-2`}>
           <div
             className="fromEditor text-sm md:text-lg"
             dangerouslySetInnerHTML={{ __html: htmlDecode(sanitizedHTML) }}

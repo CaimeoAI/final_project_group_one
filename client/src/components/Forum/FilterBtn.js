@@ -56,7 +56,7 @@ const FilterBtn = () => {
         <NewReleasesOutlinedIcon />
         <span className="ml-2">New</span>
       </div>
-      <div className="md:hidden lg:flex text-md font-semibold ml-3 border-l border-slate-500">
+      <div className="md:hidden lg:flex text-md font-semibold ml-3  border-l border-slate-500">
         {fileds.map((field, id) => (
           <div
             key={id}
@@ -64,7 +64,7 @@ const FilterBtn = () => {
               setActive(field);
               setFilterBy(field);
             }}
-            className={`flex flex-row items-center cursor-pointer ml-1 hover:bg-slate-700 px-2.5 py-1.5 rounded-lg  hover:text-text-primary ${
+            className={`flex flex-row items-center cursor-pointer ml-3 hover:bg-slate-700 px-2.5 py-1.5 rounded-lg  hover:text-text-primary ${
               active === field && "bg-slate-700  text-text-primary"
             }`}
           >
