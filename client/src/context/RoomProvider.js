@@ -8,7 +8,7 @@ export const useRooms = () => {
      return useContext(RoomContext)
 }
 
-const socket = io.connect('http://localhost:5000')
+const socket = io.connect('http://localhost:3001')
 
 export function RoomsProvider({ children }) {
 
