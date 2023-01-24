@@ -82,44 +82,21 @@ export default function BasicTabs() {
 
       {/* Resources */}
       <TabPanel value={value} index={1}>
-        <strong>Resources component here</strong>
+        <strong className="text-xl">Resource Components</strong>
+        <hr className="w-[50%] my-4"/>
+        <h2 className="my-4">Contains all the resources available based on your module, helping you to understand difficult topics or directing you to your next topic you might wanna learn!</h2>
         <Resources />
-        <br />
-        Contains all the resources available based on your module Lorem ipsum
-        dolor sit amet consectetur adipisicing elit. Nesciunt, quod
-        exercitationem vitae rerum animi, voluptates incidunt quibusdam
-        accusamus corporis sint consequuntur est! Id iste dolore rem molestiae
-        enim alias hic dolorum distinctio aliquid obcaecati minima, eos, porro
-        ab dolores, maiores quasi culpa quas doloremque eligendi consectetur
-        quos harum. Fugiat ad vitae amet est tempore laborum, doloremque quasi
-        quidem ipsum ipsam in non enim similique illum omnis inventore
-        blanditiis accusamus porro alias ex suscipit deserunt harum aperiam.
-        Officiis libero deleniti corrupti! Culpa sint, earum non explicabo
-        accusamus, recusandae vitae ea enim, ut provident vel adipisci officia
-        error molestiae pariatur nihil voluptatem!
-        <hr />
+        
+        
       </TabPanel>
 
       <TabPanel value={value} index={4}></TabPanel>
 
       <TabPanel value={value} index={2}>
+        <strong className="text-xl">Your Challenges</strong>
+        <hr className="w-[50%] my-4"/>
+        <h2 className="my-4">Contains all the quizzes available in order to test your level</h2>
         <Quizzes />
-        <strong>Quizzes component here</strong>
-        <br />
-        Contains all the quizzes available in order to test your level
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad
-          aspernatur recusandae voluptas libero ex voluptates nemo illum
-          tenetur, obcaecati quidem mollitia. Animi rerum dolore quasi sit
-          aliquid beatae cumque accusamus iste repellendus dolorum, quod, vel
-          veritatis. Recusandae hic nemo eligendi! Iste autem repellendus esse
-          hic dignissimos magnam earum aspernatur temporibus reprehenderit
-          nostrum. Error doloremque vitae esse iusto labore sint! Esse explicabo
-          laborum enim suscipit! Corrupti dolor inventore ipsa sit similique.{" "}
-        </p>
-        <button className="my-6 bg-accent-secondary text-text-primary hover:bg-hover-primary px-6 py-2">
-          Start the Quizz
-        </button>
       </TabPanel>
     </Box>
   );

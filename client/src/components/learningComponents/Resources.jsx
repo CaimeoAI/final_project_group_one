@@ -33,12 +33,12 @@ export default function Resources() {
   if (error) return <p>Error!</p>;
 
   return (
-    <div>
+    <div className="flex flex-wrap my-6 align-center justify-center">
       {loading && <p>Loading...</p>}
       {error && <p>{error.message}</p>}
       {resources &&
         resources.map((resource) => {
-          return <h1>{resource.properties?.controlName}</h1>;
+          return <h1 className="shadow-text-secondary shadow-lg text-lg text-center hover:cursor-pointer hover:bg-grayed-out md:w-[15%] border-text-primary  m-4 p-1 rounded bg-accent-secondary">{resource.properties?.controlName}</h1>
         })}
     </div>
   );
