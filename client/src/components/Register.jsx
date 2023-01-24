@@ -176,7 +176,7 @@ export const Register = (props) => {
         bg-primary
         text-center"
             type="password"
-            placeholder="password(8 characters minimum)"
+            placeholder="password"
             id="password"
             name="password"
             minLength="8"
@@ -201,6 +201,7 @@ export const Register = (props) => {
             minLength="8"
             onChange={(e) => updateUserDetails(e)}
           />
+          <p className="text-xs mt-1 text-grayed-out">*Password has to be atleast 8 characters</p>
           <button
             className="
                 mt-4

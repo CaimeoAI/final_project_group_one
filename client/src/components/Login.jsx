@@ -65,8 +65,13 @@ export const Login = (props) => {
           },
         }}
       />
+
       <div className="flex flex-col text-center text-text-primary  bg-primary  w-screen lg:w-1/2 justify-center">
-        <img className="mx-auto w-[50%]" src={Logo} alt="logo" />
+        <img 
+            className="mx-auto w-[50%] animate-pulse" 
+            src={Logo} 
+            alt="logo" />
+
         <form
           onSubmit={handleSubmit}
           className="flex flex-col flex-nowrap md:flex  justify-center items-center "

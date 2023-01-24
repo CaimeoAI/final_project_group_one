@@ -22,6 +22,7 @@ import forumRoute from "./routes/forumRoute.js";
 import classesRoute from "./routes/classesRoute.js";
 import chatRoute from "./routes/chatRoute.js";
 import eventRoute from "./routes/eventRoute.js";
+import { addMessage } from "./controllers/userController.js";
 
 
 //! MAIN CONFIGURATION
@@ -119,7 +120,6 @@ io.on("connection", (socket) => {
   });
 
   socket.on("send_message", (data) => {
-    console.log(data);
     socket.to(data.room).emit("receive_message", data);
   });
 

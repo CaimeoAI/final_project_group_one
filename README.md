@@ -13,7 +13,7 @@
 
 ## Project Description
 
-A Support Platform that helps Technologie Students to have everything they need at the same time and in the same place, making their daily lives easier.
+A Support Platform that helps Students to have everything they need at the same time and in the same place, making their daily lives easier.
 
 ## Project Status
 
@@ -41,6 +41,6 @@ Ather Ahmad, Dilshod Rahmatov, Mansour Tumeh, Joel Peltonen
 
 ## Project Developer Team
 
-Ana Kümmecke, Edson Bottura, Ilie Honciuc, Judielle Villa, Natalie Lazarev
+[Ana Kümmecke](https://github.com/AninhaCSK), [Edson Bottura](https://github.com/edbottura), [Ilie Honciuc](https://github.com/eleeyeah), [Judielle Villa](https://github.com/CaimeoAI), [Natalie Lazarev](https://github.com/nat-laz)
 
 ## License
