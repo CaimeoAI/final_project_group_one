@@ -93,16 +93,15 @@ export const getAllRooms = async( req, res, next ) => {
 
 export const addMessage = async( req, res, next ) => {
 
-    const { room, author, message, time } = req.body
-
+    const { room, author, message, time, userIcon } = req.body
     try {
       const newMessage = new Message({
         room,
         author,
         message,
-        time
+        time,
+        photo: userIcon
       })
-
       await newMessage.save()
       res.status(200).json(newMessage)
   } catch (error) {
@@ -123,3 +122,16 @@ export const getRoomMessages = async( req, res, next ) => {
     next (error)
   }
 }
+
+//------------------- DELETE ROOM -------------
+
+export const roomDelete = async ( req, res, next ) => {
+  const { username, room } = req.body
+  try {
+    const user = await User.findOneAndUpdate({name: username}, {$pull: { rooms: room }}, {new: true})
+
+    res.status(200).json({ user });
+  } catch (error) {
+    next (error)
+  }
+};

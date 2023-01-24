@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import RoomName from "./RoomName";
 import ChatTextInput from "./ChatTextInput";
 import ChatMessage from "./ChatMessage";
-
+import { useRooms } from '../../context/RoomProvider'
 import './ChatFeedCustomScroll.css'
 
 
 export default function ChatFeed() {
+
+  const { currentRoom } = useRooms()
 
   return (
     <div 
@@ -26,7 +28,7 @@ export default function ChatFeed() {
         
         <RoomName/>
         
-        <div className="overflow-y-scroll">
+        <div className={`overflow-y-scroll ${currentRoom === '' ? "hidden" : ""}`}>
 
             <div className="h-full flex flex-col md:px-4">
 

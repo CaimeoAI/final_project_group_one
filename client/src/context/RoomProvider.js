@@ -8,11 +8,12 @@ export const useRooms = () => {
      return useContext(RoomContext)
 }
 
-const socket = io.connect('http://localhost:3001')
+const socket = io.connect('http://localhost:5000')
 
 export function RoomsProvider({ children }) {
 
     const [username, setUserName] = useState(localStorage.getItem('name'))
+    const [userIcon, setUserIcon] = useState(localStorage.getItem('photo'))
     const [room, setRoom] = useState('')
     const [currentRoom, setCurrentRoom] = useState('')
     const [roomList, setRoomList] = useState([])
@@ -20,6 +21,7 @@ export function RoomsProvider({ children }) {
     const [currentMessage, setCurrentMessage] = useState('')
     const [messageList, setMessageList] = useState([])
 
+    
     const getLocalStorageData = (data) => {
         return data === "token"
           ? "Bearer " + localStorage.getItem(data)
@@ -33,9 +35,9 @@ export function RoomsProvider({ children }) {
         }
     }
 
-    const addMessageToDatabase = async(room, author, message, time) => {
+    const addMessageToDatabase = async(room, author, message, time, userIcon) => {
         const token = getLocalStorageData("token")
-        const data = { room, author, message, time }
+        const data = { room, author, message, time, userIcon }
         const URL = `${process.env.REACT_APP_BE_URL}/chat/rooms/message`
         const configuration = {
           headers: {
@@ -70,10 +72,11 @@ export function RoomsProvider({ children }) {
                 room: room,
                 author: username,
                 message: currentMessage,
-                time: new Date(Date.now()).getHours() + ':' + new Date(Date.now()).getMinutes()
+                time: new Date(Date.now()).getHours() + ':' + new Date(Date.now()).getMinutes(),
+                photo: userIcon
             }
             await socket.emit('send_message', messageData)
-            addMessageToDatabase(messageData.room, messageData.author, messageData.message, messageData.time)
+            addMessageToDatabase(messageData.room, messageData.author, messageData.message, messageData.time, messageData.photo)
             setMessageList((list) => [...list, messageData])
         }
     }
@@ -121,6 +124,24 @@ export function RoomsProvider({ children }) {
         }
     }
 
+    const deleteRoomFromDatabase = async () => {
+        const token = getLocalStorageData("token")
+        const data = { username, room }
+        const URL = `${process.env.REACT_APP_BE_URL}/chat/roomDelete`
+        const configuration = {
+          headers: {
+            authorization: token,
+          },
+        }
+        console.log(data);
+        try {
+          const res = await axios.patch(URL, data, configuration);
+          console.log(res);
+        } catch (error) {
+          console.log(error);
+        }
+    }
+    console.log(room);
     return (
         <RoomContext.Provider value={{
             username, 
@@ -140,7 +161,10 @@ export function RoomsProvider({ children }) {
             socket,
             addRoomToDatabase,
             getAllRooms,
-            getAllRoomMessages
+            getAllRoomMessages,
+            userIcon, 
+            setUserIcon,
+            deleteRoomFromDatabase
         }}>
             { children }
         </RoomContext.Provider>

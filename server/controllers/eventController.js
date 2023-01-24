@@ -29,7 +29,6 @@ export const getEvents = catchAsync(async (req, res, next) => {
     path: "events",
     select: "title start end allDay",
   });
-
   res.status(200).json({
     status: "success",
     data: {

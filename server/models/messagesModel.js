@@ -13,8 +13,10 @@ const messagesSchema = mongoose.Schema({
   time: {
     type:String,
     required: true },
+  photo: {
+    type:String,},
 });
 
-const Event = mongoose.model("Message",messagesSchema)
+const Message = mongoose.model("Message",messagesSchema)
 
-export default Event
+export default Message

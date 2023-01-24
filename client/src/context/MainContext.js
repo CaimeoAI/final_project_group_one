@@ -39,7 +39,6 @@ export default function MainContextProvider(props) {
       },
     };
       const result = await axios.get(URL, configuration)
-      
       setCurrentEvents(result.data.data.events)
     } catch (error) {
       console.log(error)

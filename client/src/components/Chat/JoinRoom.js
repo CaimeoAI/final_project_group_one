@@ -1,12 +1,14 @@
 import { useContext } from 'react'
 import { MainContext } from '../../context/MainContext'
+import { useRooms } from '../../context/RoomProvider'
 
 export default function ChatAddContact() {
 
   const { setShowChatAddContactModal } = useContext(MainContext)
+  const {roomList} = useRooms()
 
   return (
-    <div>
+    <div className={`${roomList.length === 0 ? "animate-bounce" : ""}`}>
         <button 
             className="
                 mt-1

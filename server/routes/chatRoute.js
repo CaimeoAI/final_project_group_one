@@ -2,7 +2,7 @@
 import express from "express"
 
 //? CONTROLLER IMPORTS
-import { addRoom, getAllRooms, addMessage, getRoomMessages } from "../controllers/userController.js"
+import { addRoom, getAllRooms, addMessage, getRoomMessages, roomDelete } from "../controllers/userController.js"
 
 //* ROUTER
 const router = express.Router()
@@ -22,5 +22,9 @@ router
 router
     .route("/rooms/messages/:room")
     .get(getRoomMessages)
+
+router
+    .route("/roomDelete")
+    .patch(roomDelete)
 
 export default router
