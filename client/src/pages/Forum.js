@@ -1,7 +1,7 @@
 //! 01 - HOOKS
 import { MainContext } from "../context/MainContext";
 import { useForum } from "../context/ForumProvider";
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 
 //* 02 - COMPONENTS
 import ForumSearch from "../components/Forum/ForumSearch";
@@ -9,9 +9,11 @@ import ListingPosts from "../components/Forum/ListingPosts";
 import BarCreatePost from "../components/Forum/BarCreatePost";
 import CreatePostModal from "../components/Forum/CreatePostModal";
 
+import { RiseLoader } from "react-spinners";
+
 const Forum = () => {
   const { showPostFormModal, setShowPostFormModal } = useContext(MainContext);
-  const { getAllPost, posts, searchInput } = useForum();
+  const { getAllPost, posts, searchInput, isLoading } = useForum();
 
   const filteredPosts = posts.filter((item) => {
     if (searchInput === "") {
@@ -49,7 +51,11 @@ const Forum = () => {
         <CreatePostModal getAllPost={getAllPost} />
       </div>
 
-      {filteredPosts.length === 0 ? (
+      {isLoading ? (
+        <div className="flex justify-center items-center h-screen mt-6">
+          <RiseLoader color="#334155" size={20} aria-label="Loading Spinner" />
+        </div>
+      ) : filteredPosts.length === 0 ? (
         <div className="text-slate-500 text-sm md:w-[50%]  md:text-[1.3em] m-auto pl-3 md:leading-9 font-mono ">
           <h3>
             There are currently no posts in the forum that address this topic.
@@ -73,7 +79,7 @@ const Forum = () => {
             ))}
         </>
       )}
-       <div className="h-16"></div>
+      <div className="h-16"></div>
     </div>
   );
 };
