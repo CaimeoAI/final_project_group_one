@@ -12,7 +12,7 @@ import TagOutlinedIcon from "@mui/icons-material/TagOutlined";
 const FilterBtn = () => {
   const { latestPosts, bestPost, hotPosts, getAllPost, filterBy, setFilterBy } = useForum();
   const [active, setActive] = useState("");
-  const fileds = ["Webdev", "DigitalMarketing", "AWS", "Python"];
+  const fileds = ["WebDev", "DigitalMarketing", "AWS", "Python"];
 
   useEffect(() => {
     getAllPost(filterBy);

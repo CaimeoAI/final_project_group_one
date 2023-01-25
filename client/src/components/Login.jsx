@@ -1,7 +1,7 @@
 /* eslint-disable*/
 import { useState } from "react";
 import axios from "axios";
-import LoginImage from "../assets/login-resized.jpg";
+import LoginImage from "../assets/login.jpg";
 import Logo from "../assets/logo.png";
 import toast, { Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";

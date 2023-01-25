@@ -102,7 +102,7 @@ const CreatePostModal = ({ getAllPost }) => {
           />
         </div>
 
-        <div className="text-right  pt-5 pr-1 md:pt-0 lg:pt-6 md:pr-6">
+        <div className="text-right  pt-12 pr-1 md:pt-0 lg:pt-6 md:pr-6">
           <button
             disabled={val}
             onClick={() => {
