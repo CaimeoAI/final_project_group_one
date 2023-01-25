@@ -133,8 +133,7 @@ const SeePost = () => {
                               transition 
                               duration-150 
                               ease-in-out 
-                              ml-1 "
-          >
+                              ml-1 ">
             Comment
           </button>
         </div>

@@ -23,7 +23,7 @@ export function ForumProvider({ children }) {
   const modulesReactQuill = {
     toolbar: [
       ["bold", "underline", "italic"],
-      ["code-block", "blockquote"],
+      ["code-block", "blockquote", "link"],
       [{ list: "ordered" }],
       [{ list: "bullet" }],
     ],

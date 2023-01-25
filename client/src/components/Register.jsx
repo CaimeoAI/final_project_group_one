@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { useContext, useState } from "react";
 import axios from "axios";
-import RegisterImage from "../assets/registration-resized.jpg";
+import RegisterImage from "../assets/registration.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import UploadAndDisplayImage from "./UploadAndDisplayImage";
 import { MainContext } from "../context/MainContext";
@@ -17,8 +17,7 @@ export const Register = (props) => {
     password: "",
     passwordConfirm: "",
   });
-  const fields = ["Webdev", "DigitalMarketing", "AWS", "Python"];
-  console.log();
+  const fields = ["WebDev", "DigitalMarketing", "AWS", "Python"];
 
   const updateUserDetails = (e) => {
     return setUserDetails({ ...userDetails, [e.target.name]: e.target.value });
@@ -54,10 +53,9 @@ export const Register = (props) => {
         localStorage.setItem("isLogedIn", true);
         toast.success("You are successfully registered");
         navigateTo("/");
-        window.location.reload(false);
+        window.location.reload();
       }
     } catch (error) {
-      //console.log(error);
       toast.error(error.response?.data?.message?.split(":")[2]);
     }
   };
@@ -126,8 +124,8 @@ export const Register = (props) => {
             onChange={(e) => updateUserDetails(e)}
           />
 
-          <select
-            //style={{ "-webkit-appearance": "none" }}
+         <div className="relative">
+         <select
             value={userDetails.course}
             onChange={(e) => {
               updateUserDetails(e);
@@ -142,17 +140,18 @@ export const Register = (props) => {
             h-12 
             text-base 
             rounded-full 
-            text-text-primary
+            text-grayed-out
             border-2 
             border-secondary
             bg-primary
             text-center
+            appearance-none
             "
           >
             <option
               value={"select a field"}
               disabled
-              className="text-text-primary w-72 "
+              className="text-text-primary w-72 rounded-full"
             >
               select a field
             </option>
@@ -162,6 +161,8 @@ export const Register = (props) => {
               </option>
             ))}
           </select>
+             <span className=" text-grayed-out absolute right-5 top-10 mt-[-2px] h-[8px] w-[8px] -translate-y-1/2 rotate-45 border-r-2 border-b-2"></span>
+         </div>
 
           <input
             className="
@@ -201,7 +202,9 @@ export const Register = (props) => {
             minLength="8"
             onChange={(e) => updateUserDetails(e)}
           />
-          <p className="text-xs mt-1 text-grayed-out">*Password has to be atleast 8 characters</p>
+          <p className="text-xs mt-1 text-grayed-out">
+            *Password has to be atleast 8 characters
+          </p>
           <button
             className="
                 mt-4
@@ -229,10 +232,8 @@ export const Register = (props) => {
                          hover:underline
                          hover:font-semibold
                          transition-transform
-                         hover:-translate-y-4
-                       
-                          ">
-             Login here.
+                         hover:-translate-y-4">
+            Login here.
           </span>
         </button>
       </div>

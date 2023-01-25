@@ -19,8 +19,8 @@ const Comment = ({ comment }) => {
   const hour = timeStr.slice(16, 21);
 
   return (
-    <div>
-      <div>
+    
+      <div className="py-3">
         <div className="flex flex-row text-right w-full justify-start items-center">
           <div className={`w-7 h-7 rounded-full mr-2`}>
             <img
@@ -44,7 +44,7 @@ const Comment = ({ comment }) => {
           ></div>
         </div>
       </div>
-    </div>
+    
   );
 };
 

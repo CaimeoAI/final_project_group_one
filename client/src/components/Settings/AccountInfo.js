@@ -8,7 +8,7 @@ const AccountInfo = () => {
       const { getLocalStorageData } = useForum();
       const { convertBase64 } = useContext(MainContext);
       const [userData, setUserData] = useState();
-      const courses = ["WebDev", "DigitalMarketing", "AWS", "Python"];
+      const courses =  ["WebDev", "DigitalMarketing", "AWS", "Python"];
       const token = getLocalStorageData("token");
 
       const getUserData = async () => {
@@ -168,7 +168,7 @@ const AccountInfo = () => {
               <select
                 name="course"
                 onChange={(e) => updateUserDetails(e)}
-                className="bg-transparent  border-hover-primary  focus:border-grayed-out active:border-grayed-out text-grayed-out w-full appearance-none rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-text-primary"
+                className=" bg-primary  border-hover-primary   focus:border-grayed-out active:border-grayed-out text-grayed-out w-full appearance-none rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-text-primary"
               >
                 {courses.map((course) => (
                   <option key={course} value={course}>

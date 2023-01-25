@@ -38,9 +38,19 @@
 .fromEditor p {
   white-space: pre-wrap;
   word-break: break-word;
-  padding: 4px 0;
+  padding: 1px 0;
 }
 
+.fromEditor p a {
+  color: #007FFF  !important;
+}
+.fromEditor p a:hover{
+  text-decoration: underline;
+}
+.fromEditor p a:active{
+  text-decoration: underline;
+  color: #1560bd  !important;
+}
 .fromEditor pre {
   background: #111827;
   color: #e7f6f2;
@@ -70,7 +80,7 @@
 .inAllPosts p {
   white-space: pre-wrap;
   word-break: break-word;
-  padding: 5px 2px;
+  padding: 2px 2px;
 }
 
 .ql-container {
@@ -114,14 +124,14 @@
   font-style: normal;
 }
 
-.ql-snow .ql-editor pre.ql-syntax{
+.ql-snow .ql-editor pre.ql-syntax {
   background-color: #111827;
-  color: #D9D9D9;
+  color: #d9d9d9;
   overflow: visible;
   font-size: 17px;
 }
 
-.ql-editor{
+.ql-editor {
   font-size: 20px;
 }
 @media (min-width: 1280px) {
