@@ -19,6 +19,7 @@ export function ForumProvider({ children }) {
   const [comments, setComments] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [filterBy, setFilterBy] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const modulesReactQuill = {
     toolbar: [
@@ -49,8 +50,10 @@ export function ForumProvider({ children }) {
       if (filter) {
         const filterResult = result.data.filter((el) => el.topic === filter);
         setPosts(filterResult);
+        setIsLoading(false)
       } else {
         setPosts(result.data);
+        setIsLoading(false)
       }
     } catch (error) {
       console.log(error);
@@ -186,6 +189,7 @@ export function ForumProvider({ children }) {
         searchInput,
         filterBy,
         setFilterBy,
+        isLoading
       }}
     >
       {children}
