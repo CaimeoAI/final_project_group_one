@@ -1,6 +1,6 @@
 # EduIO - Student Support Application
 
-[live@](https://edu-io.onrender.com/learningsupport)
+[live version](https://edu-io.onrender.com/learningsupport)
 
 ## Table of Content
 
